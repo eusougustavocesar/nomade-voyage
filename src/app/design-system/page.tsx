@@ -54,7 +54,10 @@ export default function DesignSystemPage() {
       <div className="hero-gradient py-16">
         <div className="container">
           <span className="badge badge-accent mb-4">Design System</span>
-          <h1 className="text-5xl font-bold text-white mt-2">Nômade Voyage</h1>
+          <div className="flex items-center mt-2 mb-1" style={{ gap: 14 }}>
+            <img src="/logo-icon.svg" alt="Nômade Voyage" width={52} height={52} />
+            <h1 className="text-5xl font-bold text-white">Nômade Voyage</h1>
+          </div>
           <p className="text-lg text-white/80 mt-3 max-w-xl">
             Referência visual completa — cores, tipografia, componentes e padrões de layout.
           </p>

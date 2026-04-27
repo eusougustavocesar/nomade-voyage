@@ -3,11 +3,13 @@
 import { useState } from "react";
 import { MessageCircle, Menu, X } from "lucide-react";
 import Logo from "@/components/Logo";
+import ThemeToggle from "@/components/ThemeToggle";
+import { useTheme } from "@/components/ThemeProvider";
 
 const links = [
-  { label: "Viajar", href: "#viajar" },
+  { label: "Viajar",   href: "#viajar" },
   { label: "Explorar", href: "#explorar" },
-  { label: "Morar", href: "#morar" },
+  { label: "Morar",    href: "#morar" },
   { label: "Destinos", href: "#destinos" },
 ];
 
@@ -15,13 +17,16 @@ const WA_LINK = "https://wa.me/5500000000000?text=Olá!%20Vim%20pelo%20site%20da
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+
+  const pillBg    = isDark ? "rgba(12, 30, 48, 0.85)"  : "rgba(255,255,255,0.72)";
+  const mobileBg  = isDark ? "rgba(12, 30, 48, 0.97)"  : "rgba(255,255,255,0.95)";
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 py-4" style={{ pointerEvents: "none" }}>
-      <div
-        className="container flex items-center justify-between relative"
-        style={{ pointerEvents: "all" }}
-      >
+      <div className="container flex items-center justify-between relative" style={{ pointerEvents: "all" }}>
+
         {/* Logo */}
         <a href="/" style={{ textDecoration: "none" }}>
           <Logo size={32} />
@@ -33,10 +38,10 @@ export default function Navbar() {
           style={{
             borderRadius: "var(--radius-full)",
             border: "1px solid var(--color-border)",
-            background: "rgba(255,255,255,0.72)",
+            background: pillBg,
             backdropFilter: "blur(14px)",
             WebkitBackdropFilter: "blur(14px)",
-            boxShadow: "0 1px 8px rgba(14,165,233,0.10), 0 0 0 1px rgba(14,165,233,0.06)",
+            boxShadow: "var(--shadow-sm)",
           }}
         >
           {links.map((l) => (
@@ -46,7 +51,7 @@ export default function Navbar() {
               style={{
                 fontFamily: "var(--font-body)",
                 fontWeight: 500,
-                fontSize: "14px",
+                fontSize: "var(--text-caption)",
                 color: "var(--color-muted-foreground)",
                 textDecoration: "none",
                 padding: "6px 14px",
@@ -67,37 +72,46 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Desktop CTA */}
-        <a
-          href={WA_LINK}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden md:flex btn-whatsapp"
-          style={{ padding: "8px 18px", fontSize: "13px", gap: "7px" }}
-        >
-          <MessageCircle size={15} />
-          WhatsApp
-        </a>
+        {/* Desktop right: toggle + WhatsApp */}
+        <div className="hidden md:flex items-center" style={{ gap: "var(--space-3)" }}>
+          <ThemeToggle />
+          <a
+            href={WA_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-whatsapp"
+            style={{ padding: "8px 18px", fontSize: "var(--text-micro)", gap: "7px" }}
+          >
+            <MessageCircle size={15} />
+            WhatsApp
+          </a>
+        </div>
 
-        {/* Mobile hamburger */}
-        <button
-          className="md:hidden p-2"
-          onClick={() => setOpen(!open)}
-          aria-label="Menu"
-          style={{ pointerEvents: "all" }}
-        >
-          {open ? <X size={22} color="var(--color-primary)" /> : <Menu size={22} color="var(--color-primary)" />}
-        </button>
+        {/* Mobile: toggle + hamburger */}
+        <div className="md:hidden flex items-center" style={{ gap: "var(--space-2)", pointerEvents: "all" }}>
+          <ThemeToggle />
+          <button
+            className="p-2"
+            onClick={() => setOpen(!open)}
+            aria-label="Menu"
+          >
+            {open
+              ? <X    size={22} color="var(--color-primary)" />
+              : <Menu size={22} color="var(--color-primary)" />
+            }
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
       {open && (
         <div
-          className="md:hidden mx-4 mt-2 flex flex-col gap-1 px-3 py-3"
+          className="md:hidden mx-4 mt-2 flex flex-col px-3 py-3"
           style={{
+            gap: "var(--space-1)",
             borderRadius: "var(--radius-lg)",
             border: "1px solid var(--color-border)",
-            background: "rgba(255,255,255,0.95)",
+            background: mobileBg,
             backdropFilter: "blur(14px)",
             WebkitBackdropFilter: "blur(14px)",
             boxShadow: "var(--shadow-md)",
@@ -112,7 +126,7 @@ export default function Navbar() {
               style={{
                 fontFamily: "var(--font-body)",
                 fontWeight: 500,
-                fontSize: "15px",
+                fontSize: "var(--text-body-sm)",
                 color: "var(--color-foreground)",
                 textDecoration: "none",
                 padding: "10px 12px",
@@ -126,7 +140,8 @@ export default function Navbar() {
             href={WA_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-whatsapp justify-center mt-1"
+            className="btn-whatsapp justify-center"
+            style={{ marginTop: "var(--space-1)" }}
           >
             <MessageCircle size={16} />
             Falar no WhatsApp

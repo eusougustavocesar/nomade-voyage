@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins, Inter } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -27,14 +28,20 @@ export const metadata: Metadata = {
   },
 };
 
+// Inline script evita flash de tema errado antes da hidratação
+const themeScript = `(function(){try{var t=localStorage.getItem('nv-theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}catch(e){}})();`;
+
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className={`${poppins.variable} ${inter.variable} h-full`}>
-      <body className="min-h-full flex flex-col antialiased">{children}</body>
+    <html lang="pt-BR" className={`${poppins.variable} ${inter.variable} h-full`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
+      <body className="min-h-full flex flex-col antialiased">
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }

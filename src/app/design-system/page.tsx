@@ -1,16 +1,31 @@
 "use client";
 
 import Logo from "@/components/Logo";
+import ThemeToggle from "@/components/ThemeToggle";
 import {
   Plane, Compass, Home, MessageCircle, ArrowRight, Check,
   Star, Globe, Shield, MapPin, ChevronDown, Search, User,
   Mail, Phone,
 } from "lucide-react";
 
+const dsLinks = [
+  { label: "Logo",        href: "#logo" },
+  { label: "Cores",       href: "#cores" },
+  { label: "Tipografia",  href: "#tipografia" },
+  { label: "Botões",      href: "#botoes" },
+  { label: "Cards",       href: "#cards" },
+  { label: "Badges",      href: "#badges" },
+  { label: "Forms",       href: "#formularios" },
+  { label: "Ícones",      href: "#icones" },
+  { label: "Sombras",     href: "#sombras" },
+  { label: "Espaçamento", href: "#espacamento" },
+  { label: "Gradiente",   href: "#gradiente" },
+];
+
 // ─── Section wrapper ────────────────────────────────────────────────────────
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
-    <section style={{ paddingTop: "var(--gap-xl)", paddingBottom: "var(--gap-xl)", borderBottom: "1px solid var(--color-border)" }}>
+    <section id={id} style={{ paddingTop: "var(--gap-xl)", paddingBottom: "var(--gap-xl)", borderBottom: "1px solid var(--color-border)", scrollMarginTop: 72 }}>
       <p style={{
         fontFamily: "var(--font-body)",
         fontSize: "var(--text-micro)",
@@ -27,7 +42,6 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   );
 }
 
-// ─── Sub-label inside sections ──────────────────────────────────────────────
 function SubLabel({ children }: { children: React.ReactNode }) {
   return (
     <p style={{
@@ -42,7 +56,6 @@ function SubLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
-// ─── Color Swatch ───────────────────────────────────────────────────────────
 function Swatch({ name, hex, token }: { name: string; hex: string; token: string }) {
   return (
     <div className="flex flex-col" style={{ gap: "var(--space-2)" }}>
@@ -60,7 +73,7 @@ export default function DesignSystemPage() {
   return (
     <div style={{ background: "var(--color-background)", minHeight: "100vh" }}>
 
-      {/* ── Header ─────────────────────────────────────────────────────────── */}
+      {/* ── Hero header ────────────────────────────────────────────────────── */}
       <div className="hero-gradient" style={{ paddingTop: "var(--space-16)", paddingBottom: "var(--space-16)" }}>
         <div className="container">
           <span className="badge badge-accent" style={{ marginBottom: "var(--space-4)", display: "inline-flex" }}>Design System</span>
@@ -73,29 +86,73 @@ export default function DesignSystemPage() {
         </div>
       </div>
 
+      {/* ── Sticky pill nav ────────────────────────────────────────────────── */}
+      <div
+        className="sticky z-40"
+        style={{
+          top: 0,
+          background: "var(--color-surface)",
+          borderBottom: "1px solid var(--color-border)",
+          boxShadow: "var(--shadow-sm)",
+        }}
+      >
+        <div className="container" style={{ paddingTop: "var(--space-3)", paddingBottom: "var(--space-3)" }}>
+          <div className="flex items-center justify-between" style={{ gap: "var(--gap-sm)" }}>
+            <div className="flex items-center overflow-x-auto" style={{ gap: "var(--space-1)", scrollbarWidth: "none" }}>
+              {dsLinks.map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontWeight: 500,
+                    fontSize: "var(--text-caption)",
+                    color: "var(--color-muted-foreground)",
+                    textDecoration: "none",
+                    padding: "5px 12px",
+                    borderRadius: "var(--radius-full)",
+                    border: "1px solid transparent",
+                    whiteSpace: "nowrap",
+                    transition: "color 150ms, background 150ms, border-color 150ms",
+                    flexShrink: 0,
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.color = "var(--color-primary)";
+                    e.currentTarget.style.background = "var(--color-muted)";
+                    e.currentTarget.style.borderColor = "var(--color-border)";
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.color = "var(--color-muted-foreground)";
+                    e.currentTarget.style.background = "transparent";
+                    e.currentTarget.style.borderColor = "transparent";
+                  }}
+                >
+                  {l.label}
+                </a>
+              ))}
+            </div>
+            <ThemeToggle />
+          </div>
+        </div>
+      </div>
+
+      {/* ── Sections ───────────────────────────────────────────────────────── */}
       <div className="container" style={{ paddingTop: "var(--space-4)", paddingBottom: "var(--space-20)" }}>
 
-        {/* ── 00 LOGO ────────────────────────────────────────────────────────── */}
-        <Section title="00 — Logotipo">
+        {/* 00 LOGO */}
+        <Section id="logo" title="00 — Logotipo">
           <SubLabel>Versões</SubLabel>
           <div className="grid grid-cols-1 sm:grid-cols-3" style={{ gap: "var(--gap-sm)", marginBottom: "var(--space-10)" }}>
-
             <div className="card flex flex-col" style={{ gap: "var(--space-4)", padding: "var(--space-8)" }}>
               <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--color-muted-foreground)" }}>Fundo claro</p>
               <Logo size={40} />
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-muted-foreground)" }}>
-                Uso padrão — fundo branco ou #F0F9FF
-              </p>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-muted-foreground)" }}>Uso padrão — fundo branco ou #F0F9FF</p>
             </div>
-
             <div className="card flex flex-col" style={{ gap: "var(--space-4)", padding: "var(--space-8)", background: "var(--color-primary)" }}>
               <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--color-white-low)" }}>Fundo escuro</p>
               <Logo size={40} theme="dark" />
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-white-low)" }}>
-                Navbar, hero, footer — fundo #0C4A6E
-              </p>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-white-low)" }}>Navbar, hero, footer — fundo #0C4A6E</p>
             </div>
-
             <div className="card flex flex-col" style={{ gap: "var(--space-4)", padding: "var(--space-8)" }}>
               <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--color-muted-foreground)" }}>Ícone isolado</p>
               <div className="flex items-center" style={{ gap: "var(--gap-sm)" }}>
@@ -103,9 +160,7 @@ export default function DesignSystemPage() {
                 <Logo size={32} showWordmark={false} />
                 <Logo size={20} showWordmark={false} />
               </div>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-muted-foreground)" }}>
-                Favicon, app icon, avatar — sem wordmark
-              </p>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-muted-foreground)" }}>Favicon, app icon, avatar — sem wordmark</p>
             </div>
           </div>
 
@@ -113,17 +168,15 @@ export default function DesignSystemPage() {
           <div className="card" style={{ padding: "var(--space-6)", marginBottom: "var(--space-8)" }}>
             <div className="flex flex-wrap items-end" style={{ gap: "var(--gap-lg)" }}>
               {[
-                { size: 48, label: "48px — Hero / splash" },
-                { size: 40, label: "40px — Seções destacadas" },
+                { size: 48, label: "48px — Hero" },
+                { size: 40, label: "40px — Destaque" },
                 { size: 32, label: "32px — Navbar" },
                 { size: 28, label: "28px — Footer" },
-                { size: 20, label: "20px — Mín. recomendado" },
+                { size: 20, label: "20px — Mín." },
               ].map(({ size, label }) => (
                 <div key={size} className="flex flex-col items-center" style={{ gap: "var(--space-3)" }}>
                   <Logo size={size} showWordmark={false} />
-                  <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", color: "var(--color-muted-foreground)", textAlign: "center", maxWidth: 80 }}>
-                    {label}
-                  </span>
+                  <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", color: "var(--color-muted-foreground)", textAlign: "center", maxWidth: 80 }}>{label}</span>
                 </div>
               ))}
             </div>
@@ -132,16 +185,9 @@ export default function DesignSystemPage() {
           <SubLabel>Uso correto</SubLabel>
           <div className="grid grid-cols-1 sm:grid-cols-2" style={{ gap: "var(--gap-sm)" }}>
             <div style={{ padding: "var(--space-6)", borderRadius: "var(--radius-lg)", border: "2px solid #166534", background: "#F0FDF4" }}>
-              <p style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "var(--text-micro)", color: "#166534", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "var(--space-4)" }}>
-                ✓ Correto
-              </p>
+              <p style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "var(--text-micro)", color: "#166534", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "var(--space-4)" }}>✓ Correto</p>
               <ul className="flex flex-col" style={{ gap: "var(--space-2)" }}>
-                {[
-                  "Usar sempre sobre fundos lisos (branco, #F0F9FF, #0C4A6E)",
-                  "Manter proporção original — nunca distorcer",
-                  "Respeitar área de respiro mínima equivalente a ½ do ícone",
-                  "Tamanho mínimo: 20px (ícone) — abaixo usar só wordmark",
-                ].map((t) => (
+                {["Usar sempre sobre fundos lisos (branco, #F0F9FF, #0C4A6E)", "Manter proporção original — nunca distorcer", "Respeitar área de respiro mínima equivalente a ½ do ícone", "Tamanho mínimo: 20px (ícone) — abaixo usar só wordmark"].map(t => (
                   <li key={t} className="flex items-start" style={{ gap: "var(--space-2)" }}>
                     <Check size={13} color="#166534" style={{ flexShrink: 0, marginTop: 2 }} />
                     <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "#166534", lineHeight: 1.5 }}>{t}</span>
@@ -149,18 +195,10 @@ export default function DesignSystemPage() {
                 ))}
               </ul>
             </div>
-
             <div style={{ padding: "var(--space-6)", borderRadius: "var(--radius-lg)", border: "2px solid var(--color-destructive)", background: "#FEF2F2" }}>
-              <p style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "var(--text-micro)", color: "var(--color-destructive)", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "var(--space-4)" }}>
-                ✗ Incorreto
-              </p>
+              <p style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "var(--text-micro)", color: "var(--color-destructive)", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "var(--space-4)" }}>✗ Incorreto</p>
               <ul className="flex flex-col" style={{ gap: "var(--space-2)" }}>
-                {[
-                  "Não alterar as cores do ícone fora do design system",
-                  "Não usar sobre fundos fotográficos sem overlay",
-                  "Não aplicar efeitos (sombra extra, contorno, opacidade < 80%)",
-                  "Não recriar o wordmark em outra fonte",
-                ].map((t) => (
+                {["Não alterar as cores do ícone fora do design system", "Não usar sobre fundos fotográficos sem overlay", "Não aplicar efeitos (sombra extra, contorno, opacidade < 80%)", "Não recriar o wordmark em outra fonte"].map(t => (
                   <li key={t} className="flex items-start" style={{ gap: "var(--space-2)" }}>
                     <span style={{ flexShrink: 0, fontSize: 13, color: "var(--color-destructive)", marginTop: 1 }}>✕</span>
                     <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-destructive)", lineHeight: 1.5 }}>{t}</span>
@@ -171,8 +209,8 @@ export default function DesignSystemPage() {
           </div>
         </Section>
 
-        {/* ── 01 COLORS ──────────────────────────────────────────────────────── */}
-        <Section title="01 — Paleta de Cores">
+        {/* 01 COLORS */}
+        <Section id="cores" title="01 — Paleta de Cores">
           <div style={{ marginBottom: "var(--space-6)" }}>
             <SubLabel>Cores Primárias</SubLabel>
             <div className="grid grid-cols-2 sm:grid-cols-4" style={{ gap: "var(--gap-sm)" }}>
@@ -186,7 +224,7 @@ export default function DesignSystemPage() {
             <SubLabel>Superfícies</SubLabel>
             <div className="grid grid-cols-2 sm:grid-cols-4" style={{ gap: "var(--gap-sm)" }}>
               <Swatch name="Sky White"  hex="#F0F9FF" token="--color-background" />
-              <Swatch name="Pure White" hex="#FFFFFF" token="--color-surface" />
+              <Swatch name="Pure White" hex="#FFFFFF"  token="--color-surface" />
               <Swatch name="Soft Sky"   hex="#E8F2F8" token="--color-muted" />
               <Swatch name="Sky Border" hex="#BAE6FD" token="--color-border" />
             </div>
@@ -201,17 +239,17 @@ export default function DesignSystemPage() {
           </div>
         </Section>
 
-        {/* ── 02 TYPOGRAPHY ──────────────────────────────────────────────────── */}
-        <Section title="02 — Tipografia">
+        {/* 02 TYPOGRAPHY */}
+        <Section id="tipografia" title="02 — Tipografia">
           <div className="flex flex-col" style={{ gap: "var(--gap-sm)" }}>
             {[
-              { label: "Hero — Poppins 700 · clamp(42px, 6vw, 62px)", size: "var(--text-hero)", weight: 700, family: "var(--font-heading)", text: "Pertença ao mundo", lh: 1.05 },
-              { label: "Display — Poppins 700 · clamp(32px, 5vw, 48px)", size: "var(--text-display)", weight: 700, family: "var(--font-heading)", text: "Sua vida no exterior começa aqui", lh: 1.1 },
-              { label: "H2 — Poppins 600 · clamp(28px, 3.5vw, 38px)", size: "var(--text-h2)", weight: 600, family: "var(--font-heading)", text: "Como funciona a Nômade Voyage", lh: 1.15 },
-              { label: "H3 — Poppins 600 · 24px", size: "var(--text-h3)", weight: 600, family: "var(--font-heading)", text: "Portugal, Espanha e muito mais", lh: 1.2 },
-              { label: "H4 — Poppins 600 · 18px", size: "var(--text-h4)", weight: 600, family: "var(--font-heading)", text: "Visto D7 — Residência Passiva", lh: 1.3 },
+              { label: "Hero — Poppins 700 · clamp(42px, 6vw, 62px)", size: "var(--text-hero)",    weight: 700, family: "var(--font-heading)", text: "Pertença ao mundo",                   lh: 1.05 },
+              { label: "Display — Poppins 700 · clamp(32px, 5vw, 48px)", size: "var(--text-display)", weight: 700, family: "var(--font-heading)", text: "Sua vida no exterior começa aqui", lh: 1.1  },
+              { label: "H2 — Poppins 600 · clamp(28px, 3.5vw, 38px)", size: "var(--text-h2)",      weight: 600, family: "var(--font-heading)", text: "Como funciona a Nômade Voyage",       lh: 1.15 },
+              { label: "H3 — Poppins 600 · 24px",  size: "var(--text-h3)",      weight: 600, family: "var(--font-heading)", text: "Portugal, Espanha e muito mais",                          lh: 1.2  },
+              { label: "H4 — Poppins 600 · 18px",  size: "var(--text-h4)",      weight: 600, family: "var(--font-heading)", text: "Visto D7 — Residência Passiva",                           lh: 1.3  },
               { label: "Body Large — Inter 400 · 18px", size: "var(--text-body-lg)", weight: 400, family: "var(--font-body)", text: "Ajudamos brasileiros a dar o passo mais importante das suas vidas — com segurança, clareza e alguém do lado.", lh: 1.65 },
-              { label: "Body — Inter 400 · 16px", size: "var(--text-body)", weight: 400, family: "var(--font-body)", text: "Não somos uma OTA. Somos a pessoa que já fez esse caminho e quer te ajudar a fazer o mesmo.", lh: 1.6 },
+              { label: "Body — Inter 400 · 16px",   size: "var(--text-body)",    weight: 400, family: "var(--font-body)", text: "Não somos uma OTA. Somos a pessoa que já fez esse caminho e quer te ajudar a fazer o mesmo.", lh: 1.6 },
               { label: "Body SM — Inter 400 · 15px", size: "var(--text-body-sm)", weight: 400, family: "var(--font-body)", text: "Inclui seguro viagem, consultoria 1x1 e suporte durante toda a estadia.", lh: 1.6 },
               { label: "Quote — Poppins Italic · 17px", size: "var(--text-body-md)", weight: 400, family: "var(--font-heading)", italic: true, text: '"Finalmente alguém que explica tudo sem enrolação. Mudei para Lisboa em 3 meses."', lh: 1.5 },
               { label: "Caption — Inter 500 · 13px", size: "var(--text-caption)", weight: 500, family: "var(--font-body)", text: "Lisboa, Portugal · Março 2026", lh: 1.4 },
@@ -227,8 +265,8 @@ export default function DesignSystemPage() {
           </div>
         </Section>
 
-        {/* ── 03 BUTTONS ─────────────────────────────────────────────────────── */}
-        <Section title="03 — Botões">
+        {/* 03 BUTTONS */}
+        <Section id="botoes" title="03 — Botões">
           <div className="flex flex-wrap items-center" style={{ gap: "var(--gap-sm)" }}>
             <a href="#" className="btn-primary"><Plane size={18} />Quero viajar</a>
             <a href="#" className="btn-primary">Falar no WhatsApp<ArrowRight size={18} /></a>
@@ -236,7 +274,6 @@ export default function DesignSystemPage() {
             <a href="#" className="btn-secondary"><Globe size={18} />Ver destinos</a>
             <a href="#" className="btn-whatsapp"><MessageCircle size={20} />Conversar agora</a>
           </div>
-
           <div style={{ marginTop: "var(--space-6)", padding: "var(--space-4)", borderRadius: "var(--radius-lg)", background: "var(--color-muted)" }}>
             <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", fontWeight: 500, color: "var(--color-muted-foreground)", marginBottom: "var(--space-2)" }}>Estados</p>
             <div className="flex flex-wrap items-center" style={{ gap: "var(--gap-sm)" }}>
@@ -246,8 +283,8 @@ export default function DesignSystemPage() {
           </div>
         </Section>
 
-        {/* ── 04 CARDS ───────────────────────────────────────────────────────── */}
-        <Section title="04 — Cards">
+        {/* 04 CARDS */}
+        <Section id="cards" title="04 — Cards">
           <div className="grid grid-cols-1 sm:grid-cols-3" style={{ gap: "var(--gap-md)" }}>
             {[
               { Icon: Plane,   badge: "Pilar I",   title: "Viajar",  desc: "Passagens, hotéis e pacotes curados para experiências internacionais inesquecíveis." },
@@ -264,8 +301,6 @@ export default function DesignSystemPage() {
               </div>
             ))}
           </div>
-
-          {/* Testimonial */}
           <div style={{ marginTop: "var(--gap-md)" }}>
             <div className="card" style={{ padding: "var(--space-8)", background: "var(--color-muted)" }}>
               <div className="flex" style={{ gap: "var(--space-1)", marginBottom: "var(--space-4)" }}>
@@ -285,8 +320,6 @@ export default function DesignSystemPage() {
               </div>
             </div>
           </div>
-
-          {/* Destination cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2" style={{ gap: "var(--gap-md)", marginTop: "var(--gap-md)" }}>
             {[
               { city: "Lisboa", country: "Portugal", badge: "Mais popular" },
@@ -309,8 +342,8 @@ export default function DesignSystemPage() {
           </div>
         </Section>
 
-        {/* ── 05 BADGES ──────────────────────────────────────────────────────── */}
-        <Section title="05 — Badges e Tags">
+        {/* 05 BADGES */}
+        <Section id="badges" title="05 — Badges e Tags">
           <div className="flex flex-wrap" style={{ gap: "var(--space-3)" }}>
             <span className="badge">Portugal</span>
             <span className="badge">Visto D7</span>
@@ -318,14 +351,13 @@ export default function DesignSystemPage() {
             <span className="badge badge-accent">Mais popular</span>
             <span className="badge badge-accent">Alta demanda</span>
             <span className="badge" style={{ background: "#F0FDF4", color: "#166534" }}>
-              <Check size={12} style={{ marginRight: "var(--space-1)" }} />
-              Verificado
+              <Check size={12} style={{ marginRight: "var(--space-1)" }} />Verificado
             </span>
           </div>
         </Section>
 
-        {/* ── 06 FORMS ───────────────────────────────────────────────────────── */}
-        <Section title="06 — Formulários">
+        {/* 06 FORMS */}
+        <Section id="formularios" title="06 — Formulários">
           <div className="flex flex-col" style={{ gap: "var(--space-6)", maxWidth: 512 }}>
             {[
               { id: "name",  label: "Nome completo", type: "text",  placeholder: "Seu nome" },
@@ -342,10 +374,7 @@ export default function DesignSystemPage() {
               <div className="relative">
                 <select id="destino" className="input appearance-none cursor-pointer" style={{ marginTop: "var(--space-1)", paddingRight: "var(--space-10)" }}>
                   <option value="">Selecione um destino</option>
-                  <option>Portugal</option>
-                  <option>Espanha</option>
-                  <option>Irlanda</option>
-                  <option>Estados Unidos</option>
+                  <option>Portugal</option><option>Espanha</option><option>Irlanda</option><option>Estados Unidos</option>
                 </select>
                 <ChevronDown size={16} className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" color="var(--color-muted-foreground)" />
               </div>
@@ -358,34 +387,23 @@ export default function DesignSystemPage() {
               </p>
             </div>
             <button className="btn-primary" style={{ justifyContent: "center" }}>
-              Quero falar com um especialista
-              <ArrowRight size={18} />
+              Quero falar com um especialista<ArrowRight size={18} />
             </button>
           </div>
         </Section>
 
-        {/* ── 07 ICONS ───────────────────────────────────────────────────────── */}
-        <Section title="07 — Ícones (Lucide)">
+        {/* 07 ICONS */}
+        <Section id="icones" title="07 — Ícones (Lucide)">
           <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-sm)", color: "var(--color-muted-foreground)", marginBottom: "var(--space-4)" }}>
             Stroke 1.5px · Outline style · Tamanho padrão 24px
           </p>
           <div className="flex flex-wrap" style={{ gap: "var(--gap-md)" }}>
             {[
-              { Icon: Plane,        label: "Plane" },
-              { Icon: Compass,      label: "Compass" },
-              { Icon: Home,         label: "Home" },
-              { Icon: Globe,        label: "Globe" },
-              { Icon: Shield,       label: "Shield" },
-              { Icon: MapPin,       label: "MapPin" },
-              { Icon: MessageCircle,label: "Message" },
-              { Icon: Search,       label: "Search" },
-              { Icon: User,         label: "User" },
-              { Icon: Mail,         label: "Mail" },
-              { Icon: Phone,        label: "Phone" },
-              { Icon: Star,         label: "Star" },
-              { Icon: Check,        label: "Check" },
-              { Icon: ArrowRight,   label: "Arrow" },
-              { Icon: ChevronDown,  label: "Chevron" },
+              { Icon: Plane, label: "Plane" }, { Icon: Compass, label: "Compass" }, { Icon: Home, label: "Home" },
+              { Icon: Globe, label: "Globe" }, { Icon: Shield, label: "Shield" }, { Icon: MapPin, label: "MapPin" },
+              { Icon: MessageCircle, label: "Message" }, { Icon: Search, label: "Search" }, { Icon: User, label: "User" },
+              { Icon: Mail, label: "Mail" }, { Icon: Phone, label: "Phone" }, { Icon: Star, label: "Star" },
+              { Icon: Check, label: "Check" }, { Icon: ArrowRight, label: "Arrow" }, { Icon: ChevronDown, label: "Chevron" },
             ].map(({ Icon, label }) => (
               <div key={label} className="flex flex-col items-center" style={{ gap: "var(--space-2)" }}>
                 <div className="flex items-center justify-center" style={{ width: 48, height: 48, borderRadius: "var(--radius-lg)", background: "var(--color-muted)" }}>
@@ -397,8 +415,8 @@ export default function DesignSystemPage() {
           </div>
         </Section>
 
-        {/* ── 08 SHADOWS & RADIUS ────────────────────────────────────────────── */}
-        <Section title="08 — Sombras e Raios">
+        {/* 08 SHADOWS & RADIUS */}
+        <Section id="sombras" title="08 — Sombras e Raios">
           <div className="grid grid-cols-1 sm:grid-cols-3" style={{ gap: "var(--gap-md)", marginBottom: "var(--space-8)" }}>
             {[
               { label: "shadow-sm", shadow: "var(--shadow-sm)", desc: "Cards padrão" },
@@ -413,10 +431,10 @@ export default function DesignSystemPage() {
           </div>
           <div className="flex flex-wrap items-center" style={{ gap: "var(--gap-md)" }}>
             {[
-              { label: "radius-sm · 4px",   r: "var(--radius-sm)" },
-              { label: "radius-md · 8px",   r: "var(--radius-md)" },
-              { label: "radius-lg · 16px",  r: "var(--radius-lg)" },
-              { label: "radius-xl · 24px",  r: "var(--radius-xl)" },
+              { label: "radius-sm · 4px",    r: "var(--radius-sm)" },
+              { label: "radius-md · 8px",    r: "var(--radius-md)" },
+              { label: "radius-lg · 16px",   r: "var(--radius-lg)" },
+              { label: "radius-xl · 24px",   r: "var(--radius-xl)" },
               { label: "radius-full · pill", r: "var(--radius-full)" },
             ].map(({ label, r }) => (
               <div key={label} className="flex flex-col items-center" style={{ gap: "var(--space-2)" }}>
@@ -427,13 +445,13 @@ export default function DesignSystemPage() {
           </div>
         </Section>
 
-        {/* ── 09 SPACING ─────────────────────────────────────────────────────── */}
-        <Section title="09 — Espaçamento">
+        {/* 09 SPACING */}
+        <Section id="espacamento" title="09 — Espaçamento">
           <SubLabel>Gap scale (layout)</SubLabel>
           <div className="flex flex-col" style={{ gap: "var(--space-3)", marginBottom: "var(--space-8)" }}>
             {[
               { token: "--gap-xs", px: "12px" }, { token: "--gap-sm", px: "20px" },
-              { token: "--gap-md", px: "28px" },  { token: "--gap-lg", px: "40px" },
+              { token: "--gap-md", px: "28px" }, { token: "--gap-lg", px: "40px" },
               { token: "--gap-xl", px: "56px" },
             ].map(({ token, px }) => (
               <div key={token} className="flex items-center" style={{ gap: "var(--space-4)" }}>
@@ -443,15 +461,14 @@ export default function DesignSystemPage() {
               </div>
             ))}
           </div>
-
           <SubLabel>Space scale (componentes)</SubLabel>
           <div className="flex flex-col" style={{ gap: "var(--space-3)" }}>
             {[
-              { token: "--space-1", px: "4px" },  { token: "--space-2", px: "8px" },
-              { token: "--space-3", px: "12px" }, { token: "--space-4", px: "16px" },
-              { token: "--space-6", px: "24px" }, { token: "--space-8", px: "32px" },
-              { token: "--space-10",px: "40px" }, { token: "--space-12",px: "48px" },
-              { token: "--space-16",px: "64px" }, { token: "--space-20",px: "80px" },
+              { token: "--space-1",  px: "4px"  }, { token: "--space-2",  px: "8px"  },
+              { token: "--space-3",  px: "12px" }, { token: "--space-4",  px: "16px" },
+              { token: "--space-6",  px: "24px" }, { token: "--space-8",  px: "32px" },
+              { token: "--space-10", px: "40px" }, { token: "--space-12", px: "48px" },
+              { token: "--space-16", px: "64px" }, { token: "--space-20", px: "80px" },
             ].map(({ token, px }) => (
               <div key={token} className="flex items-center" style={{ gap: "var(--space-4)" }}>
                 <div style={{ width: px, height: 20, background: "var(--color-primary)", borderRadius: "var(--radius-sm)", opacity: 0.3, flexShrink: 0 }} />
@@ -462,8 +479,8 @@ export default function DesignSystemPage() {
           </div>
         </Section>
 
-        {/* ── 10 GRADIENT ────────────────────────────────────────────────────── */}
-        <Section title="10 — Gradiente Hero">
+        {/* 10 GRADIENT */}
+        <Section id="gradiente" title="10 — Gradiente Hero">
           <div className="hero-gradient flex flex-col items-start" style={{ borderRadius: "var(--radius-xl)", padding: "var(--space-12)", gap: "var(--gap-sm)" }}>
             <span className="badge badge-accent">Nômade Voyage</span>
             <h2 style={{ fontSize: "var(--text-h2)", fontWeight: 700, color: "white", lineHeight: 1.1 }}>
@@ -485,7 +502,7 @@ export default function DesignSystemPage() {
       </div>
 
       {/* ── Footer ─────────────────────────────────────────────────────────── */}
-      <footer style={{ background: "var(--color-primary)", paddingTop: "var(--gap-xl)", paddingBottom: "var(--gap-lg)" }}>
+      <footer style={{ background: "var(--color-footer)", paddingTop: "var(--gap-xl)", paddingBottom: "var(--gap-lg)" }}>
         <div className="container">
           <div style={{ marginBottom: "var(--space-2)" }}>
             <Logo size={28} theme="dark" />

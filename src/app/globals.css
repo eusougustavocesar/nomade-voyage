@@ -96,6 +96,39 @@
   --shadow-whatsapp:  0 4px 20px rgba(37, 211, 102, 0.30);
 }
 
+/* ─── Dark mode ─── */
+[data-theme="dark"] {
+  /* Brand */
+  --color-primary:          #7DD3FC;
+  --color-primary-light:    #38BDF8;
+  --color-accent:           #FB923C;
+
+  /* Surfaces */
+  --color-background:       #07131E;
+  --color-surface:          #0C1E30;
+  --color-muted:            #132840;
+  --color-footer:           #040E18;
+
+  /* Text */
+  --color-foreground:       #E0F2FE;
+  --color-muted-foreground: #94A3B8;
+  --color-on-primary:       #07131E;
+
+  /* Utility */
+  --color-border:           #1A3A5C;
+  --color-ring:             #38BDF8;
+  --color-destructive:      #FCA5A5;
+
+  /* Shadows (stronger for dark) */
+  --shadow-sm: 0 2px 16px rgba(0, 0, 0, 0.30);
+  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.60);
+}
+
+[data-theme="dark"] .hero-gradient {
+  background: linear-gradient(135deg, #07131E 0%, #0369A1 55%, #07131E 100%);
+}
+
 /* ─── Responsive token overrides ─── */
 @media (max-width: 768px) {
   :root {

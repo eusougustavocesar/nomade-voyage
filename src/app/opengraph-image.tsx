@@ -1,9 +1,14 @@
 import { ImageResponse } from "next/og";
+import { readFileSync } from "fs";
+import { join } from "path";
 
 export const size        = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default function OGImage() {
+  const svgBase64 = readFileSync(join(process.cwd(), "public/logo-icon.svg")).toString("base64");
+  const logoSrc   = `data:image/svg+xml;base64,${svgBase64}`;
+
   return new ImageResponse(
     (
       <div
@@ -33,22 +38,9 @@ export default function OGImage() {
         >
           {/* Top: icon + wordmark */}
           <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-            {/* Logo mark — simplified geometric globe */}
-            <div
-              style={{
-                width: 64,
-                height: 64,
-                borderRadius: 14,
-                background: "rgba(255,255,255,0.15)",
-                border: "1.5px solid rgba(255,255,255,0.35)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: 36,
-              }}
-            >
-              🌍
-            </div>
+            {/* Logo icon */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={logoSrc} width={64} height={64} alt="Nômade Voyage" />
             <span style={{ fontSize: 32, fontWeight: 700, color: "white", letterSpacing: "-0.5px" }}>
               Nômade Voyage
             </span>

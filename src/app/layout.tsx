@@ -21,10 +21,15 @@ export const metadata: Metadata = {
   description:
     "A agência para quem quer pertencer ao mundo. Passagens, seguro viagem, vistos e suporte completo para brasileiros que querem morar ou viajar para o exterior.",
   openGraph: {
-    title: "Nômade Voyage",
-    description: "Sua agência para morar, explorar e viajar fora",
+    title: "Nômade Voyage — Sua agência para morar, explorar e viajar fora",
+    description: "Passagens, seguro, visto D7 e suporte completo para brasileiros que querem dar o próximo passo.",
     locale: "pt_BR",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nômade Voyage",
+    description: "A agência para quem quer pertencer ao mundo.",
   },
 };
 

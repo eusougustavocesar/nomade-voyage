@@ -24,15 +24,18 @@ export default function Navbar() {
         {/* Logo */}
         <a
           href="/"
-          style={{
+          className="flex items-center"
+          style={{ gap: "10px", textDecoration: "none" }}
+        >
+          <img src="/logo-icon.svg" alt="Nômade Voyage" width={32} height={32} style={{ display: "block" }} />
+          <span style={{
             fontFamily: "var(--font-heading)",
             fontWeight: 700,
             fontSize: "18px",
             color: "var(--color-primary)",
-            textDecoration: "none",
-          }}
-        >
-          Nômade Voyage
+          }}>
+            Nômade Voyage
+          </span>
         </a>
 
         {/* Desktop pill nav */}

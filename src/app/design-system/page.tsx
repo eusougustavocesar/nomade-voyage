@@ -2,47 +2,55 @@
 
 import Logo from "@/components/Logo";
 import {
-  Plane,
-  Compass,
-  Home,
-  MessageCircle,
-  ArrowRight,
-  Check,
-  Star,
-  Globe,
-  Shield,
-  MapPin,
-  ChevronDown,
-  Search,
-  User,
-  Mail,
-  Phone,
+  Plane, Compass, Home, MessageCircle, ArrowRight, Check,
+  Star, Globe, Shield, MapPin, ChevronDown, Search, User,
+  Mail, Phone,
 } from "lucide-react";
 
-// ─── Section wrapper ───────────────────────────────────────────────────────────
+// ─── Section wrapper ────────────────────────────────────────────────────────
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <section className="py-12 border-b border-[var(--color-border)]">
-      <h2 className="text-xs font-medium uppercase tracking-widest text-[var(--color-muted-foreground)] mb-8">
+    <section style={{ paddingTop: "var(--gap-xl)", paddingBottom: "var(--gap-xl)", borderBottom: "1px solid var(--color-border)" }}>
+      <p style={{
+        fontFamily: "var(--font-body)",
+        fontSize: "var(--text-micro)",
+        fontWeight: 500,
+        textTransform: "uppercase",
+        letterSpacing: "0.1em",
+        color: "var(--color-muted-foreground)",
+        marginBottom: "var(--space-8)",
+      }}>
         {title}
-      </h2>
+      </p>
       {children}
     </section>
   );
 }
 
-// ─── Color Swatch ──────────────────────────────────────────────────────────────
-function Swatch({ name, hex, token, textDark = false }: { name: string; hex: string; token: string; textDark?: boolean }) {
+// ─── Sub-label inside sections ──────────────────────────────────────────────
+function SubLabel({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex flex-col gap-2">
-      <div
-        className="h-16 rounded-[var(--radius-lg)] border border-[var(--color-border)]"
-        style={{ background: hex }}
-      />
+    <p style={{
+      fontFamily: "var(--font-body)",
+      fontSize: "var(--text-body-sm)",
+      fontWeight: 500,
+      color: "var(--color-foreground)",
+      marginBottom: "var(--space-4)",
+    }}>
+      {children}
+    </p>
+  );
+}
+
+// ─── Color Swatch ───────────────────────────────────────────────────────────
+function Swatch({ name, hex, token }: { name: string; hex: string; token: string }) {
+  return (
+    <div className="flex flex-col" style={{ gap: "var(--space-2)" }}>
+      <div style={{ height: 64, borderRadius: "var(--radius-lg)", border: "1px solid var(--color-border)", background: hex }} />
       <div>
-        <p className={`text-sm font-medium ${textDark ? "text-[var(--color-foreground)]" : "text-[var(--color-foreground)]"}`}>{name}</p>
-        <p className="text-xs text-[var(--color-muted-foreground)] font-mono">{hex}</p>
-        <p className="text-xs text-[var(--color-muted-foreground)] font-mono">{token}</p>
+        <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-sm)", fontWeight: 500, color: "var(--color-foreground)" }}>{name}</p>
+        <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", color: "var(--color-muted-foreground)", fontVariantNumeric: "tabular-nums" }}>{hex}</p>
+        <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", color: "var(--color-muted-foreground)" }}>{token}</p>
       </div>
     </div>
   );
@@ -51,62 +59,59 @@ function Swatch({ name, hex, token, textDark = false }: { name: string; hex: str
 export default function DesignSystemPage() {
   return (
     <div style={{ background: "var(--color-background)", minHeight: "100vh" }}>
-      {/* Header */}
-      <div className="hero-gradient py-16">
+
+      {/* ── Header ─────────────────────────────────────────────────────────── */}
+      <div className="hero-gradient" style={{ paddingTop: "var(--space-16)", paddingBottom: "var(--space-16)" }}>
         <div className="container">
-          <span className="badge badge-accent mb-4">Design System</span>
-          <div className="mt-2 mb-1">
+          <span className="badge badge-accent" style={{ marginBottom: "var(--space-4)", display: "inline-flex" }}>Design System</span>
+          <div style={{ marginTop: "var(--space-2)", marginBottom: "var(--space-3)" }}>
             <Logo size={52} theme="dark" />
           </div>
-          <p className="text-lg text-white/80 mt-3 max-w-xl">
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-lg)", color: "var(--color-white-high)", maxWidth: 520, lineHeight: 1.65 }}>
             Referência visual completa — cores, tipografia, componentes e padrões de layout.
           </p>
         </div>
       </div>
 
-      <div className="container py-12">
+      <div className="container" style={{ paddingTop: "var(--space-4)", paddingBottom: "var(--space-20)" }}>
 
-        {/* ── LOGO ── */}
+        {/* ── 00 LOGO ────────────────────────────────────────────────────────── */}
         <Section title="00 — Logotipo">
-          {/* Versões */}
-          <p className="text-sm font-medium text-[var(--color-foreground)] mb-4">Versões</p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
-            {/* Fundo claro */}
-            <div className="card flex flex-col gap-4 p-8">
-              <p className="text-xs text-[var(--color-muted-foreground)] font-medium uppercase tracking-widest">Fundo claro</p>
+          <SubLabel>Versões</SubLabel>
+          <div className="grid grid-cols-1 sm:grid-cols-3" style={{ gap: "var(--gap-sm)", marginBottom: "var(--space-10)" }}>
+
+            <div className="card flex flex-col" style={{ gap: "var(--space-4)", padding: "var(--space-8)" }}>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--color-muted-foreground)" }}>Fundo claro</p>
               <Logo size={40} />
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--color-muted-foreground)" }}>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-muted-foreground)" }}>
                 Uso padrão — fundo branco ou #F0F9FF
               </p>
             </div>
 
-            {/* Fundo escuro */}
-            <div className="card flex flex-col gap-4 p-8" style={{ background: "var(--color-primary)" }}>
-              <p className="text-xs font-medium uppercase tracking-widest" style={{ color: "rgba(255,255,255,0.5)" }}>Fundo escuro</p>
+            <div className="card flex flex-col" style={{ gap: "var(--space-4)", padding: "var(--space-8)", background: "var(--color-primary)" }}>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--color-white-low)" }}>Fundo escuro</p>
               <Logo size={40} theme="dark" />
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "rgba(255,255,255,0.5)" }}>
-                Navbar hero, footer — fundo #0C4A6E
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-white-low)" }}>
+                Navbar, hero, footer — fundo #0C4A6E
               </p>
             </div>
 
-            {/* Ícone isolado */}
-            <div className="card flex flex-col gap-4 p-8">
-              <p className="text-xs text-[var(--color-muted-foreground)] font-medium uppercase tracking-widest">Ícone isolado</p>
-              <div className="flex items-center gap-5">
-                <img src="/logo-icon.svg" alt="Nômade Voyage" width={48} height={48} />
-                <img src="/logo-icon.svg" alt="Nômade Voyage" width={32} height={32} />
-                <img src="/logo-icon.svg" alt="Nômade Voyage" width={20} height={20} />
+            <div className="card flex flex-col" style={{ gap: "var(--space-4)", padding: "var(--space-8)" }}>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--color-muted-foreground)" }}>Ícone isolado</p>
+              <div className="flex items-center" style={{ gap: "var(--gap-sm)" }}>
+                <Logo size={48} showWordmark={false} />
+                <Logo size={32} showWordmark={false} />
+                <Logo size={20} showWordmark={false} />
               </div>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--color-muted-foreground)" }}>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-muted-foreground)" }}>
                 Favicon, app icon, avatar — sem wordmark
               </p>
             </div>
           </div>
 
-          {/* Tamanhos e espaçamento */}
-          <p className="text-sm font-medium text-[var(--color-foreground)] mb-4">Tamanhos de uso</p>
-          <div className="card p-6 mb-8">
-            <div className="flex flex-wrap items-end gap-8">
+          <SubLabel>Tamanhos de uso</SubLabel>
+          <div className="card" style={{ padding: "var(--space-6)", marginBottom: "var(--space-8)" }}>
+            <div className="flex flex-wrap items-end" style={{ gap: "var(--gap-lg)" }}>
               {[
                 { size: 48, label: "48px — Hero / splash" },
                 { size: 40, label: "40px — Seções destacadas" },
@@ -114,9 +119,9 @@ export default function DesignSystemPage() {
                 { size: 28, label: "28px — Footer" },
                 { size: 20, label: "20px — Mín. recomendado" },
               ].map(({ size, label }) => (
-                <div key={size} className="flex flex-col items-center gap-3">
-                  <img src="/logo-icon.svg" alt="" width={size} height={size} />
-                  <span style={{ fontFamily: "var(--font-body)", fontSize: "11px", color: "var(--color-muted-foreground)", textAlign: "center", maxWidth: 80 }}>
+                <div key={size} className="flex flex-col items-center" style={{ gap: "var(--space-3)" }}>
+                  <Logo size={size} showWordmark={false} />
+                  <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", color: "var(--color-muted-foreground)", textAlign: "center", maxWidth: 80 }}>
                     {label}
                   </span>
                 </div>
@@ -124,44 +129,41 @@ export default function DesignSystemPage() {
             </div>
           </div>
 
-          {/* Dos & don'ts */}
-          <p className="text-sm font-medium text-[var(--color-foreground)] mb-4">Uso correto</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {/* Do */}
-            <div className="p-6 rounded-[var(--radius-lg)] border-2 border-[#166534] bg-[#F0FDF4]">
-              <p style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "12px", color: "#166534", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "16px" }}>
+          <SubLabel>Uso correto</SubLabel>
+          <div className="grid grid-cols-1 sm:grid-cols-2" style={{ gap: "var(--gap-sm)" }}>
+            <div style={{ padding: "var(--space-6)", borderRadius: "var(--radius-lg)", border: "2px solid #166534", background: "#F0FDF4" }}>
+              <p style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "var(--text-micro)", color: "#166534", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "var(--space-4)" }}>
                 ✓ Correto
               </p>
-              <ul className="flex flex-col gap-2">
+              <ul className="flex flex-col" style={{ gap: "var(--space-2)" }}>
                 {[
                   "Usar sempre sobre fundos lisos (branco, #F0F9FF, #0C4A6E)",
                   "Manter proporção original — nunca distorcer",
                   "Respeitar área de respiro mínima equivalente a ½ do ícone",
                   "Tamanho mínimo: 20px (ícone) — abaixo usar só wordmark",
                 ].map((t) => (
-                  <li key={t} className="flex items-start gap-2">
+                  <li key={t} className="flex items-start" style={{ gap: "var(--space-2)" }}>
                     <Check size={13} color="#166534" style={{ flexShrink: 0, marginTop: 2 }} />
-                    <span style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "#166534", lineHeight: 1.5 }}>{t}</span>
+                    <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "#166534", lineHeight: 1.5 }}>{t}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Don't */}
-            <div className="p-6 rounded-[var(--radius-lg)] border-2 border-[#DC2626] bg-[#FEF2F2]">
-              <p style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "12px", color: "#DC2626", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "16px" }}>
+            <div style={{ padding: "var(--space-6)", borderRadius: "var(--radius-lg)", border: "2px solid var(--color-destructive)", background: "#FEF2F2" }}>
+              <p style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "var(--text-micro)", color: "var(--color-destructive)", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "var(--space-4)" }}>
                 ✗ Incorreto
               </p>
-              <ul className="flex flex-col gap-2">
+              <ul className="flex flex-col" style={{ gap: "var(--space-2)" }}>
                 {[
                   "Não alterar as cores do ícone fora do design system",
                   "Não usar sobre fundos fotográficos sem overlay",
                   "Não aplicar efeitos (sombra extra, contorno, opacidade < 80%)",
                   "Não recriar o wordmark em outra fonte",
                 ].map((t) => (
-                  <li key={t} className="flex items-start gap-2">
-                    <span style={{ flexShrink: 0, fontSize: 13, color: "#DC2626", marginTop: 1 }}>✕</span>
-                    <span style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "#DC2626", lineHeight: 1.5 }}>{t}</span>
+                  <li key={t} className="flex items-start" style={{ gap: "var(--space-2)" }}>
+                    <span style={{ flexShrink: 0, fontSize: 13, color: "var(--color-destructive)", marginTop: 1 }}>✕</span>
+                    <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-destructive)", lineHeight: 1.5 }}>{t}</span>
                   </li>
                 ))}
               </ul>
@@ -169,194 +171,137 @@ export default function DesignSystemPage() {
           </div>
         </Section>
 
-        {/* ── COLORS ── */}
+        {/* ── 01 COLORS ──────────────────────────────────────────────────────── */}
         <Section title="01 — Paleta de Cores">
-          <div className="mb-6">
-            <p className="text-sm font-medium text-[var(--color-foreground)] mb-4">Cores Primárias</p>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              <Swatch name="Ocean Blue" hex="#0C4A6E" token="--color-primary" />
-              <Swatch name="Sky Blue" hex="#0EA5E9" token="--color-primary-light" />
-              <Swatch name="Terra" hex="#EA580C" token="--color-accent" />
-              <Swatch name="WhatsApp" hex="#25D366" token="whatsapp" />
+          <div style={{ marginBottom: "var(--space-6)" }}>
+            <SubLabel>Cores Primárias</SubLabel>
+            <div className="grid grid-cols-2 sm:grid-cols-4" style={{ gap: "var(--gap-sm)" }}>
+              <Swatch name="Ocean Blue"  hex="#0C4A6E" token="--color-primary" />
+              <Swatch name="Sky Blue"    hex="#0EA5E9" token="--color-primary-light" />
+              <Swatch name="Terra"       hex="#EA580C" token="--color-accent" />
+              <Swatch name="WhatsApp"    hex="#25D366" token="whatsapp" />
             </div>
           </div>
-
-          <div className="mb-6">
-            <p className="text-sm font-medium text-[var(--color-foreground)] mb-4">Superfícies</p>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              <Swatch name="Sky White" hex="#F0F9FF" token="--color-background" />
+          <div style={{ marginBottom: "var(--space-6)" }}>
+            <SubLabel>Superfícies</SubLabel>
+            <div className="grid grid-cols-2 sm:grid-cols-4" style={{ gap: "var(--gap-sm)" }}>
+              <Swatch name="Sky White"  hex="#F0F9FF" token="--color-background" />
               <Swatch name="Pure White" hex="#FFFFFF" token="--color-surface" />
-              <Swatch name="Soft Sky" hex="#E8F2F8" token="--color-muted" />
+              <Swatch name="Soft Sky"   hex="#E8F2F8" token="--color-muted" />
               <Swatch name="Sky Border" hex="#BAE6FD" token="--color-border" />
             </div>
           </div>
-
           <div>
-            <p className="text-sm font-medium text-[var(--color-foreground)] mb-4">Texto</p>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <SubLabel>Texto</SubLabel>
+            <div className="grid grid-cols-2 sm:grid-cols-4" style={{ gap: "var(--gap-sm)" }}>
               <Swatch name="Deep Ocean" hex="#0C4A6E" token="--color-foreground" />
-              <Swatch name="Slate" hex="#64748B" token="--color-muted-foreground" />
-              <Swatch name="Error Red" hex="#DC2626" token="--color-destructive" />
+              <Swatch name="Slate"      hex="#64748B" token="--color-muted-foreground" />
+              <Swatch name="Error Red"  hex="#DC2626" token="--color-destructive" />
             </div>
           </div>
         </Section>
 
-        {/* ── TYPOGRAPHY ── */}
+        {/* ── 02 TYPOGRAPHY ──────────────────────────────────────────────────── */}
         <Section title="02 — Tipografia">
-          <div className="space-y-6">
-            <div className="p-6 card">
-              <p className="text-xs text-[var(--color-muted-foreground)] mb-1">Display — Poppins 700 · 56px</p>
-              <p style={{ fontFamily: "var(--font-heading)", fontSize: "56px", fontWeight: 700, lineHeight: 1.05, color: "var(--color-primary)" }}>
-                Pertença ao mundo
-              </p>
-            </div>
-            <div className="p-6 card">
-              <p className="text-xs text-[var(--color-muted-foreground)] mb-1">H1 — Poppins 700 · 48px</p>
-              <h1 style={{ fontSize: "48px" }}>Sua vida no exterior começa aqui</h1>
-            </div>
-            <div className="p-6 card">
-              <p className="text-xs text-[var(--color-muted-foreground)] mb-1">H2 — Poppins 600 · 36px</p>
-              <h2 style={{ fontSize: "36px" }}>Como funciona a Nômade Voyage</h2>
-            </div>
-            <div className="p-6 card">
-              <p className="text-xs text-[var(--color-muted-foreground)] mb-1">H3 — Poppins 600 · 24px</p>
-              <h3 style={{ fontSize: "24px" }}>Portugal, Espanha e muito mais</h3>
-            </div>
-            <div className="p-6 card">
-              <p className="text-xs text-[var(--color-muted-foreground)] mb-1">Body Large — Inter 400 · 18px</p>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "18px", lineHeight: 1.65, color: "var(--color-muted-foreground)" }}>
-                Ajudamos brasileiros a dar o passo mais importante das suas vidas — com segurança, clareza e alguém do lado.
-              </p>
-            </div>
-            <div className="p-6 card">
-              <p className="text-xs text-[var(--color-muted-foreground)] mb-1">Body — Inter 400 · 16px</p>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "16px", lineHeight: 1.6, color: "var(--color-muted-foreground)" }}>
-                Não somos uma OTA. Somos a pessoa que já fez esse caminho e quer te ajudar a fazer o mesmo. Do visto à passagem, do seguro ao primeiro apartamento em Lisboa.
-              </p>
-            </div>
-            <div className="p-6 card">
-              <p className="text-xs text-[var(--color-muted-foreground)] mb-1">Quote — Poppins Italic 400 · 20px</p>
-              <p style={{ fontFamily: "var(--font-heading)", fontSize: "20px", fontStyle: "italic", lineHeight: 1.5, color: "var(--color-primary)" }}>
-                "Finalmente alguém que explica tudo sem enrolação. Mudei para Lisboa em 3 meses."
-              </p>
-            </div>
-            <div className="p-6 card">
-              <p className="text-xs text-[var(--color-muted-foreground)] mb-2">Label — Inter 500 · 12px uppercase</p>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "12px", fontWeight: 500, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--color-muted-foreground)" }}>
-                Destinos disponíveis
-              </p>
-            </div>
+          <div className="flex flex-col" style={{ gap: "var(--gap-sm)" }}>
+            {[
+              { label: "Hero — Poppins 700 · clamp(42px, 6vw, 62px)", size: "var(--text-hero)", weight: 700, family: "var(--font-heading)", text: "Pertença ao mundo", lh: 1.05 },
+              { label: "Display — Poppins 700 · clamp(32px, 5vw, 48px)", size: "var(--text-display)", weight: 700, family: "var(--font-heading)", text: "Sua vida no exterior começa aqui", lh: 1.1 },
+              { label: "H2 — Poppins 600 · clamp(28px, 3.5vw, 38px)", size: "var(--text-h2)", weight: 600, family: "var(--font-heading)", text: "Como funciona a Nômade Voyage", lh: 1.15 },
+              { label: "H3 — Poppins 600 · 24px", size: "var(--text-h3)", weight: 600, family: "var(--font-heading)", text: "Portugal, Espanha e muito mais", lh: 1.2 },
+              { label: "H4 — Poppins 600 · 18px", size: "var(--text-h4)", weight: 600, family: "var(--font-heading)", text: "Visto D7 — Residência Passiva", lh: 1.3 },
+              { label: "Body Large — Inter 400 · 18px", size: "var(--text-body-lg)", weight: 400, family: "var(--font-body)", text: "Ajudamos brasileiros a dar o passo mais importante das suas vidas — com segurança, clareza e alguém do lado.", lh: 1.65 },
+              { label: "Body — Inter 400 · 16px", size: "var(--text-body)", weight: 400, family: "var(--font-body)", text: "Não somos uma OTA. Somos a pessoa que já fez esse caminho e quer te ajudar a fazer o mesmo.", lh: 1.6 },
+              { label: "Body SM — Inter 400 · 15px", size: "var(--text-body-sm)", weight: 400, family: "var(--font-body)", text: "Inclui seguro viagem, consultoria 1x1 e suporte durante toda a estadia.", lh: 1.6 },
+              { label: "Quote — Poppins Italic · 17px", size: "var(--text-body-md)", weight: 400, family: "var(--font-heading)", italic: true, text: '"Finalmente alguém que explica tudo sem enrolação. Mudei para Lisboa em 3 meses."', lh: 1.5 },
+              { label: "Caption — Inter 500 · 13px", size: "var(--text-caption)", weight: 500, family: "var(--font-body)", text: "Lisboa, Portugal · Março 2026", lh: 1.4 },
+              { label: "Micro / Label — Inter 500 · 12px uppercase", size: "var(--text-micro)", weight: 500, family: "var(--font-body)", upper: true, ls: "0.06em", text: "Destinos disponíveis", lh: 1.4 },
+            ].map(({ label, size, weight, family, text, lh, italic, upper, ls }) => (
+              <div key={label} className="card" style={{ padding: "var(--space-6)" }}>
+                <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-muted-foreground)", marginBottom: "var(--space-2)" }}>{label}</p>
+                <p style={{ fontFamily: family, fontSize: size, fontWeight: weight, lineHeight: lh, color: "var(--color-primary)", fontStyle: italic ? "italic" : undefined, textTransform: upper ? "uppercase" : undefined, letterSpacing: ls }}>
+                  {text}
+                </p>
+              </div>
+            ))}
           </div>
         </Section>
 
-        {/* ── BUTTONS ── */}
+        {/* ── 03 BUTTONS ─────────────────────────────────────────────────────── */}
         <Section title="03 — Botões">
-          <div className="flex flex-wrap gap-4 items-center">
-            <a href="#" className="btn-primary">
-              <Plane size={18} />
-              Quero viajar
-            </a>
-            <a href="#" className="btn-primary">
-              Falar no WhatsApp
-              <ArrowRight size={18} />
-            </a>
-            <a href="#" className="btn-secondary">
-              Saiba mais
-            </a>
-            <a href="#" className="btn-secondary">
-              <Globe size={18} />
-              Ver destinos
-            </a>
-            <a href="#" className="btn-whatsapp">
-              <MessageCircle size={20} />
-              Conversar agora
-            </a>
+          <div className="flex flex-wrap items-center" style={{ gap: "var(--gap-sm)" }}>
+            <a href="#" className="btn-primary"><Plane size={18} />Quero viajar</a>
+            <a href="#" className="btn-primary">Falar no WhatsApp<ArrowRight size={18} /></a>
+            <a href="#" className="btn-secondary">Saiba mais</a>
+            <a href="#" className="btn-secondary"><Globe size={18} />Ver destinos</a>
+            <a href="#" className="btn-whatsapp"><MessageCircle size={20} />Conversar agora</a>
           </div>
 
-          <div className="mt-6 p-4 rounded-[var(--radius-lg)] bg-[var(--color-muted)]">
-            <p className="text-xs text-[var(--color-muted-foreground)] mb-2 font-medium">Estados</p>
-            <div className="flex flex-wrap gap-4 items-center">
-              <button className="btn-primary opacity-50 cursor-not-allowed" disabled>Desabilitado</button>
+          <div style={{ marginTop: "var(--space-6)", padding: "var(--space-4)", borderRadius: "var(--radius-lg)", background: "var(--color-muted)" }}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", fontWeight: 500, color: "var(--color-muted-foreground)", marginBottom: "var(--space-2)" }}>Estados</p>
+            <div className="flex flex-wrap items-center" style={{ gap: "var(--gap-sm)" }}>
+              <button className="btn-primary" style={{ opacity: 0.5, cursor: "not-allowed" }} disabled>Desabilitado</button>
               <button className="btn-primary" style={{ background: "#C2410C" }}>Hover state</button>
             </div>
           </div>
         </Section>
 
-        {/* ── CARDS ── */}
+        {/* ── 04 CARDS ───────────────────────────────────────────────────────── */}
         <Section title="04 — Cards">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {/* Pillar card */}
-            <div className="card flex flex-col items-center text-center p-8">
-              <div className="w-12 h-12 rounded-[var(--radius-lg)] bg-[var(--color-muted)] flex items-center justify-center mb-4">
-                <Plane size={24} color="var(--color-primary-light)" />
+          <div className="grid grid-cols-1 sm:grid-cols-3" style={{ gap: "var(--gap-md)" }}>
+            {[
+              { Icon: Plane,   badge: "Pilar I",   title: "Viajar",  desc: "Passagens, hotéis e pacotes curados para experiências internacionais inesquecíveis." },
+              { Icon: Compass, badge: "Pilar II",  title: "Explorar", desc: "Mochilões e roteiros alternativos para quem quer mais do que o roteiro padrão." },
+              { Icon: Home,    badge: "Pilar III", title: "Morar",    desc: "Vistos, documentação e suporte completo para quem quer mudar de vida." },
+            ].map(({ Icon, badge, title, desc }) => (
+              <div key={title} className="card flex flex-col items-center text-center" style={{ padding: "var(--space-8)" }}>
+                <div className="flex items-center justify-center" style={{ width: 48, height: 48, borderRadius: "var(--radius-lg)", background: "var(--color-muted)", marginBottom: "var(--space-4)" }}>
+                  <Icon size={24} color="var(--color-primary-light)" />
+                </div>
+                <span className="badge" style={{ marginBottom: "var(--space-3)" }}>{badge}</span>
+                <h3 style={{ fontSize: "var(--text-h4)", marginBottom: "var(--space-2)" }}>{title}</h3>
+                <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-sm)", color: "var(--color-muted-foreground)", lineHeight: 1.6 }}>{desc}</p>
               </div>
-              <span className="badge mb-3">Pilar I</span>
-              <h3 className="text-xl mb-2">Viajar</h3>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "15px", color: "var(--color-muted-foreground)", lineHeight: 1.6 }}>
-                Passagens, hotéis e pacotes curados para experiências internacionais inesquecíveis.
-              </p>
-            </div>
-            <div className="card flex flex-col items-center text-center p-8">
-              <div className="w-12 h-12 rounded-[var(--radius-lg)] bg-[var(--color-muted)] flex items-center justify-center mb-4">
-                <Compass size={24} color="var(--color-primary-light)" />
-              </div>
-              <span className="badge mb-3">Pilar II</span>
-              <h3 className="text-xl mb-2">Explorar</h3>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "15px", color: "var(--color-muted-foreground)", lineHeight: 1.6 }}>
-                Mochilões e roteiros alternativos para quem quer mais do que o roteiro padrão.
-              </p>
-            </div>
-            <div className="card flex flex-col items-center text-center p-8">
-              <div className="w-12 h-12 rounded-[var(--radius-lg)] bg-[var(--color-muted)] flex items-center justify-center mb-4">
-                <Home size={24} color="var(--color-primary-light)" />
-              </div>
-              <span className="badge mb-3">Pilar III</span>
-              <h3 className="text-xl mb-2">Morar</h3>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "15px", color: "var(--color-muted-foreground)", lineHeight: 1.6 }}>
-                Vistos, documentação e suporte completo para quem quer mudar de vida.
-              </p>
-            </div>
+            ))}
           </div>
 
-          {/* Testimonial card */}
-          <div className="mt-6">
-            <div className="card p-8" style={{ background: "var(--color-muted)" }}>
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={16} fill="#EA580C" color="#EA580C" />
-                ))}
+          {/* Testimonial */}
+          <div style={{ marginTop: "var(--gap-md)" }}>
+            <div className="card" style={{ padding: "var(--space-8)", background: "var(--color-muted)" }}>
+              <div className="flex" style={{ gap: "var(--space-1)", marginBottom: "var(--space-4)" }}>
+                {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="var(--color-accent)" color="var(--color-accent)" />)}
               </div>
-              <p style={{ fontFamily: "var(--font-heading)", fontSize: "18px", fontStyle: "italic", color: "var(--color-primary)", lineHeight: 1.6, marginBottom: "16px" }}>
-                "Pensei que seria impossível. Em 4 meses estava em Lisboa com visto, apartamento e emprego. A Nômade Voyage curou tudo."
+              <p style={{ fontFamily: "var(--font-heading)", fontSize: "var(--text-body-md)", fontStyle: "italic", color: "var(--color-primary)", lineHeight: 1.65, marginBottom: "var(--space-4)" }}>
+                "Pensei que seria impossível. Em 4 meses estava em Lisboa com visto, apartamento e emprego."
               </p>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-[var(--color-primary-light)] flex items-center justify-center">
+              <div className="flex items-center" style={{ gap: "var(--space-3)" }}>
+                <div className="flex items-center justify-center" style={{ width: 40, height: 40, borderRadius: "var(--radius-full)", background: "var(--color-primary-light)" }}>
                   <User size={18} color="white" />
                 </div>
                 <div>
-                  <p style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "14px", color: "var(--color-foreground)" }}>Marina S.</p>
-                  <p style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "var(--color-muted-foreground)" }}>Lisboa, Portugal · Março 2026</p>
+                  <p style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "var(--text-body-sm)", color: "var(--color-foreground)" }}>Marina S.</p>
+                  <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-muted-foreground)" }}>Lisboa, Portugal · Março 2026</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Destination card */}
-          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {/* Destination cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2" style={{ gap: "var(--gap-md)", marginTop: "var(--gap-md)" }}>
             {[
-              { city: "Lisboa", country: "Portugal", badge: "Mais popular", icon: MapPin },
-              { city: "Madrid", country: "Espanha", badge: "Alta demanda", icon: MapPin },
-            ].map((dest) => (
-              <div key={dest.city} className="card flex items-center gap-4 cursor-pointer">
-                <div className="w-14 h-14 rounded-[var(--radius-lg)] flex items-center justify-center flex-shrink-0" style={{ background: "var(--color-muted)" }}>
-                  <dest.icon size={24} color="var(--color-primary-light)" />
+              { city: "Lisboa", country: "Portugal", badge: "Mais popular" },
+              { city: "Madrid", country: "Espanha",  badge: "Alta demanda" },
+            ].map(({ city, country, badge }) => (
+              <div key={city} className="card flex items-center cursor-pointer" style={{ gap: "var(--gap-xs)" }}>
+                <div className="flex items-center justify-center flex-shrink-0" style={{ width: 56, height: 56, borderRadius: "var(--radius-lg)", background: "var(--color-muted)" }}>
+                  <MapPin size={24} color="var(--color-primary-light)" />
                 </div>
                 <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1">
-                    <h4 style={{ fontFamily: "var(--font-heading)", fontWeight: 600, fontSize: "18px", color: "var(--color-primary)" }}>{dest.city}</h4>
-                    <span className="badge badge-accent">{dest.badge}</span>
+                  <div className="flex items-center" style={{ gap: "var(--space-2)", marginBottom: "var(--space-1)" }}>
+                    <h4 style={{ fontFamily: "var(--font-heading)", fontWeight: 600, fontSize: "var(--text-h4)", color: "var(--color-primary)" }}>{city}</h4>
+                    <span className="badge badge-accent">{badge}</span>
                   </div>
-                  <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", color: "var(--color-muted-foreground)" }}>{dest.country}</p>
+                  <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-muted-foreground)" }}>{country}</p>
                 </div>
                 <ArrowRight size={20} color="var(--color-primary-light)" />
               </div>
@@ -364,40 +309,38 @@ export default function DesignSystemPage() {
           </div>
         </Section>
 
-        {/* ── BADGES ── */}
+        {/* ── 05 BADGES ──────────────────────────────────────────────────────── */}
         <Section title="05 — Badges e Tags">
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap" style={{ gap: "var(--space-3)" }}>
             <span className="badge">Portugal</span>
             <span className="badge">Visto D7</span>
             <span className="badge">Nômade Digital</span>
             <span className="badge badge-accent">Mais popular</span>
             <span className="badge badge-accent">Alta demanda</span>
             <span className="badge" style={{ background: "#F0FDF4", color: "#166534" }}>
-              <Check size={12} className="mr-1" />
+              <Check size={12} style={{ marginRight: "var(--space-1)" }} />
               Verificado
             </span>
           </div>
         </Section>
 
-        {/* ── INPUTS ── */}
+        {/* ── 06 FORMS ───────────────────────────────────────────────────────── */}
         <Section title="06 — Formulários">
-          <div className="max-w-lg space-y-5">
-            <div>
-              <label htmlFor="name">Nome completo</label>
-              <input id="name" className="input mt-1" type="text" placeholder="Seu nome" />
-            </div>
-            <div>
-              <label htmlFor="email">E-mail</label>
-              <input id="email" className="input mt-1" type="email" placeholder="seu@email.com" />
-            </div>
-            <div>
-              <label htmlFor="phone">WhatsApp</label>
-              <input id="phone" className="input mt-1" type="tel" placeholder="+55 (11) 99999-9999" />
-            </div>
+          <div className="flex flex-col" style={{ gap: "var(--space-6)", maxWidth: 512 }}>
+            {[
+              { id: "name",  label: "Nome completo", type: "text",  placeholder: "Seu nome" },
+              { id: "email", label: "E-mail",         type: "email", placeholder: "seu@email.com" },
+              { id: "phone", label: "WhatsApp",        type: "tel",   placeholder: "+55 (11) 99999-9999" },
+            ].map(({ id, label, type, placeholder }) => (
+              <div key={id}>
+                <label htmlFor={id}>{label}</label>
+                <input id={id} className="input" style={{ marginTop: "var(--space-1)" }} type={type} placeholder={placeholder} />
+              </div>
+            ))}
             <div>
               <label htmlFor="destino">Destino de interesse</label>
               <div className="relative">
-                <select id="destino" className="input mt-1 pr-10 appearance-none cursor-pointer">
+                <select id="destino" className="input appearance-none cursor-pointer" style={{ marginTop: "var(--space-1)", paddingRight: "var(--space-10)" }}>
                   <option value="">Selecione um destino</option>
                   <option>Portugal</option>
                   <option>Espanha</option>
@@ -409,111 +352,146 @@ export default function DesignSystemPage() {
             </div>
             <div>
               <label htmlFor="invalid">Campo com erro</label>
-              <input id="invalid" className="input error mt-1" type="email" placeholder="email-invalido" defaultValue="email-invalido" />
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "var(--color-destructive)", marginTop: "4px" }}>
+              <input id="invalid" className="input" style={{ marginTop: "var(--space-1)", borderColor: "var(--color-destructive)" }} type="email" defaultValue="email-invalido" />
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-destructive)", marginTop: "var(--space-1)" }}>
                 Digite um e-mail válido.
               </p>
             </div>
-            <button className="btn-primary w-full justify-center">
+            <button className="btn-primary" style={{ justifyContent: "center" }}>
               Quero falar com um especialista
               <ArrowRight size={18} />
             </button>
           </div>
         </Section>
 
-        {/* ── ICONS ── */}
+        {/* ── 07 ICONS ───────────────────────────────────────────────────────── */}
         <Section title="07 — Ícones (Lucide)">
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", color: "var(--color-muted-foreground)", marginBottom: "16px" }}>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-sm)", color: "var(--color-muted-foreground)", marginBottom: "var(--space-4)" }}>
             Stroke 1.5px · Outline style · Tamanho padrão 24px
           </p>
-          <div className="flex flex-wrap gap-6">
+          <div className="flex flex-wrap" style={{ gap: "var(--gap-md)" }}>
             {[
-              { Icon: Plane, label: "Plane" },
-              { Icon: Compass, label: "Compass" },
-              { Icon: Home, label: "Home" },
-              { Icon: Globe, label: "Globe" },
-              { Icon: Shield, label: "Shield" },
-              { Icon: MapPin, label: "MapPin" },
-              { Icon: MessageCircle, label: "Message" },
-              { Icon: Search, label: "Search" },
-              { Icon: User, label: "User" },
-              { Icon: Mail, label: "Mail" },
-              { Icon: Phone, label: "Phone" },
-              { Icon: Star, label: "Star" },
-              { Icon: Check, label: "Check" },
-              { Icon: ArrowRight, label: "Arrow" },
-              { Icon: ChevronDown, label: "Chevron" },
+              { Icon: Plane,        label: "Plane" },
+              { Icon: Compass,      label: "Compass" },
+              { Icon: Home,         label: "Home" },
+              { Icon: Globe,        label: "Globe" },
+              { Icon: Shield,       label: "Shield" },
+              { Icon: MapPin,       label: "MapPin" },
+              { Icon: MessageCircle,label: "Message" },
+              { Icon: Search,       label: "Search" },
+              { Icon: User,         label: "User" },
+              { Icon: Mail,         label: "Mail" },
+              { Icon: Phone,        label: "Phone" },
+              { Icon: Star,         label: "Star" },
+              { Icon: Check,        label: "Check" },
+              { Icon: ArrowRight,   label: "Arrow" },
+              { Icon: ChevronDown,  label: "Chevron" },
             ].map(({ Icon, label }) => (
-              <div key={label} className="flex flex-col items-center gap-2">
-                <div className="w-12 h-12 rounded-[var(--radius-lg)] bg-[var(--color-muted)] flex items-center justify-center">
+              <div key={label} className="flex flex-col items-center" style={{ gap: "var(--space-2)" }}>
+                <div className="flex items-center justify-center" style={{ width: 48, height: 48, borderRadius: "var(--radius-lg)", background: "var(--color-muted)" }}>
                   <Icon size={22} color="var(--color-primary-light)" strokeWidth={1.5} />
                 </div>
-                <span style={{ fontFamily: "var(--font-body)", fontSize: "11px", color: "var(--color-muted-foreground)" }}>{label}</span>
+                <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", color: "var(--color-muted-foreground)" }}>{label}</span>
               </div>
             ))}
           </div>
         </Section>
 
-        {/* ── SHADOWS & RADIUS ── */}
+        {/* ── 08 SHADOWS & RADIUS ────────────────────────────────────────────── */}
         <Section title="08 — Sombras e Raios">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3" style={{ gap: "var(--gap-md)", marginBottom: "var(--space-8)" }}>
             {[
               { label: "shadow-sm", shadow: "var(--shadow-sm)", desc: "Cards padrão" },
               { label: "shadow-md", shadow: "var(--shadow-md)", desc: "Card hover / dropdowns" },
               { label: "shadow-lg", shadow: "var(--shadow-lg)", desc: "Modais / overlays" },
             ].map(({ label, shadow, desc }) => (
-              <div key={label} className="p-6 rounded-[var(--radius-lg)] bg-white" style={{ boxShadow: shadow }}>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: "13px", fontWeight: 600, color: "var(--color-foreground)", marginBottom: "4px" }}>{label}</p>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--color-muted-foreground)" }}>{desc}</p>
+              <div key={label} style={{ padding: "var(--space-6)", borderRadius: "var(--radius-lg)", background: "var(--color-surface)", boxShadow: shadow }}>
+                <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", fontWeight: 600, color: "var(--color-foreground)", marginBottom: "var(--space-1)" }}>{label}</p>
+                <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", color: "var(--color-muted-foreground)" }}>{desc}</p>
               </div>
             ))}
           </div>
-          <div className="flex flex-wrap gap-4 items-center">
+          <div className="flex flex-wrap items-center" style={{ gap: "var(--gap-md)" }}>
             {[
-              { label: "radius-sm (4px)", r: "4px" },
-              { label: "radius-md (8px)", r: "8px" },
-              { label: "radius-lg (16px)", r: "16px" },
-              { label: "radius-xl (24px)", r: "24px" },
-              { label: "radius-full (pill)", r: "999px" },
+              { label: "radius-sm · 4px",   r: "var(--radius-sm)" },
+              { label: "radius-md · 8px",   r: "var(--radius-md)" },
+              { label: "radius-lg · 16px",  r: "var(--radius-lg)" },
+              { label: "radius-xl · 24px",  r: "var(--radius-xl)" },
+              { label: "radius-full · pill", r: "var(--radius-full)" },
             ].map(({ label, r }) => (
-              <div key={label} className="flex flex-col items-center gap-2">
-                <div className="w-16 h-16 bg-[var(--color-muted)] border border-[var(--color-border)]" style={{ borderRadius: r }} />
-                <span style={{ fontFamily: "var(--font-body)", fontSize: "11px", color: "var(--color-muted-foreground)", textAlign: "center" }}>{label}</span>
+              <div key={label} className="flex flex-col items-center" style={{ gap: "var(--space-2)" }}>
+                <div style={{ width: 64, height: 64, background: "var(--color-muted)", border: "1px solid var(--color-border)", borderRadius: r }} />
+                <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", color: "var(--color-muted-foreground)", textAlign: "center" }}>{label}</span>
               </div>
             ))}
           </div>
         </Section>
 
-        {/* ── GRADIENT ── */}
-        <Section title="09 — Gradiente Hero">
-          <div className="hero-gradient rounded-[var(--radius-xl)] p-12 flex flex-col items-start gap-4">
+        {/* ── 09 SPACING ─────────────────────────────────────────────────────── */}
+        <Section title="09 — Espaçamento">
+          <SubLabel>Gap scale (layout)</SubLabel>
+          <div className="flex flex-col" style={{ gap: "var(--space-3)", marginBottom: "var(--space-8)" }}>
+            {[
+              { token: "--gap-xs", px: "12px" }, { token: "--gap-sm", px: "20px" },
+              { token: "--gap-md", px: "28px" },  { token: "--gap-lg", px: "40px" },
+              { token: "--gap-xl", px: "56px" },
+            ].map(({ token, px }) => (
+              <div key={token} className="flex items-center" style={{ gap: "var(--space-4)" }}>
+                <div style={{ width: `calc(${px} * 1.5)`, height: 20, background: "var(--color-primary-light)", borderRadius: "var(--radius-sm)", opacity: 0.5, flexShrink: 0 }} />
+                <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-sm)", color: "var(--color-foreground)", fontVariantNumeric: "tabular-nums", minWidth: 120 }}>{token}</span>
+                <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-muted-foreground)" }}>{px}</span>
+              </div>
+            ))}
+          </div>
+
+          <SubLabel>Space scale (componentes)</SubLabel>
+          <div className="flex flex-col" style={{ gap: "var(--space-3)" }}>
+            {[
+              { token: "--space-1", px: "4px" },  { token: "--space-2", px: "8px" },
+              { token: "--space-3", px: "12px" }, { token: "--space-4", px: "16px" },
+              { token: "--space-6", px: "24px" }, { token: "--space-8", px: "32px" },
+              { token: "--space-10",px: "40px" }, { token: "--space-12",px: "48px" },
+              { token: "--space-16",px: "64px" }, { token: "--space-20",px: "80px" },
+            ].map(({ token, px }) => (
+              <div key={token} className="flex items-center" style={{ gap: "var(--space-4)" }}>
+                <div style={{ width: px, height: 20, background: "var(--color-primary)", borderRadius: "var(--radius-sm)", opacity: 0.3, flexShrink: 0 }} />
+                <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-sm)", color: "var(--color-foreground)", fontVariantNumeric: "tabular-nums", minWidth: 120 }}>{token}</span>
+                <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-muted-foreground)" }}>{px}</span>
+              </div>
+            ))}
+          </div>
+        </Section>
+
+        {/* ── 10 GRADIENT ────────────────────────────────────────────────────── */}
+        <Section title="10 — Gradiente Hero">
+          <div className="hero-gradient flex flex-col items-start" style={{ borderRadius: "var(--radius-xl)", padding: "var(--space-12)", gap: "var(--gap-sm)" }}>
             <span className="badge badge-accent">Nômade Voyage</span>
-            <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: "40px", color: "white", lineHeight: 1.1 }}>
+            <h2 style={{ fontSize: "var(--text-h2)", fontWeight: 700, color: "white", lineHeight: 1.1 }}>
               A agência para quem quer pertencer ao mundo.
             </h2>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "18px", color: "rgba(255,255,255,0.8)", maxWidth: "540px", lineHeight: 1.6 }}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-lg)", color: "var(--color-white-high)", maxWidth: 540, lineHeight: 1.6 }}>
               Passagens, seguro, visto e suporte completo para brasileiros que querem dar o próximo passo.
             </p>
-            <div className="flex flex-wrap gap-3 mt-2">
+            <div className="flex flex-wrap" style={{ gap: "var(--gap-xs)", marginTop: "var(--space-2)" }}>
               <a href="#" className="btn-primary">Falar no WhatsApp <ArrowRight size={18} /></a>
-              <a href="#" className="btn-secondary" style={{ borderColor: "rgba(255,255,255,0.4)", color: "white" }}>Ver destinos</a>
+              <a href="#" className="btn-secondary" style={{ borderColor: "var(--color-white-xlow)", color: "white" }}>Ver destinos</a>
             </div>
           </div>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--color-muted-foreground)", marginTop: "8px" }}>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-muted-foreground)", marginTop: "var(--space-2)" }}>
             ⚠ Usar apenas na seção hero. Não repetir em outros componentes.
           </p>
         </Section>
 
       </div>
 
-      {/* Footer */}
-      <footer style={{ background: "var(--color-primary)", padding: "48px 0" }}>
+      {/* ── Footer ─────────────────────────────────────────────────────────── */}
+      <footer style={{ background: "var(--color-primary)", paddingTop: "var(--gap-xl)", paddingBottom: "var(--gap-lg)" }}>
         <div className="container">
-          <div style={{ marginBottom: "8px" }}>
+          <div style={{ marginBottom: "var(--space-2)" }}>
             <Logo size={28} theme="dark" />
           </div>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", color: "rgba(255,255,255,0.6)" }}>
-            Design System v1.0 · 2026
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-white-muted)" }}>
+            Design System v1.1 · 2026
           </p>
         </div>
       </footer>

@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import FAQ from "@/components/FAQ";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import Logo from "@/components/Logo";
 import {
   Plane, Compass, Home as HomeIcon, MapPin, MessageCircle,
   ArrowRight, Check, Star, Shield, FileText, HeartHandshake, User,
@@ -629,11 +630,8 @@ export default function LandingPage() {
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-3 border-b border-white/10" style={{ gap: "var(--gap-lg)", paddingBottom: "var(--gap-lg)" }}>
             <div>
-              <div className="flex items-center" style={{ gap: "10px", marginBottom: "var(--space-3)" }}>
-                <img src="/logo-icon.svg" alt="Nômade Voyage" width={28} height={28} style={{ display: "block", opacity: 0.9 }} />
-                <p style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: "var(--text-h4)", color: "white" }}>
-                  Nômade Voyage
-                </p>
+              <div style={{ marginBottom: "var(--space-3)" }}>
+                <Logo size={28} theme="dark" />
               </div>
               <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-sm)", color: "var(--color-white-low)", lineHeight: 1.65 }}>
                 Sua agência para morar,<br />explorar e viajar fora.

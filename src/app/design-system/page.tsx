@@ -1,5 +1,6 @@
 "use client";
 
+import Logo from "@/components/Logo";
 import {
   Plane,
   Compass,
@@ -54,9 +55,8 @@ export default function DesignSystemPage() {
       <div className="hero-gradient py-16">
         <div className="container">
           <span className="badge badge-accent mb-4">Design System</span>
-          <div className="flex items-center mt-2 mb-1" style={{ gap: 14 }}>
-            <img src="/logo-icon.svg" alt="Nômade Voyage" width={52} height={52} />
-            <h1 className="text-5xl font-bold text-white">Nômade Voyage</h1>
+          <div className="mt-2 mb-1">
+            <Logo size={52} theme="dark" />
           </div>
           <p className="text-lg text-white/80 mt-3 max-w-xl">
             Referência visual completa — cores, tipografia, componentes e padrões de layout.
@@ -74,12 +74,7 @@ export default function DesignSystemPage() {
             {/* Fundo claro */}
             <div className="card flex flex-col gap-4 p-8">
               <p className="text-xs text-[var(--color-muted-foreground)] font-medium uppercase tracking-widest">Fundo claro</p>
-              <div className="flex items-center gap-3">
-                <img src="/logo-icon.svg" alt="Nômade Voyage" width={40} height={40} />
-                <span style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: "20px", color: "var(--color-primary)" }}>
-                  Nômade Voyage
-                </span>
-              </div>
+              <Logo size={40} />
               <p style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--color-muted-foreground)" }}>
                 Uso padrão — fundo branco ou #F0F9FF
               </p>
@@ -88,12 +83,7 @@ export default function DesignSystemPage() {
             {/* Fundo escuro */}
             <div className="card flex flex-col gap-4 p-8" style={{ background: "var(--color-primary)" }}>
               <p className="text-xs font-medium uppercase tracking-widest" style={{ color: "rgba(255,255,255,0.5)" }}>Fundo escuro</p>
-              <div className="flex items-center gap-3">
-                <img src="/logo-icon.svg" alt="Nômade Voyage" width={40} height={40} />
-                <span style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: "20px", color: "white" }}>
-                  Nômade Voyage
-                </span>
-              </div>
+              <Logo size={40} theme="dark" />
               <p style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "rgba(255,255,255,0.5)" }}>
                 Navbar hero, footer — fundo #0C4A6E
               </p>
@@ -519,9 +509,9 @@ export default function DesignSystemPage() {
       {/* Footer */}
       <footer style={{ background: "var(--color-primary)", padding: "48px 0" }}>
         <div className="container">
-          <p style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: "20px", color: "white", marginBottom: "8px" }}>
-            Nômade Voyage
-          </p>
+          <div style={{ marginBottom: "8px" }}>
+            <Logo size={28} theme="dark" />
+          </div>
           <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", color: "rgba(255,255,255,0.6)" }}>
             Design System v1.0 · 2026
           </p>

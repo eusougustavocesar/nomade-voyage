@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { MessageCircle, Menu, X } from "lucide-react";
+import Logo from "@/components/Logo";
 
 const links = [
   { label: "Viajar", href: "#viajar" },
@@ -22,20 +23,8 @@ export default function Navbar() {
         style={{ pointerEvents: "all" }}
       >
         {/* Logo */}
-        <a
-          href="/"
-          className="flex items-center"
-          style={{ gap: "10px", textDecoration: "none" }}
-        >
-          <img src="/logo-icon.svg" alt="Nômade Voyage" width={32} height={32} style={{ display: "block" }} />
-          <span style={{
-            fontFamily: "var(--font-heading)",
-            fontWeight: 700,
-            fontSize: "18px",
-            color: "var(--color-primary)",
-          }}>
-            Nômade Voyage
-          </span>
+        <a href="/" style={{ textDecoration: "none" }}>
+          <Logo size={32} />
         </a>
 
         {/* Desktop pill nav */}

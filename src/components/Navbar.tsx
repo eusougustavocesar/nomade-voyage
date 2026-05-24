@@ -28,11 +28,11 @@ export default function Navbar() {
           className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center gap-0.5 px-2 py-1.5"
           style={{
             borderRadius: "var(--radius-full)",
-            border: "1px solid var(--color-border)",
-            background: "rgba(255,255,255,0.72)",
+            border: "1px solid rgba(255,255,255,0.08)",
+            background: "rgba(15,15,15,0.80)",
             backdropFilter: "blur(14px)",
             WebkitBackdropFilter: "blur(14px)",
-            boxShadow: "var(--shadow-sm)",
+            boxShadow: "0 2px 16px rgba(0,0,0,0.40)",
           }}
         >
           {links.map((l) => (
@@ -99,8 +99,8 @@ export default function Navbar() {
           style={{
             gap: "var(--space-1)",
             borderRadius: "var(--radius-lg)",
-            border: "1px solid var(--color-border)",
-            background: "rgba(255,255,255,0.95)",
+            border: "1px solid rgba(255,255,255,0.08)",
+            background: "rgba(15,15,15,0.97)",
             backdropFilter: "blur(14px)",
             WebkitBackdropFilter: "blur(14px)",
             boxShadow: "var(--shadow-md)",

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import FAQ from "@/components/FAQ";
@@ -88,26 +87,17 @@ export default function LandingPage() {
       <Navbar />
 
       {/* ── 1. HERO ──────────────────────────────────────────────────────────── */}
-      <section style={{ position: "relative", minHeight: "100svh", display: "flex", alignItems: "center", overflow: "hidden", padding: 0 }}>
-        <Image
-          src="/hero-window.jpg"
-          alt="Vista europeia ao entardecer"
-          fill
-          priority
-          quality={90}
-          style={{ objectFit: "cover", objectPosition: "center 30%" }}
-        />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.60) 50%, rgba(0,0,0,0.80) 100%)" }} />
-        <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: "calc(var(--nav-height) + var(--gap-xl))", paddingBottom: "var(--gap-xl)" }}>
+      <section style={{ minHeight: "100svh", display: "flex", alignItems: "center", padding: 0 }}>
+        <div className="container" style={{ paddingTop: "calc(var(--nav-height) + var(--gap-xl))", paddingBottom: "var(--gap-xl)" }}>
           <div className="flex flex-col items-center text-center" style={{ maxWidth: 700, margin: "0 auto" }}>
             <span className="badge badge-accent mb-6 inline-flex hero-enter" style={{ gap: 6 }}>
               <Clock size={11} />
               Consulta gratuita · Atendimento humano
             </span>
-            <h1 className="hero-enter hero-enter-delay-1" style={{ fontSize: "var(--text-hero)", fontWeight: 700, color: "white", lineHeight: 1.05, marginBottom: "var(--space-6)" }}>
+            <h1 className="hero-enter hero-enter-delay-1" style={{ fontSize: "var(--text-hero)", fontWeight: 700, color: "var(--color-foreground)", lineHeight: 1.05, marginBottom: "var(--space-6)" }}>
               Para quem sempre disse:<br />&ldquo;ano que vem, vou à Europa.&rdquo;
             </h1>
-            <p className="hero-enter hero-enter-delay-2" style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-lg)", color: "var(--color-white-high)", lineHeight: 1.65, marginBottom: "var(--space-8)", maxWidth: "520px" }}>
+            <p className="hero-enter hero-enter-delay-2" style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-lg)", color: "var(--color-muted-foreground)", lineHeight: 1.65, marginBottom: "var(--space-8)", maxWidth: "520px" }}>
               Passagens, hotéis, seguro e roteiro completo — tudo resolvido no WhatsApp, com quem já esteve no destino.
             </p>
 
@@ -275,19 +265,19 @@ export default function LandingPage() {
       </section>
 
       {/* ── 9. CTA FINAL ─────────────────────────────────────────────────────── */}
-      <section style={{ background: "#111111" }}>
+      <section style={{ background: "var(--color-surface)", borderTop: "1px solid var(--color-border)" }}>
         <div className="container text-center">
           <span className="badge badge-accent mb-5 inline-flex" style={{ gap: 6 }}>
             <Clock size={11} />
             Consulta gratuita · Máx. 8 grupos por mês
           </span>
-          <h2 style={{ fontSize: "var(--text-display)", fontWeight: 700, color: "#FFFFFF", lineHeight: 1.1, marginBottom: "var(--space-6)" }}>
+          <h2 style={{ fontSize: "var(--text-display)", fontWeight: 700, color: "var(--color-foreground)", lineHeight: 1.1, marginBottom: "var(--space-6)" }}>
             O &ldquo;ano que vem&rdquo;<br />começa agora.
           </h2>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-lg)", color: "var(--color-white-high)", maxWidth: "480px", margin: "0 auto", marginBottom: "var(--space-6)", lineHeight: 1.65 }}>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-lg)", color: "var(--color-muted-foreground)", maxWidth: "480px", margin: "0 auto", marginBottom: "var(--space-6)", lineHeight: 1.65 }}>
             Manda uma mensagem no WhatsApp. É grátis, sem compromisso, sem robô. Uma conversa real sobre a sua viagem.
           </p>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-sm)", color: "var(--color-white-muted)", maxWidth: "360px", margin: "0 auto", marginBottom: "var(--space-10)", lineHeight: 1.6 }}>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-sm)", color: "var(--color-muted-foreground)", maxWidth: "360px", margin: "0 auto", marginBottom: "var(--space-10)", lineHeight: 1.6 }}>
             Atendemos no máximo 8 grupos por mês. Consulte a disponibilidade para a sua data.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center" style={{ gap: "var(--gap-sm)" }}>
@@ -295,7 +285,7 @@ export default function LandingPage() {
               <MessageCircle size={22} />
               Planejar minha viagem agora
             </a>
-            <a href={WA_GUIDE} target="_blank" rel="noopener noreferrer" style={{ fontFamily: "var(--font-body)", fontWeight: 500, fontSize: "var(--text-body-sm)", color: "var(--color-white-high)", textDecoration: "underline", textUnderlineOffset: 3, cursor: "pointer" }}>
+            <a href={WA_GUIDE} target="_blank" rel="noopener noreferrer" style={{ fontFamily: "var(--font-body)", fontWeight: 500, fontSize: "var(--text-body-sm)", color: "var(--color-muted-foreground)", textDecoration: "underline", textUnderlineOffset: 3, cursor: "pointer" }}>
               ou peça dicas gratuitas sobre a Europa →
             </a>
           </div>

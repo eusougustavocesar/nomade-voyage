@@ -4,25 +4,25 @@
 
 :root {
   /* ── Brand Colors ── */
-  --color-primary:          #0C4A6E;
-  --color-primary-light:    #0EA5E9;
-  --color-accent:           #EA580C;
+  --color-primary:          #7DD3FC;
+  --color-primary-light:    #38BDF8;
+  --color-accent:           #FB923C;
 
   /* ── Surfaces ── */
-  --color-background:       #FFFFFF;
-  --color-surface:          #FFFFFF;
-  --color-muted:            #F4F4F5;
-  --color-footer:           #111111;
+  --color-background:       #0A0A0A;
+  --color-surface:          #111111;
+  --color-muted:            #1A1A1A;
+  --color-footer:           #050505;
 
   /* ── Text ── */
-  --color-foreground:       #0C4A6E;
-  --color-muted-foreground: #64748B;
-  --color-on-primary:       #FFFFFF;
+  --color-foreground:       #F0F0F0;
+  --color-muted-foreground: #A1A1AA;
+  --color-on-primary:       #0A0A0A;
 
   /* ── Utility ── */
-  --color-border:           #E4E4E7;
-  --color-ring:             #0EA5E9;
-  --color-destructive:      #DC2626;
+  --color-border:           #2A2A2A;
+  --color-ring:             #38BDF8;
+  --color-destructive:      #FCA5A5;
 
   /* ── White overlays (dark/colored backgrounds) ── */
   --color-white-high:   rgba(255, 255, 255, 0.82);
@@ -96,38 +96,6 @@
   --shadow-whatsapp:  0 4px 20px rgba(37, 211, 102, 0.30);
 }
 
-/* ─── Dark mode ─── */
-[data-theme="dark"] {
-  /* Brand */
-  --color-primary:          #7DD3FC;
-  --color-primary-light:    #38BDF8;
-  --color-accent:           #FB923C;
-
-  /* Surfaces */
-  --color-background:       #0A0A0A;
-  --color-surface:          #111111;
-  --color-muted:            #1C1C1C;
-  --color-footer:           #050505;
-
-  /* Text */
-  --color-foreground:       #F0F0F0;
-  --color-muted-foreground: #A1A1AA;
-  --color-on-primary:       #0A0A0A;
-
-  /* Utility */
-  --color-border:           #2A2A2A;
-  --color-ring:             #38BDF8;
-  --color-destructive:      #FCA5A5;
-
-  /* Shadows (stronger for dark) */
-  --shadow-sm: 0 2px 16px rgba(0, 0, 0, 0.30);
-  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.45);
-  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.60);
-}
-
-[data-theme="dark"] .hero-gradient {
-  background: linear-gradient(135deg, #000000 0%, #0369A1 55%, #000000 100%);
-}
 
 /* ─── Responsive token overrides ─── */
 @media (max-width: 768px) {
@@ -303,7 +271,7 @@ section {
   border-radius:  var(--radius-full);
 }
 .badge-accent {
-  background: #FFF7ED;
+  background: rgba(251, 146, 60, 0.12);
   color:      var(--color-accent);
 }
 

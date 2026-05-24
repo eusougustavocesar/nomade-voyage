@@ -19,15 +19,15 @@ const norm = (s: string) =>
 
 function toPill(text: string): Pill {
   const t = norm(text);
-  if (/passagem|voo/.test(t))         return { label: "Voo",      Icon: Plane };
-  if (/hotel|pousada/.test(t))        return { label: "Hotel",    Icon: BedDouble };
-  if (/transfer/.test(t))             return { label: "Transfer", Icon: Car };
-  if (/trem|train/.test(t))           return { label: "Trem",     Icon: Train };
-  if (/ferry|ferries|barco/.test(t))  return { label: "Ferry",    Icon: Ship };
-  if (/seguro/.test(t))               return { label: "Seguro",   Icon: Shield };
-  if (/roteiro/.test(t))              return { label: "Roteiro",  Icon: Map };
-  if (/suporte|whatsapp/.test(t))     return { label: "Suporte",  Icon: MessageCircle };
-  return { label: text.split(",")[0].slice(0, 14), Icon: Map };
+  if (/passagem|voos?/.test(t))            return { label: "Voo",      Icon: Plane };
+  if (/hoteis?|hotel|pousada/.test(t))     return { label: "Hotel",    Icon: BedDouble };
+  if (/transfer/.test(t))                  return { label: "Transfer", Icon: Car };
+  if (/trens?|train/.test(t))              return { label: "Trem",     Icon: Train };
+  if (/ferry|ferries|barco/.test(t))       return { label: "Ferry",    Icon: Ship };
+  if (/seguro/.test(t))                    return { label: "Seguro",   Icon: Shield };
+  if (/roteiro/.test(t))                   return { label: "Roteiro",  Icon: Map };
+  if (/suporte|whatsapp/.test(t))          return { label: "Suporte",  Icon: MessageCircle };
+  return { label: "Incluso", Icon: Map };
 }
 
 function buildPills(includes: string[]): Pill[] {

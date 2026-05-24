@@ -1,3 +1,5 @@
+"use client";
+
 import { MessageCircle, Camera } from "lucide-react";
 import Logo from "@/components/Logo";
 

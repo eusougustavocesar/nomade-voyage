@@ -22,6 +22,8 @@ export interface TravelPackage {
   badge?: Badge;
   profile: string;
   popular?: boolean;
+  priceFrom?: string;
+  maxGroup?: number;
   includes: string[];
   notIncludes: string[];
   itinerary: ItineraryDay[];
@@ -43,6 +45,8 @@ export const packages: TravelPackage[] = [
     badge: "Mais pedido",
     profile: "Ideal para primeira viagem",
     popular: true,
+    priceFrom: "R$ 8.900",
+    maxGroup: 8,
     includes: [
       "Passagem aérea ida e volta",
       "Hotel 3★ no centro histórico (6 noites)",
@@ -74,6 +78,8 @@ export const packages: TravelPackage[] = [
     photo: "/dest-lisboa.jpg",
     badge: undefined,
     profile: "Para casais e quem quer ir fundo",
+    priceFrom: "R$ 12.900",
+    maxGroup: 8,
     includes: [
       "Passagem aérea ida e volta",
       "Hotel 4★ no centro histórico (9 noites)",
@@ -110,6 +116,8 @@ export const packages: TravelPackage[] = [
     badge: undefined,
     profile: "Para quem quer explorar",
     popular: true,
+    priceFrom: "R$ 14.900",
+    maxGroup: 8,
     includes: [
       "Passagem aérea ida e volta",
       "Hotéis 3★ em Lisboa e Madrid (11 noites)",
@@ -147,6 +155,8 @@ export const packages: TravelPackage[] = [
     photo: "/dest-lisboa.jpg",
     badge: undefined,
     profile: "Para usar bem as duas semanas de férias",
+    priceFrom: "R$ 16.900",
+    maxGroup: 8,
     includes: [
       "Passagem aérea ida e volta",
       "Hotéis 4★ em Lisboa e Madrid (13 noites)",
@@ -186,6 +196,8 @@ export const packages: TravelPackage[] = [
     photo: "/dest-dublin.jpg",
     badge: "Novo",
     profile: "Aventura e cultura",
+    priceFrom: "R$ 17.900",
+    maxGroup: 8,
     includes: [
       "Passagem aérea ida e volta",
       "Hotéis em Dublin e Lisboa (13 noites)",
@@ -226,6 +238,8 @@ export const packages: TravelPackage[] = [
     photo: "/hero-window.jpg",
     badge: "Últimas vagas",
     profile: "Para usar bem as férias do ano",
+    priceFrom: "R$ 19.900",
+    maxGroup: 8,
     includes: [
       "Passagem aérea ida e volta",
       "Hotéis em Lisboa, Madrid e Dublin (14 noites)",
@@ -270,6 +284,8 @@ export const packages: TravelPackage[] = [
     badge: "Mais procurado",
     profile: "O mais procurado pelos brasileiros",
     popular: true,
+    priceFrom: "R$ 13.900",
+    maxGroup: 8,
     includes: [
       "Passagem aérea ida e volta",
       "Hotéis em Lisboa e Porto (9 noites)",
@@ -307,6 +323,8 @@ export const packages: TravelPackage[] = [
     badge: "Mais procurado",
     profile: "O clássico da Europa para brasileiros",
     popular: true,
+    priceFrom: "R$ 17.900",
+    maxGroup: 8,
     includes: [
       "Passagem aérea ida e volta",
       "Hotéis em Lisboa, Sevilha, Madrid e Barcelona",
@@ -347,6 +365,8 @@ export const packages: TravelPackage[] = [
     badge: "Mais procurado",
     profile: "O país mais procurado na Europa",
     popular: true,
+    priceFrom: "R$ 16.900",
+    maxGroup: 8,
     includes: [
       "Passagem aérea ida e volta",
       "Hotéis em Roma, Florença e Veneza (11 noites)",
@@ -386,6 +406,8 @@ export const packages: TravelPackage[] = [
     badge: "Mais procurado",
     profile: "Ideal para a primeira viagem à Europa",
     popular: true,
+    priceFrom: "R$ 18.900",
+    maxGroup: 8,
     includes: [
       "Passagem aérea ida e volta",
       "Hotéis em Paris, Roma e Londres (11 noites)",
@@ -424,6 +446,8 @@ export const packages: TravelPackage[] = [
     badge: "Favorito de casais",
     profile: "Favorito entre casais e lua de mel",
     popular: true,
+    priceFrom: "R$ 15.900",
+    maxGroup: 8,
     includes: [
       "Passagem aérea ida e volta",
       "Hotéis em Atenas, Santorini e Mykonos (9 noites)",
@@ -460,6 +484,8 @@ export const packages: TravelPackage[] = [
     badge: "Melhor custo-benefício",
     profile: "Melhor custo-benefício na Europa",
     popular: true,
+    priceFrom: "R$ 14.900",
+    maxGroup: 8,
     includes: [
       "Passagem aérea ida e volta",
       "Hotéis em Praga, Viena e Budapeste (11 noites)",

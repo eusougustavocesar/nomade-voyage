@@ -1,11 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import FAQ from "@/components/FAQ";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import Reveal from "@/components/Reveal";
 import Logo from "@/components/Logo";
 import PackageCard from "@/components/PackageCard";
-import PackageSearch from "@/components/PackageSearch";
 import { getPopularPackages } from "@/data/packages";
 import {
   MapPin, MessageCircle,
@@ -169,7 +169,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── 3. PACOTES MAIS FAMOSOS ─────────────────────────────────────────── */}
+      {/* ── 3. PACOTES ───────────────────────────────────────────────────────── */}
       <section id="pacotes" style={{ background: "var(--color-background)" }}>
         <div className="container">
           <Reveal>
@@ -177,31 +177,24 @@ export default function LandingPage() {
               <span className="badge mb-4 inline-flex">Pacotes mais famosos</span>
               <h2>Os roteiros mais procurados pelos brasileiros</h2>
               <p className="section-subtitle">
-                Pesquisamos os destinos mais vendidos para a Europa e montamos roteiros completos para cada um. Todos personalizáveis pelo WhatsApp.
+                Pesquisamos os destinos mais vendidos para a Europa e montamos roteiros completos. Todos personalizáveis pelo WhatsApp.
               </p>
             </div>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style={{ gap: "var(--gap-md)" }}>
-            {getPopularPackages().map((pkg) => (
+            {getPopularPackages().slice(0, 6).map((pkg) => (
               <PackageCard key={pkg.slug} pkg={pkg} />
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ── 4. BUSCA + CONFIGURADOR ─────────────────────────────────────────── */}
-      <section style={{ background: "var(--color-surface)" }}>
-        <div className="container">
-          <Reveal>
-            <div className="section-header">
-              <span className="badge mb-4 inline-flex">Monte o seu roteiro</span>
-              <h2>Não encontrou o seu destino?</h2>
-              <p className="section-subtitle">
-                Busque qualquer cidade ou país da Europa. Se não tivermos um pacote pronto, montamos um personalizado com tudo que você precisa.
-              </p>
-            </div>
-          </Reveal>
-          <PackageSearch />
+          <div className="flex justify-center" style={{ marginTop: "var(--gap-xl)" }}>
+            <Link
+              href="/pacotes"
+              className="btn-secondary"
+            >
+              Ver todos os roteiros
+              <ArrowRight size={17} />
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -235,7 +228,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── 6. COMO FUNCIONA ────────────────────────────────────────────────── */}
-      <section style={{ background: "var(--color-background)" }}>
+      <section id="como-funciona" style={{ background: "var(--color-background)" }}>
         <div className="container">
           <Reveal>
             <div className="section-header">
@@ -306,7 +299,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── 8. DEPOIMENTOS ──────────────────────────────────────────────────── */}
-      <section style={{ background: "var(--color-muted)" }}>
+      <section id="depoimentos" style={{ background: "var(--color-muted)" }}>
         <div className="container">
           <Reveal>
             <div className="section-header">

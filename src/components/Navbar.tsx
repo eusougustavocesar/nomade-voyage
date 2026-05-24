@@ -7,13 +7,12 @@ import ThemeToggle from "@/components/ThemeToggle";
 import { useTheme } from "@/components/ThemeProvider";
 
 const links = [
-  { label: "Viajar",   href: "#viajar" },
-  { label: "Explorar", href: "#explorar" },
-  { label: "Morar",    href: "#morar" },
-  { label: "Destinos", href: "#destinos" },
+  { label: "Pacotes",       href: "/pacotes" },
+  { label: "Como funciona", href: "/#como-funciona" },
+  { label: "Depoimentos",   href: "/#depoimentos" },
 ];
 
-const WA_LINK = "https://wa.me/5500000000000?text=Olá!%20Vim%20pelo%20site%20da%20Nômade%20Voyage%20e%20quero%20saber%20mais.";
+const WA_LINK = "https://wa.me/351962221594?text=Olá!%20Vim%20pelo%20site%20da%20Nômade%20Voyage%20e%20quero%20saber%20mais.";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);

@@ -4,12 +4,12 @@ import { MapPin, Clock, Check, Users, Star } from "lucide-react";
 import type { TravelPackage } from "@/data/packages";
 
 const BADGE_STYLES: Record<string, React.CSSProperties> = {
-  "Mais pedido":            { background: "#FFF7ED", color: "#EA580C" },
-  "Mais procurado":         { background: "#FFF7ED", color: "#EA580C" },
-  "Últimas vagas":          { background: "#FEF2F2", color: "#DC2626" },
-  "Novo":                   { background: "#F0FDF4", color: "#16A34A" },
-  "Favorito de casais":     { background: "#FDF4FF", color: "#7C3AED" },
-  "Melhor custo-benefício": { background: "#F0FDF4", color: "#16A34A" },
+  "Mais pedido":            { background: "var(--color-accent-bg)",       color: "var(--color-accent)" },
+  "Mais procurado":         { background: "var(--color-accent-bg)",       color: "var(--color-accent)" },
+  "Últimas vagas":          { background: "var(--color-destructive-bg)",  color: "var(--color-destructive)" },
+  "Novo":                   { background: "var(--color-success-bg)",      color: "var(--color-success)" },
+  "Favorito de casais":     { background: "var(--color-purple-bg)",       color: "var(--color-purple)" },
+  "Melhor custo-benefício": { background: "var(--color-success-bg)",      color: "var(--color-success)" },
 };
 
 export default function PackageCard({ pkg }: { pkg: TravelPackage }) {
@@ -137,7 +137,7 @@ export default function PackageCard({ pkg }: { pkg: TravelPackage }) {
             href={`/pacotes/${pkg.slug}`}
             style={{
               fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "var(--text-micro)",
-              color: "white", background: "var(--color-primary)",
+              color: "var(--color-on-primary)", background: "var(--color-primary)",
               textDecoration: "none", padding: "8px 14px",
               borderRadius: "var(--radius-md)", whiteSpace: "nowrap",
               transition: "opacity 150ms",

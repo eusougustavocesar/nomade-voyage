@@ -138,7 +138,7 @@ export default function Footer() {
               padding: "4px 12px",
             }}
           >
-            <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#22C55E", flexShrink: 0 }} />
+            <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--color-success)", flexShrink: 0 }} />
             <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", color: "rgba(255,255,255,0.35)" }}>
               Agência registrada no Ministério do Turismo
             </span>

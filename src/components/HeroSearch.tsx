@@ -35,7 +35,7 @@ export default function HeroSearch() {
         <div style={{ position: "relative", flex: 1 }}>
           <Search
             size={16}
-            color="rgba(0,0,0,0.35)"
+            color="var(--color-muted-foreground)"
             style={{ position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)", pointerEvents: "none" }}
           />
           <input
@@ -53,8 +53,8 @@ export default function HeroSearch() {
               padding: "14px 16px 14px 42px",
               borderRadius: "var(--radius-lg)",
               border: "none",
-              background: "rgba(255,255,255,0.96)",
-              color: "#111",
+              background: "var(--color-surface)",
+              color: "var(--color-foreground)",
               outline: "none",
               boxShadow: "0 2px 16px rgba(0,0,0,0.18)",
             }}
@@ -76,7 +76,7 @@ export default function HeroSearch() {
           top: "calc(100% + 6px)",
           left: 0,
           right: 64,
-          background: "white",
+          background: "var(--color-surface)",
           borderRadius: "var(--radius-lg)",
           boxShadow: "0 8px 32px rgba(0,0,0,0.18)",
           overflow: "hidden",
@@ -93,13 +93,13 @@ export default function HeroSearch() {
                 padding: "11px 16px",
                 fontFamily: "var(--font-body)",
                 fontSize: "var(--text-body-sm)",
-                color: "#111",
+                color: "var(--color-foreground)",
                 background: "transparent",
                 border: "none",
-                borderBottom: "1px solid #f0f0f0",
+                borderBottom: "1px solid var(--color-border)",
                 cursor: "pointer",
               }}
-              onMouseEnter={e => (e.currentTarget.style.background = "#f8f8f8")}
+              onMouseEnter={e => (e.currentTarget.style.background = "var(--color-muted)")}
               onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
             >
               {dest}

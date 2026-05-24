@@ -63,7 +63,7 @@ export default function PackageConfigurator({ destination }: { destination: stri
     transition: "all 120ms ease-out",
     borderColor: active ? "var(--color-primary)" : "var(--color-border)",
     background: active ? "var(--color-primary)" : "transparent",
-    color: active ? "#fff" : "var(--color-muted-foreground)",
+    color: active ? "var(--color-on-primary)" : "var(--color-muted-foreground)",
   });
 
   return (

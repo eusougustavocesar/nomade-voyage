@@ -24,6 +24,15 @@
   --color-ring:             #0EA5E9;
   --color-destructive:      #DC2626;
 
+  /* ── Semantic state colors ── */
+  --color-success:          #16A34A;
+  --color-success-bg:       rgba(22, 163, 74, 0.12);
+  --color-accent-bg:        rgba(234, 88, 12, 0.12);
+  --color-destructive-bg:   rgba(220, 38, 38, 0.12);
+  --color-purple:           #7C3AED;
+  --color-purple-bg:        rgba(124, 58, 237, 0.12);
+  --color-on-primary-dim:   rgba(255, 255, 255, 0.65);
+
   /* ── White overlays (dark/colored backgrounds) ── */
   --color-white-high:   rgba(255, 255, 255, 0.82);
   --color-white-mid:    rgba(255, 255, 255, 0.70);
@@ -135,6 +144,14 @@
     --color-border:           #2A2A2A;
     --color-ring:             #38BDF8;
     --color-destructive:      #FCA5A5;
+
+    --color-success:          #4ADE80;
+    --color-success-bg:       rgba(74, 222, 128, 0.12);
+    --color-accent-bg:        rgba(251, 146, 60, 0.12);
+    --color-destructive-bg:   rgba(252, 165, 165, 0.12);
+    --color-purple:           #A78BFA;
+    --color-purple-bg:        rgba(167, 139, 250, 0.12);
+    --color-on-primary-dim:   rgba(0, 0, 0, 0.55);
 
     --nav-bg:         rgba(15, 15, 15, 0.80);
     --nav-bg-solid:   rgba(15, 15, 15, 0.97);

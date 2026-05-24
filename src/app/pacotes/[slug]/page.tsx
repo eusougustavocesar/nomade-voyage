@@ -98,8 +98,8 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
               { icon: Star,   label: "4.9 ★ · 200+ viajantes" },
             ].map(({ icon: Icon, label }) => (
               <div key={label} className="flex items-center" style={{ gap: 8 }}>
-                <Icon size={15} color="rgba(255,255,255,0.70)" />
-                <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-sm)", color: "white" }}>{label}</span>
+                <Icon size={15} color="var(--color-on-primary-dim)" />
+                <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-sm)", color: "var(--color-on-primary)" }}>{label}</span>
               </div>
             ))}
           </div>
@@ -235,7 +235,7 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
                     <ul style={{ display: "flex", flexDirection: "column", gap: "var(--space-3)" }}>
                       {pkg.notIncludes.map((item) => (
                         <li key={item} className="flex items-start" style={{ gap: 10 }}>
-                          <X size={14} color="#94A3B8" strokeWidth={2} style={{ marginTop: 2, flexShrink: 0 }} />
+                          <X size={14} color="var(--color-muted-foreground)" strokeWidth={2} style={{ marginTop: 2, flexShrink: 0 }} />
                           <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-sm)", color: "var(--color-muted-foreground)" }}>{item}</span>
                         </li>
                       ))}

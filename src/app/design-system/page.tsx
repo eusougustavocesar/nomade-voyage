@@ -1,7 +1,6 @@
 "use client";
 
 import Logo from "@/components/Logo";
-import ThemeToggle from "@/components/ThemeToggle";
 import {
   Plane, Compass, Home, MessageCircle, ArrowRight, Check,
   Star, Globe, Shield, MapPin, ChevronDown, Search, User,
@@ -19,7 +18,6 @@ const dsLinks = [
   { label: "Ícones",      href: "#icones" },
   { label: "Sombras",     href: "#sombras" },
   { label: "Espaçamento", href: "#espacamento" },
-  { label: "Gradiente",   href: "#gradiente" },
 ];
 
 // ─── Section wrapper ────────────────────────────────────────────────────────
@@ -74,13 +72,13 @@ export default function DesignSystemPage() {
     <div style={{ background: "var(--color-background)", minHeight: "100vh" }}>
 
       {/* ── Hero header ────────────────────────────────────────────────────── */}
-      <div className="hero-gradient" style={{ paddingTop: "var(--space-16)", paddingBottom: "var(--space-16)" }}>
+      <div style={{ background: "var(--color-surface)", borderBottom: "1px solid var(--color-border)", paddingTop: "var(--space-16)", paddingBottom: "var(--space-16)" }}>
         <div className="container">
           <span className="badge badge-accent" style={{ marginBottom: "var(--space-4)", display: "inline-flex" }}>Design System</span>
           <div style={{ marginTop: "var(--space-2)", marginBottom: "var(--space-3)" }}>
             <Logo size={52} theme="dark" />
           </div>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-lg)", color: "var(--color-white-high)", maxWidth: 520, lineHeight: 1.65 }}>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-lg)", color: "var(--color-muted-foreground)", maxWidth: 520, lineHeight: 1.65 }}>
             Referência visual completa — cores, tipografia, componentes e padrões de layout.
           </p>
         </div>
@@ -97,41 +95,38 @@ export default function DesignSystemPage() {
         }}
       >
         <div className="container" style={{ paddingTop: "var(--space-3)", paddingBottom: "var(--space-3)" }}>
-          <div className="flex items-center justify-between" style={{ gap: "var(--gap-sm)" }}>
-            <div className="flex items-center overflow-x-auto" style={{ gap: "var(--space-1)", scrollbarWidth: "none" }}>
-              {dsLinks.map((l) => (
-                <a
-                  key={l.href}
-                  href={l.href}
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontWeight: 500,
-                    fontSize: "var(--text-caption)",
-                    color: "var(--color-muted-foreground)",
-                    textDecoration: "none",
-                    padding: "5px 12px",
-                    borderRadius: "var(--radius-full)",
-                    border: "1px solid transparent",
-                    whiteSpace: "nowrap",
-                    transition: "color 150ms, background 150ms, border-color 150ms",
-                    flexShrink: 0,
-                  }}
-                  onMouseEnter={e => {
-                    e.currentTarget.style.color = "var(--color-primary)";
-                    e.currentTarget.style.background = "var(--color-muted)";
-                    e.currentTarget.style.borderColor = "var(--color-border)";
-                  }}
-                  onMouseLeave={e => {
-                    e.currentTarget.style.color = "var(--color-muted-foreground)";
-                    e.currentTarget.style.background = "transparent";
-                    e.currentTarget.style.borderColor = "transparent";
-                  }}
-                >
-                  {l.label}
-                </a>
-              ))}
-            </div>
-            <ThemeToggle />
+          <div className="flex items-center overflow-x-auto" style={{ gap: "var(--space-1)", scrollbarWidth: "none" }}>
+            {dsLinks.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontWeight: 500,
+                  fontSize: "var(--text-caption)",
+                  color: "var(--color-muted-foreground)",
+                  textDecoration: "none",
+                  padding: "5px 12px",
+                  borderRadius: "var(--radius-full)",
+                  border: "1px solid transparent",
+                  whiteSpace: "nowrap",
+                  transition: "color 150ms, background 150ms, border-color 150ms",
+                  flexShrink: 0,
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.color = "var(--color-primary)";
+                  e.currentTarget.style.background = "var(--color-muted)";
+                  e.currentTarget.style.borderColor = "var(--color-border)";
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.color = "var(--color-muted-foreground)";
+                  e.currentTarget.style.background = "transparent";
+                  e.currentTarget.style.borderColor = "transparent";
+                }}
+              >
+                {l.label}
+              </a>
+            ))}
           </div>
         </div>
       </div>
@@ -144,14 +139,14 @@ export default function DesignSystemPage() {
           <SubLabel>Versões</SubLabel>
           <div className="grid grid-cols-1 sm:grid-cols-3" style={{ gap: "var(--gap-sm)", marginBottom: "var(--space-10)" }}>
             <div className="card flex flex-col" style={{ gap: "var(--space-4)", padding: "var(--space-8)" }}>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--color-muted-foreground)" }}>Fundo claro</p>
-              <Logo size={40} />
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-muted-foreground)" }}>Uso padrão — fundo branco ou #F0F9FF</p>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--color-muted-foreground)" }}>Fundo escuro (padrão)</p>
+              <Logo size={40} theme="dark" />
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-muted-foreground)" }}>Uso padrão — navbar, hero, footer, fundo #0A0A0A ou #111111</p>
             </div>
             <div className="card flex flex-col" style={{ gap: "var(--space-4)", padding: "var(--space-8)", background: "var(--color-primary)" }}>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--color-white-low)" }}>Fundo escuro</p>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--color-white-low)" }}>Fundo colorido</p>
               <Logo size={40} theme="dark" />
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-white-low)" }}>Navbar, hero, footer — fundo #0C4A6E</p>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-white-low)" }}>Sobre banners e superfícies em --color-primary</p>
             </div>
             <div className="card flex flex-col" style={{ gap: "var(--space-4)", padding: "var(--space-8)" }}>
               <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--color-muted-foreground)" }}>Ícone isolado</p>
@@ -184,24 +179,24 @@ export default function DesignSystemPage() {
 
           <SubLabel>Uso correto</SubLabel>
           <div className="grid grid-cols-1 sm:grid-cols-2" style={{ gap: "var(--gap-sm)" }}>
-            <div style={{ padding: "var(--space-6)", borderRadius: "var(--radius-lg)", border: "2px solid #166534", background: "#F0FDF4" }}>
-              <p style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "var(--text-micro)", color: "#166534", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "var(--space-4)" }}>✓ Correto</p>
+            <div style={{ padding: "var(--space-6)", borderRadius: "var(--radius-lg)", border: "2px solid var(--color-primary-light)", background: "rgba(56, 189, 248, 0.06)" }}>
+              <p style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "var(--text-micro)", color: "var(--color-primary-light)", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "var(--space-4)" }}>✓ Correto</p>
               <ul className="flex flex-col" style={{ gap: "var(--space-2)" }}>
-                {["Usar sempre sobre fundos lisos (branco, #F0F9FF, #0C4A6E)", "Manter proporção original — nunca distorcer", "Respeitar área de respiro mínima equivalente a ½ do ícone", "Tamanho mínimo: 20px (ícone) — abaixo usar só wordmark"].map(t => (
+                {["Usar sempre sobre fundos escuros lisos (#0A0A0A, #111111, #1A1A1A)", "Manter proporção original — nunca distorcer", "Respeitar área de respiro mínima equivalente a ½ do ícone", "Tamanho mínimo: 20px (ícone) — abaixo usar só wordmark"].map(t => (
                   <li key={t} className="flex items-start" style={{ gap: "var(--space-2)" }}>
-                    <Check size={13} color="#166534" style={{ flexShrink: 0, marginTop: 2 }} />
-                    <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "#166534", lineHeight: 1.5 }}>{t}</span>
+                    <Check size={13} color="var(--color-primary-light)" style={{ flexShrink: 0, marginTop: 2 }} />
+                    <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-muted-foreground)", lineHeight: 1.5 }}>{t}</span>
                   </li>
                 ))}
               </ul>
             </div>
-            <div style={{ padding: "var(--space-6)", borderRadius: "var(--radius-lg)", border: "2px solid var(--color-destructive)", background: "#FEF2F2" }}>
+            <div style={{ padding: "var(--space-6)", borderRadius: "var(--radius-lg)", border: "2px solid var(--color-destructive)", background: "rgba(252, 165, 165, 0.06)" }}>
               <p style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "var(--text-micro)", color: "var(--color-destructive)", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "var(--space-4)" }}>✗ Incorreto</p>
               <ul className="flex flex-col" style={{ gap: "var(--space-2)" }}>
-                {["Não alterar as cores do ícone fora do design system", "Não usar sobre fundos fotográficos sem overlay", "Não aplicar efeitos (sombra extra, contorno, opacidade < 80%)", "Não recriar o wordmark em outra fonte"].map(t => (
+                {["Não alterar as cores do ícone fora do design system", "Não usar sobre fundos fotográficos sem overlay escuro", "Não aplicar efeitos (sombra extra, contorno, opacidade < 80%)", "Não recriar o wordmark em outra fonte"].map(t => (
                   <li key={t} className="flex items-start" style={{ gap: "var(--space-2)" }}>
                     <span style={{ flexShrink: 0, fontSize: 13, color: "var(--color-destructive)", marginTop: 1 }}>✕</span>
-                    <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-destructive)", lineHeight: 1.5 }}>{t}</span>
+                    <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-muted-foreground)", lineHeight: 1.5 }}>{t}</span>
                   </li>
                 ))}
               </ul>
@@ -212,29 +207,36 @@ export default function DesignSystemPage() {
         {/* 01 COLORS */}
         <Section id="cores" title="01 — Paleta de Cores">
           <div style={{ marginBottom: "var(--space-6)" }}>
-            <SubLabel>Cores Primárias</SubLabel>
+            <SubLabel>Marca</SubLabel>
             <div className="grid grid-cols-2 sm:grid-cols-4" style={{ gap: "var(--gap-sm)" }}>
-              <Swatch name="Ocean Blue"  hex="#0C4A6E" token="--color-primary" />
-              <Swatch name="Sky Blue"    hex="#0EA5E9" token="--color-primary-light" />
-              <Swatch name="Terra"       hex="#EA580C" token="--color-accent" />
-              <Swatch name="WhatsApp"    hex="#25D366" token="whatsapp" />
+              <Swatch name="Sky Blue"      hex="#7DD3FC" token="--color-primary" />
+              <Swatch name="Sky Bright"    hex="#38BDF8" token="--color-primary-light" />
+              <Swatch name="Terra"         hex="#FB923C" token="--color-accent" />
+              <Swatch name="WhatsApp"      hex="#25D366" token="whatsapp" />
             </div>
           </div>
           <div style={{ marginBottom: "var(--space-6)" }}>
             <SubLabel>Superfícies</SubLabel>
             <div className="grid grid-cols-2 sm:grid-cols-4" style={{ gap: "var(--gap-sm)" }}>
-              <Swatch name="Sky White"  hex="#F0F9FF" token="--color-background" />
-              <Swatch name="Pure White" hex="#FFFFFF"  token="--color-surface" />
-              <Swatch name="Soft Sky"   hex="#E8F2F8" token="--color-muted" />
-              <Swatch name="Sky Border" hex="#BAE6FD" token="--color-border" />
+              <Swatch name="Background"    hex="#0A0A0A" token="--color-background" />
+              <Swatch name="Surface"       hex="#111111" token="--color-surface" />
+              <Swatch name="Muted"         hex="#1A1A1A" token="--color-muted" />
+              <Swatch name="Footer"        hex="#050505" token="--color-footer" />
+            </div>
+          </div>
+          <div style={{ marginBottom: "var(--space-6)" }}>
+            <SubLabel>Texto</SubLabel>
+            <div className="grid grid-cols-2 sm:grid-cols-4" style={{ gap: "var(--gap-sm)" }}>
+              <Swatch name="Foreground"    hex="#F0F0F0" token="--color-foreground" />
+              <Swatch name="Muted Text"    hex="#A1A1AA" token="--color-muted-foreground" />
+              <Swatch name="Destructive"   hex="#FCA5A5" token="--color-destructive" />
             </div>
           </div>
           <div>
-            <SubLabel>Texto</SubLabel>
+            <SubLabel>Bordas e estados</SubLabel>
             <div className="grid grid-cols-2 sm:grid-cols-4" style={{ gap: "var(--gap-sm)" }}>
-              <Swatch name="Deep Ocean" hex="#0C4A6E" token="--color-foreground" />
-              <Swatch name="Slate"      hex="#64748B" token="--color-muted-foreground" />
-              <Swatch name="Error Red"  hex="#DC2626" token="--color-destructive" />
+              <Swatch name="Border"        hex="#2A2A2A" token="--color-border" />
+              <Swatch name="Ring / Focus"  hex="#38BDF8" token="--color-ring" />
             </div>
           </div>
         </Section>
@@ -243,13 +245,10 @@ export default function DesignSystemPage() {
         <Section id="tipografia" title="02 — Tipografia">
           <div className="flex flex-col" style={{ gap: "var(--gap-sm)" }}>
             {[
-              { label: "Hero — Poppins 700 · clamp(42px, 6vw, 62px)", size: "var(--text-hero)",    weight: 700, family: "var(--font-heading)", text: "Pertença ao mundo",                   lh: 1.05 },
-              { label: "Display — Poppins 700 · clamp(32px, 5vw, 48px)", size: "var(--text-display)", weight: 700, family: "var(--font-heading)", text: "Sua vida no exterior começa aqui", lh: 1.1  },
-              { label: "H2 — Poppins 600 · clamp(28px, 3.5vw, 38px)", size: "var(--text-h2)",      weight: 600, family: "var(--font-heading)", text: "Como funciona a Nômade Voyage",       lh: 1.15 },
-              { label: "H3 — Poppins 600 · 24px",  size: "var(--text-h3)",      weight: 600, family: "var(--font-heading)", text: "Portugal, Espanha e muito mais",                          lh: 1.2  },
-              { label: "H4 — Poppins 600 · 18px",  size: "var(--text-h4)",      weight: 600, family: "var(--font-heading)", text: "Visto D7 — Residência Passiva",                           lh: 1.3  },
+              { label: "Heading (h1–h6) — Poppins 600 · clamp(28px, 3.5vw, 38px)", size: "var(--text-h2)", weight: 600, family: "var(--font-heading)", text: "Como funciona a Nômade Voyage", lh: 1.15 },
+              { label: "Título de card (override inline) — Poppins 600 · 18px", size: "var(--text-h4)", weight: 600, family: "var(--font-heading)", text: "Visto D7 — Residência Passiva", lh: 1.3 },
               { label: "Body Large — Inter 400 · 18px", size: "var(--text-body-lg)", weight: 400, family: "var(--font-body)", text: "Ajudamos brasileiros a dar o passo mais importante das suas vidas — com segurança, clareza e alguém do lado.", lh: 1.65 },
-              { label: "Body — Inter 400 · 16px",   size: "var(--text-body)",    weight: 400, family: "var(--font-body)", text: "Não somos uma OTA. Somos a pessoa que já fez esse caminho e quer te ajudar a fazer o mesmo.", lh: 1.6 },
+              { label: "Body — Inter 400 · 16px", size: "var(--text-body)", weight: 400, family: "var(--font-body)", text: "Não somos uma OTA. Somos a pessoa que já fez esse caminho e quer te ajudar a fazer o mesmo.", lh: 1.6 },
               { label: "Body SM — Inter 400 · 15px", size: "var(--text-body-sm)", weight: 400, family: "var(--font-body)", text: "Inclui seguro viagem, consultoria 1x1 e suporte durante toda a estadia.", lh: 1.6 },
               { label: "Quote — Poppins Italic · 17px", size: "var(--text-body-md)", weight: 400, family: "var(--font-heading)", italic: true, text: '"Finalmente alguém que explica tudo sem enrolação. Mudei para Lisboa em 3 meses."', lh: 1.5 },
               { label: "Caption — Inter 500 · 13px", size: "var(--text-caption)", weight: 500, family: "var(--font-body)", text: "Lisboa, Portugal · Março 2026", lh: 1.4 },
@@ -350,7 +349,7 @@ export default function DesignSystemPage() {
             <span className="badge">Nômade Digital</span>
             <span className="badge badge-accent">Mais popular</span>
             <span className="badge badge-accent">Alta demanda</span>
-            <span className="badge" style={{ background: "#F0FDF4", color: "#166534" }}>
+            <span className="badge" style={{ background: "rgba(56, 189, 248, 0.12)", color: "var(--color-primary-light)" }}>
               <Check size={12} style={{ marginRight: "var(--space-1)" }} />Verificado
             </span>
           </div>
@@ -479,26 +478,6 @@ export default function DesignSystemPage() {
           </div>
         </Section>
 
-        {/* 10 GRADIENT */}
-        <Section id="gradiente" title="10 — Gradiente Hero">
-          <div className="hero-gradient flex flex-col items-start" style={{ borderRadius: "var(--radius-xl)", padding: "var(--space-12)", gap: "var(--gap-sm)" }}>
-            <span className="badge badge-accent">Nômade Voyage</span>
-            <h2 style={{ fontSize: "var(--text-h2)", fontWeight: 700, color: "white", lineHeight: 1.1 }}>
-              A agência para quem quer pertencer ao mundo.
-            </h2>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-lg)", color: "var(--color-white-high)", maxWidth: 540, lineHeight: 1.6 }}>
-              Passagens, seguro, visto e suporte completo para brasileiros que querem dar o próximo passo.
-            </p>
-            <div className="flex flex-wrap" style={{ gap: "var(--gap-xs)", marginTop: "var(--space-2)" }}>
-              <a href="#" className="btn-primary">Falar no WhatsApp <ArrowRight size={18} /></a>
-              <a href="#" className="btn-secondary" style={{ borderColor: "var(--color-white-xlow)", color: "white" }}>Ver destinos</a>
-            </div>
-          </div>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-muted-foreground)", marginTop: "var(--space-2)" }}>
-            ⚠ Usar apenas na seção hero. Não repetir em outros componentes.
-          </p>
-        </Section>
-
       </div>
 
       {/* ── Footer ─────────────────────────────────────────────────────────── */}
@@ -508,7 +487,7 @@ export default function DesignSystemPage() {
             <Logo size={28} theme="dark" />
           </div>
           <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-white-muted)" }}>
-            Design System v1.1 · 2026
+            Design System v2.0 · 2026
           </p>
         </div>
       </footer>

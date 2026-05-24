@@ -157,12 +157,11 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
+  font-size:   var(--text-h2);
   font-weight: 600;
   color:       var(--color-primary);
   line-height: 1.15;
 }
-
-h1, h2 { font-size: var(--text-h2); }
 
 /* ─── Layout ─── */
 

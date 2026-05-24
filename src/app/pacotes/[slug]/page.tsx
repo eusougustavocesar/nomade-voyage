@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getPackage, packages } from "@/data/packages";
 import Navbar from "@/components/Navbar";
+import NavAuthButton from "@/components/NavAuthButton";
 import Footer from "@/components/Footer";
 import PackageCard from "@/components/PackageCard";
 import Logo from "@/components/Logo";
@@ -53,7 +54,7 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
 
   return (
     <>
-      <Navbar />
+      <Navbar authSlot={<NavAuthButton />} />
 
       {/* ── Hero ── */}
       <section style={{ position: "relative", height: "60vh", minHeight: 400, overflow: "hidden" }}>

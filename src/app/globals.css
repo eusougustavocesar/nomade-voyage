@@ -370,3 +370,84 @@ section {
   box-shadow:   0 0 0 3px rgba(184, 120, 10, 0.15);
 }
 .input::placeholder { color: #B8A090; }
+
+/* ─── Admin Shell ─── */
+
+:root {
+  --admin-sidebar-w:    220px;
+  --admin-topbar-h:     56px;
+  --admin-icon-box:     28px;
+  --admin-nav-icon:     14px;
+  --admin-nav-fs:       var(--text-caption);
+  --admin-label-fs:     11px;
+  --admin-content-max:  1200px;
+  --admin-page-px:      var(--space-8);
+  --admin-page-py:      var(--space-8);
+}
+
+/* Grid shell — sidebar spans ambas as rows */
+.admin-shell {
+  display:               grid;
+  grid-template-columns: var(--admin-sidebar-w) 1fr;
+  grid-template-rows:    var(--admin-topbar-h) 1fr;
+  height:                100svh;
+  overflow:              hidden;
+  background:            var(--color-background);
+}
+
+.admin-sidebar {
+  grid-column: 1;
+  grid-row:    1 / -1;
+  display:     flex;
+  flex-direction: column;
+  background:  var(--color-surface);
+  border-right: 1px solid var(--color-border);
+  overflow:    hidden;
+}
+
+.admin-topbar {
+  grid-column: 2;
+  grid-row:    1;
+  display:     flex;
+  align-items: center;
+  justify-content: space-between;
+  padding:     0 var(--admin-page-px);
+  background:  var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.admin-main {
+  grid-column:  2;
+  grid-row:     2;
+  overflow-y:   auto;
+}
+
+/* Page content wrapper — usado dentro de admin-main */
+.admin-page {
+  max-width: var(--admin-content-max);
+  margin:    0 auto;
+  padding:   var(--admin-page-py) var(--admin-page-px);
+}
+
+.admin-label {
+  font-size:      var(--admin-label-fs);
+  font-weight:    600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color:          var(--color-muted-foreground);
+}
+
+.admin-value {
+  font-family: var(--font-heading);
+  font-size:   var(--text-h3);
+  font-weight: 700;
+  color:       var(--color-foreground);
+  line-height: 1;
+}
+
+.admin-card {
+  background:    var(--color-surface);
+  border:        1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding:       var(--space-6);
+}

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import NavAuthButton from "@/components/NavAuthButton";
 import FAQ from "@/components/FAQ";
 import Reveal from "@/components/Reveal";
 import Footer from "@/components/Footer";
@@ -15,7 +16,7 @@ import { ArrowRight, Clock } from "lucide-react";
 export default function LandingPage() {
   return (
     <>
-      <Navbar />
+      <Navbar authSlot={<NavAuthButton />} />
 
       {/* ── 1. HERO ──────────────────────────────────────────────────────────── */}
       <section style={{ minHeight: "100svh", display: "flex", alignItems: "center", padding: 0 }}>

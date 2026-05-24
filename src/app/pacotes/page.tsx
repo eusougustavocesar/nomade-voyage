@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import NavAuthButton from "@/components/NavAuthButton";
 import Footer from "@/components/Footer";
 import PackageCatalog from "@/components/PackageCatalog";
 import { packages } from "@/data/packages";
@@ -14,7 +15,7 @@ export const metadata = {
 export default function PacotesPage() {
   return (
     <>
-      <Navbar />
+      <Navbar authSlot={<NavAuthButton />} />
 
       {/* ── Page header ── */}
       <div style={{

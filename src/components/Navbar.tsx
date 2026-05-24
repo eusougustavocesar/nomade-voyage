@@ -11,7 +11,7 @@ const links = [
 
 const WA_LINK = "https://wa.me/351962221594?text=Olá!%20Vim%20pelo%20site%20da%20Nômade%20Voyage%20e%20quero%20falar%20com%20um%20especialista.";
 
-export default function Navbar() {
+export default function Navbar({ authSlot }: { authSlot?: React.ReactNode }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -63,8 +63,9 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Desktop right: CTA */}
+        {/* Desktop right: CTA + auth */}
         <div className="hidden md:flex items-center" style={{ gap: "var(--space-3)" }}>
+          {authSlot}
           <a
             href={WA_LINK}
             target="_blank"

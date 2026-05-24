@@ -2,7 +2,7 @@
 
 import { MessageCircle } from "lucide-react";
 
-const WA_LINK = "https://wa.me/5500000000000?text=Olá!%20Vim%20pelo%20site%20da%20Nômade%20Voyage%20e%20quero%20saber%20mais.";
+const WA_LINK = "https://wa.me/351962221594?text=Olá!%20Vim%20pelo%20site%20da%20Nômade%20Voyage%20e%20quero%20saber%20mais.";
 
 export default function FloatingWhatsApp() {
   return (

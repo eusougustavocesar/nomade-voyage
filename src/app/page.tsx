@@ -4,9 +4,10 @@ import FAQ from "@/components/FAQ";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import Reveal from "@/components/Reveal";
 import Logo from "@/components/Logo";
+import PackageSection from "@/components/PackageSection";
 import {
-  MapPin, MessageCircle, Plane, Building2, Compass,
-  ArrowRight, Check, Star, Shield, FileText, HeartHandshake, User, Clock,
+  MapPin, MessageCircle,
+  ArrowRight, Star, Shield, FileText, HeartHandshake, User, Clock,
 } from "lucide-react";
 
 const WA_LINK  = "https://wa.me/351962221594?text=Olá!%20Vim%20pelo%20site%20da%20Nômade%20Voyage%20e%20quero%20saber%20mais.";
@@ -21,53 +22,7 @@ const stats = [
   { number: "R$ 0", label: "Na primeira consulta" },
 ];
 
-const destinations = [
-  {
-    id: "lisboa",
-    photo: "/dest-lisboa.jpg",
-    city: "Lisboa",
-    country: "Portugal",
-    tagline: "A favorita dos brasileiros",
-    description: "Fado, pastéis de Belém e o Tejo ao entardecer. A cidade europeia mais acolhedora para quem vem do Brasil.",
-  },
-  {
-    id: "madrid",
-    photo: "/dest-madrid.jpg",
-    city: "Madrid",
-    country: "Espanha",
-    tagline: "Arte, gastronomia e energia",
-    description: "A capital espanhola que não decepciona — museus, mercados e uma vida noturna que não acaba.",
-  },
-  {
-    id: "dublin",
-    photo: "/dest-dublin.jpg",
-    city: "Dublin",
-    country: "Irlanda",
-    tagline: "Charme, pubs e paisagens verdes",
-    description: "Pubs históricos, cliffs de tirar o fôlego e um charme único que faz querer voltar.",
-  },
-];
 
-const services = [
-  {
-    icon: Plane,
-    title: "Passagens aéreas",
-    description: "Já encontramos São Paulo, Lisboa em menos de 14h com escala em Frankfurt, por R$ 2.800 ida e volta. Cada rota é curada: sem escala inútil, sem tarifa-armadilha.",
-    items: ["Nacionais e internacionais", "Melhor custo por rota e duração", "Suporte para alterações e cancelamentos"],
-  },
-  {
-    icon: Building2,
-    title: "Hotéis e acomodações",
-    description: "De hostel boutique no Bairro Alto a hotel com vista para o Castelo de São Jorge — indicamos o que combina com o seu perfil e reservamos por você.",
-    items: ["Hotéis boutique e resorts selecionados", "Hostels com curadoria para mochileiros", "Apartamentos para estadias longas"],
-  },
-  {
-    icon: Compass,
-    title: "Roteiro personalizado",
-    description: "Tarde livre em Sintra, jantar num tasca que nenhum guia do Google conhece, passeio a pé pelos canais de Dublin. Cada dia pensado para você — nada genérico.",
-    items: ["Itinerário personalizado por destino", "Dicas exclusivas de locais", "Seguro viagem incluído"],
-  },
-];
 
 const steps = [
   {
@@ -175,8 +130,8 @@ export default function LandingPage() {
                 <MessageCircle size={20} />
                 Planejar minha viagem
               </a>
-              <a href="#destinos" className="btn-secondary" style={{ borderColor: "var(--color-white-xlow)", color: "white" }}>
-                Ver destinos
+              <a href="#pacotes" className="btn-secondary" style={{ borderColor: "var(--color-white-xlow)", color: "white" }}>
+                Ver roteiros
                 <ArrowRight size={18} />
               </a>
             </div>
@@ -212,45 +167,19 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── 3. DESTINOS — photo cards ────────────────────────────────────────── */}
-      <section id="destinos" style={{ background: "var(--color-background)" }}>
+      {/* ── 3. PACOTES ───────────────────────────────────────────────────────── */}
+      <section id="pacotes" style={{ background: "var(--color-background)" }}>
         <div className="container">
           <Reveal>
             <div className="section-header">
-              <span className="badge mb-4 inline-flex">Destinos favoritos dos nossos clientes</span>
-              <h2>Onde você quer estar?</h2>
+              <span className="badge mb-4 inline-flex">Roteiros mais pedidos</span>
+              <h2>Inspire-se. A gente personaliza.</h2>
               <p className="section-subtitle">
-                Lisboa, Madrid ou Dublin — roteiros personalizados, hotéis curados e tudo planejado para você aproveitar cada momento.
+                Estes são os roteiros base mais escolhidos pelos nossos clientes. Cada um é adaptado para o seu perfil, datas e orçamento.
               </p>
             </div>
           </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: "var(--gap-md)" }}>
-            {destinations.map(({ id, photo, city, country, tagline, description }, i) => (
-              <Reveal key={id} delay={((i + 1) as 1 | 2 | 3)}>
-                <div
-                  className="group"
-                  style={{ position: "relative", height: 520, borderRadius: "var(--radius-xl)", overflow: "hidden" }}
-                >
-                  <Image
-                    src={photo}
-                    alt={`${city}, ${country}`}
-                    fill
-                    quality={85}
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="transition-transform duration-500 ease-out group-hover:scale-105"
-                    style={{ objectFit: "cover" }}
-                  />
-                  <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(7,19,30,0.92) 0%, rgba(7,19,30,0.30) 55%, transparent 100%)" }} />
-                  <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "var(--card-padding)" }}>
-                    <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", fontWeight: 500, color: "rgba(255,255,255,0.55)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "var(--space-1)" }}>{country}</span>
-                    <h3 style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: "clamp(28px, 3vw, 38px)", color: "white", marginBottom: "var(--space-3)", lineHeight: 1.05 }}>{city}</h3>
-                    <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-sm)", color: "rgba(255,255,255,0.72)", lineHeight: 1.6, marginBottom: "var(--space-6)" }}>{description}</p>
-                    <span style={{ display: "inline-flex", alignItems: "center", background: "rgba(255,255,255,0.12)", backdropFilter: "blur(10px)", WebkitBackdropFilter: "blur(10px)", color: "rgba(255,255,255,0.85)", fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", fontWeight: 500, padding: "5px 14px", borderRadius: "var(--radius-full)", border: "1px solid rgba(255,255,255,0.18)", width: "fit-content" }}>{tagline}</span>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <PackageSection />
         </div>
       </section>
 
@@ -280,44 +209,6 @@ export default function LandingPage() {
               </div>
             </div>
           </Reveal>
-        </div>
-      </section>
-
-      {/* ── 5. SERVIÇOS ─────────────────────────────────────────────────────── */}
-      <section style={{ background: "var(--color-muted)" }}>
-        <div className="container">
-          <Reveal>
-            <div className="section-header">
-              <span className="badge mb-4 inline-flex">O que a gente resolve por você</span>
-              <h2>Você escolhe o destino. A gente cuida do resto.</h2>
-              <p className="section-subtitle">
-                Do início ao fim — passagens, acomodação, seguro e roteiro personalizado, tudo em uma única conversa no WhatsApp.
-              </p>
-            </div>
-          </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: "var(--gap-md)" }}>
-            {services.map(({ icon: Icon, title, description, items }, i) => (
-              <Reveal key={title} delay={((i + 1) as 1 | 2 | 3)}>
-                <div className="card flex flex-col">
-                  <div className="flex items-center justify-center flex-shrink-0" style={{ width: 48, height: 48, borderRadius: "var(--radius-lg)", background: "var(--color-muted)", marginBottom: "var(--space-6)" }}>
-                    <Icon size={22} color="var(--color-primary-light)" />
-                  </div>
-                  <h3 style={{ fontSize: "var(--text-h4)", fontWeight: 600, marginBottom: "var(--space-4)", color: "var(--color-primary)" }}>{title}</h3>
-                  <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body)", color: "var(--color-muted-foreground)", lineHeight: 1.7, marginBottom: "var(--space-8)" }}>
-                    {description}
-                  </p>
-                  <ul className="flex flex-col mt-auto" style={{ gap: "var(--space-3)" }}>
-                    {items.map((item) => (
-                      <li key={item} className="flex items-center" style={{ gap: "var(--space-3)" }}>
-                        <Check size={14} color="var(--color-primary-light)" />
-                        <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-sm)", color: "var(--color-muted-foreground)" }}>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </Reveal>
-            ))}
-          </div>
         </div>
       </section>
 

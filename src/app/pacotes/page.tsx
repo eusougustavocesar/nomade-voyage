@@ -1,5 +1,4 @@
 import Navbar from "@/components/Navbar";
-import AnnouncementBanner from "@/components/AnnouncementBanner";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import Footer from "@/components/Footer";
 import PackageCatalog from "@/components/PackageCatalog";
@@ -16,7 +15,6 @@ export const metadata = {
 export default function PacotesPage() {
   return (
     <>
-      <AnnouncementBanner />
       <Navbar />
       <FloatingWhatsApp />
 

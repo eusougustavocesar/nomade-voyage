@@ -5,7 +5,6 @@ import { MessageCircle, Menu, X } from "lucide-react";
 import Logo from "@/components/Logo";
 
 const links = [
-  { label: "Destinos",      href: "/pacotes" },
   { label: "Pacotes",       href: "/pacotes" },
   { label: "Como funciona", href: "/#como-funciona" },
 ];

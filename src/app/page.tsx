@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
-import AnnouncementBanner from "@/components/AnnouncementBanner";
 import FAQ from "@/components/FAQ";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import Reveal from "@/components/Reveal";
@@ -87,7 +86,6 @@ const testimonials = [
 export default function LandingPage() {
   return (
     <>
-      <AnnouncementBanner />
       <Navbar />
       <FloatingWhatsApp />
 
@@ -120,15 +118,11 @@ export default function LandingPage() {
               <HeroSearch />
             </div>
 
-            <div className="flex flex-wrap justify-center hero-enter hero-enter-delay-4" style={{ gap: "var(--gap-sm)" }}>
+            <div className="flex justify-center hero-enter hero-enter-delay-4">
               <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-whatsapp">
                 <MessageCircle size={18} />
                 Falar com especialista
               </a>
-              <Link href="/pacotes" className="btn-secondary" style={{ borderColor: "var(--color-white-xlow)", color: "white" }}>
-                Ver todos os roteiros
-                <ArrowRight size={17} />
-              </Link>
             </div>
           </div>
         </div>
@@ -221,12 +215,6 @@ export default function LandingPage() {
                 </div>
               </Reveal>
             ))}
-          </div>
-          <div className="flex justify-center" style={{ marginTop: "var(--gap-xl)" }}>
-            <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-primary">
-              <MessageCircle size={18} />
-              Começar agora no WhatsApp
-            </a>
           </div>
         </div>
       </section>

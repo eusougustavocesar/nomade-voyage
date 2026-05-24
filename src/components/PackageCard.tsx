@@ -71,7 +71,7 @@ export default function PackageCard({ pkg }: { pkg: TravelPackage }) {
           <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", color: "var(--color-accent)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "var(--space-1)" }}>
             {pkg.profile}
           </p>
-          <h3 style={{ fontSize: "var(--text-h4)", fontWeight: 700, color: "var(--color-foreground)", lineHeight: 1.2, marginBottom: "var(--space-1)" }}>
+          <h3 style={{ fontSize: "var(--text-h4)", color: "var(--color-foreground)", lineHeight: 1.2, marginBottom: "var(--space-1)" }}>
             {pkg.name}
           </h3>
           <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-muted-foreground)", lineHeight: 1.5 }}>

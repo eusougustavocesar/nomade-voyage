@@ -74,7 +74,7 @@ export default function PackageConfigurator({ destination }: { destination: stri
           <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", color: "var(--color-muted-foreground)", textTransform: "uppercase", letterSpacing: "0.08em" }}>
             Montar pacote para
           </p>
-          <h3 style={{ fontSize: "var(--text-h3)", fontWeight: 700 }}>{destination}</h3>
+          <h3 style={{ fontSize: "var(--text-h3)" }}>{destination}</h3>
         </div>
       </div>
 

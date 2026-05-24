@@ -155,7 +155,7 @@ export default function LandingPage() {
                   <div className="flex items-center justify-center flex-shrink-0" style={{ width: 52, height: 52, borderRadius: "var(--radius-full)", background: "var(--color-muted)", border: "2px solid var(--color-border)" }}>
                     <Icon size={22} color="var(--color-primary-light)" />
                   </div>
-                  <h3 style={{ fontSize: "var(--text-h4)", fontWeight: 700, lineHeight: 1.25 }}>{title}</h3>
+                  <h3 style={{ fontSize: "var(--text-h4)", lineHeight: 1.25 }}>{title}</h3>
                   <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-sm)", color: "var(--color-muted-foreground)", lineHeight: 1.7 }}>
                     {description}
                   </p>

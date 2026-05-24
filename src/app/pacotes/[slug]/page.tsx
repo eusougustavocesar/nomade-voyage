@@ -78,7 +78,7 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
               </span>
             ))}
           </div>
-          <h1 style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: "var(--text-display)", color: "white", lineHeight: 1.05, marginBottom: "var(--space-3)" }}>
+          <h1 style={{ fontSize: "var(--text-display)", color: "var(--color-foreground)", lineHeight: 1.05, marginBottom: "var(--space-3)" }}>
             {pkg.name}
           </h1>
           <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-lg)", color: "rgba(255,255,255,0.80)" }}>

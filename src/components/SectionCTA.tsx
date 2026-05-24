@@ -5,8 +5,14 @@ const WA_GUIDE = "https://wa.me/351962221594?text=Olá!%20Quero%20dicas%20sobre%
 
 export default function SectionCTA() {
   return (
-    <section style={{ background: "var(--color-surface)", borderTop: "1px solid var(--color-border)" }}>
-      <div className="container text-center">
+    <section style={{ padding: "var(--gap-xl) 0" }}>
+      <div className="container">
+        <div className="text-center" style={{
+          background: "var(--color-surface)",
+          borderRadius: "var(--radius-xl)",
+          padding: "var(--section-y) var(--gap-lg)",
+          border: "1px solid var(--color-border)",
+        }}>
         <span className="badge badge-accent mb-5 inline-flex" style={{ gap: 6 }}>
           <Clock size={11} />
           Consulta gratuita · Máx. 8 grupos por mês
@@ -39,6 +45,7 @@ export default function SectionCTA() {
           >
             ou peça dicas gratuitas sobre a Europa →
           </a>
+        </div>
         </div>
       </div>
     </section>

@@ -27,8 +27,13 @@ const testimonials = [
 
 export default function SectionDepoimentos() {
   return (
-    <section id="depoimentos" style={{ background: "var(--color-muted)" }}>
+    <section id="depoimentos" style={{ padding: "var(--gap-xl) 0" }}>
       <div className="container">
+        <div style={{
+          background: "var(--color-muted)",
+          borderRadius: "var(--radius-xl)",
+          padding: "var(--section-y) var(--gap-lg)",
+        }}>
         <Reveal>
           <div className="section-header">
             <span className="badge mb-4 inline-flex">Quem já foi</span>
@@ -85,6 +90,7 @@ export default function SectionDepoimentos() {
               </div>
             </Reveal>
           ))}
+        </div>
         </div>
       </div>
     </section>

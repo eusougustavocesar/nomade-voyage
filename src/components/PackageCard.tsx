@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin, Star } from "lucide-react";
+import { MapPin, Star, Plane, BedDouble, Car, Shield, Map, MessageCircle, type LucideIcon } from "lucide-react";
 import type { TravelPackage } from "@/data/packages";
 
 const BADGE_STYLES: Record<string, React.CSSProperties> = {
@@ -12,19 +12,21 @@ const BADGE_STYLES: Record<string, React.CSSProperties> = {
   "Melhor custo-benefício": { background: "var(--color-success-bg)",     color: "var(--color-success)" },
 };
 
-function toShortLabel(text: string): string {
-  if (/passagem|voo/i.test(text))   return "Voo incluso";
-  if (/hotel|pousada/i.test(text))  return text.replace(/\(.*?\)/g, "").split(",")[0].trim();
-  if (/seguro/i.test(text))         return "Seguro viagem";
-  if (/transfer/i.test(text))       return "Transfer incluso";
-  if (/roteiro/i.test(text))        return "Roteiro personalizado";
-  if (/suporte|whatsapp/i.test(text)) return "Suporte 24h";
-  return text.split(",")[0].slice(0, 26);
+type Pill = { label: string; Icon: LucideIcon };
+
+function toPill(text: string): Pill {
+  if (/passagem|voo/i.test(text))       return { label: "Voo",      Icon: Plane };
+  if (/hotel|pousada/i.test(text))      return { label: "Hotel",    Icon: BedDouble };
+  if (/transfer/i.test(text))           return { label: "Transfer", Icon: Car };
+  if (/seguro/i.test(text))             return { label: "Seguro",   Icon: Shield };
+  if (/roteiro/i.test(text))            return { label: "Roteiro",  Icon: Map };
+  if (/suporte|whatsapp/i.test(text))   return { label: "Suporte",  Icon: MessageCircle };
+  return { label: text.split(",")[0].slice(0, 16), Icon: Map };
 }
 
 export default function PackageCard({ pkg }: { pkg: TravelPackage }) {
   const badgeStyle = pkg.badge ? BADGE_STYLES[pkg.badge] ?? {} : {};
-  const pills = pkg.includes.slice(0, 3).map(toShortLabel);
+  const pills = pkg.includes.slice(0, 3).map(toPill);
 
   return (
     <Link
@@ -85,15 +87,18 @@ export default function PackageCard({ pkg }: { pkg: TravelPackage }) {
 
         {/* Pills */}
         <div className="flex flex-wrap" style={{ gap: 6 }}>
-          {pills.map((label) => (
+          {pills.map(({ label, Icon }) => (
             <span
               key={label}
+              className="flex items-center"
               style={{
+                gap: 5,
                 fontSize: "var(--text-micro)", color: "var(--color-muted-foreground)",
                 background: "var(--color-muted)", borderRadius: "var(--radius-full)",
                 padding: "3px 10px",
               }}
             >
+              <Icon size={11} strokeWidth={2} />
               {label}
             </span>
           ))}

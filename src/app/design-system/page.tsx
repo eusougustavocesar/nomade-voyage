@@ -206,37 +206,79 @@ export default function DesignSystemPage() {
 
         {/* 01 COLORS */}
         <Section id="cores" title="01 — Paleta de Cores">
-          <div style={{ marginBottom: "var(--space-6)" }}>
-            <SubLabel>Marca</SubLabel>
-            <div className="grid grid-cols-2 sm:grid-cols-4" style={{ gap: "var(--gap-sm)" }}>
-              <Swatch name="Sky Blue"      hex="#7DD3FC" token="--color-primary" />
-              <Swatch name="Sky Bright"    hex="#38BDF8" token="--color-primary-light" />
-              <Swatch name="Terra"         hex="#FB923C" token="--color-accent" />
-              <Swatch name="WhatsApp"      hex="#25D366" token="whatsapp" />
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-sm)", color: "var(--color-muted-foreground)", marginBottom: "var(--space-8)", lineHeight: 1.6 }}>
+            O tema adapta automaticamente via <code style={{ fontFamily: "monospace", fontSize: "var(--text-caption)", background: "var(--color-muted)", padding: "2px 6px", borderRadius: "var(--radius-sm)" }}>prefers-color-scheme</code>. Abaixo: esquerda = light, direita = dark.
+          </p>
+
+          <SubLabel>Marca</SubLabel>
+          <div style={{ marginBottom: "var(--space-8)" }}>
+            <div className="grid grid-cols-1 sm:grid-cols-2" style={{ gap: "var(--gap-sm)" }}>
+              <div>
+                <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", fontWeight: 500, color: "var(--color-muted-foreground)", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "var(--space-3)" }}>Light</p>
+                <div className="grid grid-cols-2" style={{ gap: "var(--gap-xs)" }}>
+                  <Swatch name="Primary"        hex="#0C4A6E" token="--color-primary" />
+                  <Swatch name="Primary Light"  hex="#0EA5E9" token="--color-primary-light" />
+                  <Swatch name="Accent"         hex="#EA580C" token="--color-accent" />
+                  <Swatch name="WhatsApp"       hex="#25D366" token="whatsapp" />
+                </div>
+              </div>
+              <div>
+                <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", fontWeight: 500, color: "var(--color-muted-foreground)", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "var(--space-3)" }}>Dark</p>
+                <div className="grid grid-cols-2" style={{ gap: "var(--gap-xs)" }}>
+                  <Swatch name="Primary"        hex="#7DD3FC" token="--color-primary" />
+                  <Swatch name="Primary Light"  hex="#38BDF8" token="--color-primary-light" />
+                  <Swatch name="Accent"         hex="#FB923C" token="--color-accent" />
+                  <Swatch name="WhatsApp"       hex="#25D366" token="whatsapp" />
+                </div>
+              </div>
             </div>
           </div>
-          <div style={{ marginBottom: "var(--space-6)" }}>
-            <SubLabel>Superfícies</SubLabel>
-            <div className="grid grid-cols-2 sm:grid-cols-4" style={{ gap: "var(--gap-sm)" }}>
-              <Swatch name="Background"    hex="#0A0A0A" token="--color-background" />
-              <Swatch name="Surface"       hex="#111111" token="--color-surface" />
-              <Swatch name="Muted"         hex="#1A1A1A" token="--color-muted" />
-              <Swatch name="Footer"        hex="#050505" token="--color-footer" />
+
+          <SubLabel>Superfícies</SubLabel>
+          <div style={{ marginBottom: "var(--space-8)" }}>
+            <div className="grid grid-cols-1 sm:grid-cols-2" style={{ gap: "var(--gap-sm)" }}>
+              <div>
+                <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", fontWeight: 500, color: "var(--color-muted-foreground)", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "var(--space-3)" }}>Light</p>
+                <div className="grid grid-cols-2" style={{ gap: "var(--gap-xs)" }}>
+                  <Swatch name="Background" hex="#F0F9FF" token="--color-background" />
+                  <Swatch name="Surface"    hex="#FFFFFF" token="--color-surface" />
+                  <Swatch name="Muted"      hex="#E8F2F8" token="--color-muted" />
+                  <Swatch name="Border"     hex="#BAE6FD" token="--color-border" />
+                </div>
+              </div>
+              <div>
+                <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", fontWeight: 500, color: "var(--color-muted-foreground)", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "var(--space-3)" }}>Dark</p>
+                <div className="grid grid-cols-2" style={{ gap: "var(--gap-xs)" }}>
+                  <Swatch name="Background" hex="#0A0A0A" token="--color-background" />
+                  <Swatch name="Surface"    hex="#111111" token="--color-surface" />
+                  <Swatch name="Muted"      hex="#1A1A1A" token="--color-muted" />
+                  <Swatch name="Border"     hex="#2A2A2A" token="--color-border" />
+                </div>
+              </div>
             </div>
           </div>
-          <div style={{ marginBottom: "var(--space-6)" }}>
-            <SubLabel>Texto</SubLabel>
-            <div className="grid grid-cols-2 sm:grid-cols-4" style={{ gap: "var(--gap-sm)" }}>
-              <Swatch name="Foreground"    hex="#F0F0F0" token="--color-foreground" />
-              <Swatch name="Muted Text"    hex="#A1A1AA" token="--color-muted-foreground" />
-              <Swatch name="Destructive"   hex="#FCA5A5" token="--color-destructive" />
-            </div>
-          </div>
+
+          <SubLabel>Texto e estados</SubLabel>
           <div>
-            <SubLabel>Bordas e estados</SubLabel>
-            <div className="grid grid-cols-2 sm:grid-cols-4" style={{ gap: "var(--gap-sm)" }}>
-              <Swatch name="Border"        hex="#2A2A2A" token="--color-border" />
-              <Swatch name="Ring / Focus"  hex="#38BDF8" token="--color-ring" />
+            <div className="grid grid-cols-1 sm:grid-cols-2" style={{ gap: "var(--gap-sm)" }}>
+              <div>
+                <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", fontWeight: 500, color: "var(--color-muted-foreground)", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "var(--space-3)" }}>Light</p>
+                <div className="grid grid-cols-2" style={{ gap: "var(--gap-xs)" }}>
+                  <Swatch name="Foreground"      hex="#0C4A6E" token="--color-foreground" />
+                  <Swatch name="Muted Text"      hex="#64748B" token="--color-muted-foreground" />
+                  <Swatch name="Destructive"     hex="#DC2626" token="--color-destructive" />
+                  <Swatch name="Footer"          hex="#082F49" token="--color-footer" />
+                </div>
+              </div>
+              <div>
+                <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", fontWeight: 500, color: "var(--color-muted-foreground)", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "var(--space-3)" }}>Dark</p>
+                <div className="grid grid-cols-2" style={{ gap: "var(--gap-xs)" }}>
+                  <Swatch name="Foreground"      hex="#F0F0F0" token="--color-foreground" />
+                  <Swatch name="Muted Text"      hex="#A1A1AA" token="--color-muted-foreground" />
+                  <Swatch name="Destructive"     hex="#FCA5A5" token="--color-destructive" />
+                  <Swatch name="Footer"          hex="#050505" token="--color-footer" />
+                </div>
+              </div>
             </div>
           </div>
         </Section>

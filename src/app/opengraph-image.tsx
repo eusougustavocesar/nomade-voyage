@@ -17,7 +17,7 @@ export default function OGImage() {
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          background: "linear-gradient(135deg, #0C4A6E 0%, #0EA5E9 60%, #0C4A6E 100%)",
+          background: "linear-gradient(135deg, #5C2E08 0%, #B8780A 60%, #5C2E08 100%)",
           position: "relative",
           overflow: "hidden",
         }}
@@ -51,7 +51,7 @@ export default function OGImage() {
             <div
               style={{
                 display: "flex",
-                background: "rgba(234,88,12,0.9)",
+                background: "rgba(143,92,8,0.9)",
                 color: "white",
                 fontSize: 14,
                 fontWeight: 600,
@@ -92,7 +92,7 @@ export default function OGImage() {
           <div style={{ display: "flex", alignItems: "center", gap: 32 }}>
             {["+200 brasileiros atendidos", "4 destinos âncora", "Primeira consulta gratuita"].map((item) => (
               <div key={item} style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#0EA5E9", display: "flex" }} />
+                <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#FBE4CE", display: "flex" }} />
                 <span style={{ fontSize: 18, color: "rgba(255,255,255,0.70)", fontWeight: 500 }}>{item}</span>
               </div>
             ))}

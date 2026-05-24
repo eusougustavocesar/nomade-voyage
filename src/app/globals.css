@@ -4,30 +4,30 @@
 
 :root {
   /* ── Brand Colors ── */
-  --color-primary:          #0C4A6E;
-  --color-primary-light:    #0EA5E9;
-  --color-accent:           #EA580C;
+  --color-primary:          #5C2E08;  /* mahogany escuro — headings */
+  --color-primary-light:    #B8780A;  /* âmbar dourado — ícones/interativo */
+  --color-accent:           #8F5C08;  /* âmbar médio — CTAs */
 
   /* ── Surfaces ── */
-  --color-background:       #F0F9FF;
+  --color-background:       #FFF8F2;
   --color-surface:          #FFFFFF;
-  --color-muted:            #E8F2F8;
-  --color-footer:           #082F49;
+  --color-muted:            #FBE4CE;  /* cor-âncora dourada */
+  --color-footer:           #1E0E04;
 
   /* ── Text ── */
-  --color-foreground:       #0C4A6E;
-  --color-muted-foreground: #64748B;
+  --color-foreground:       #1E0E04;
+  --color-muted-foreground: #7A5C3B;
   --color-on-primary:       #FFFFFF;
 
   /* ── Utility ── */
-  --color-border:           #BAE6FD;
-  --color-ring:             #0EA5E9;
+  --color-border:           #F0C9A0;
+  --color-ring:             #B8780A;
   --color-destructive:      #DC2626;
 
   /* ── Semantic state colors ── */
   --color-success:          #16A34A;
   --color-success-bg:       rgba(22, 163, 74, 0.12);
-  --color-accent-bg:        rgba(234, 88, 12, 0.12);
+  --color-accent-bg:        rgba(143, 92, 8, 0.12);
   --color-destructive-bg:   rgba(220, 38, 38, 0.12);
   --color-purple:           #7C3AED;
   --color-purple-bg:        rgba(124, 58, 237, 0.12);
@@ -105,10 +105,10 @@
   --shadow-whatsapp:  0 4px 20px rgba(37, 211, 102, 0.30);
 
   /* ── Navbar glass ── */
-  --nav-bg:         rgba(255, 255, 255, 0.82);
-  --nav-bg-solid:   rgba(255, 255, 255, 0.97);
-  --nav-border:     rgba(0, 0, 0, 0.08);
-  --nav-shadow:     0 2px 16px rgba(0, 0, 0, 0.10);
+  --nav-bg:         rgba(255, 248, 242, 0.85);
+  --nav-bg-solid:   rgba(255, 248, 242, 0.97);
+  --nav-border:     rgba(92, 46, 8, 0.08);
+  --nav-shadow:     0 2px 16px rgba(92, 46, 8, 0.10);
 }
 
 
@@ -128,34 +128,34 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-primary:          #7DD3FC;
-    --color-primary-light:    #38BDF8;
-    --color-accent:           #FB923C;
+    --color-primary:          #FBE4CE;  /* cor-âncora — clara sobre fundo escuro */
+    --color-primary-light:    #F5C49A;
+    --color-accent:           #E8A06A;
 
-    --color-background:       #0A0A0A;
-    --color-surface:          #111111;
-    --color-muted:            #1A1A1A;
-    --color-footer:           #050505;
+    --color-background:       #0F0A04;
+    --color-surface:          #1A1008;
+    --color-muted:            #261A0D;
+    --color-footer:           #080502;
 
-    --color-foreground:       #F0F0F0;
-    --color-muted-foreground: #A1A1AA;
-    --color-on-primary:       #0A0A0A;
+    --color-foreground:       #F5EBE0;
+    --color-muted-foreground: #C4A882;
+    --color-on-primary:       #0F0A04;
 
-    --color-border:           #2A2A2A;
-    --color-ring:             #38BDF8;
+    --color-border:           #3D2A18;
+    --color-ring:             #F5C49A;
     --color-destructive:      #FCA5A5;
 
     --color-success:          #4ADE80;
     --color-success-bg:       rgba(74, 222, 128, 0.12);
-    --color-accent-bg:        rgba(251, 146, 60, 0.12);
+    --color-accent-bg:        rgba(232, 160, 106, 0.12);
     --color-destructive-bg:   rgba(252, 165, 165, 0.12);
     --color-purple:           #A78BFA;
     --color-purple-bg:        rgba(167, 139, 250, 0.12);
-    --color-on-primary-dim:   rgba(0, 0, 0, 0.55);
+    --color-on-primary-dim:   rgba(15, 10, 4, 0.55);
 
-    --nav-bg:         rgba(15, 15, 15, 0.80);
-    --nav-bg-solid:   rgba(15, 15, 15, 0.97);
-    --nav-border:     rgba(255, 255, 255, 0.08);
+    --nav-bg:         rgba(15, 10, 4, 0.82);
+    --nav-bg-solid:   rgba(15, 10, 4, 0.97);
+    --nav-border:     rgba(251, 228, 206, 0.08);
     --nav-shadow:     0 2px 16px rgba(0, 0, 0, 0.40);
   }
 }
@@ -252,7 +252,7 @@ section {
 /* ─── Hero Gradient ─── */
 
 .hero-gradient {
-  background: linear-gradient(135deg, #0C4A6E 0%, #0EA5E9 55%, #FFFFFF 100%);
+  background: linear-gradient(135deg, #5C2E08 0%, #B8780A 55%, #FFF8F2 100%);
 }
 
 /* ─── Buttons ─── */
@@ -273,7 +273,7 @@ section {
   transition:      background 150ms ease-out, transform 100ms ease-out;
   text-decoration: none;
 }
-.btn-primary:hover  { background: #C2410C; }
+.btn-primary:hover  { background: #6B4506; }
 .btn-primary:active { transform: scale(0.98); }
 
 .btn-secondary {
@@ -324,7 +324,7 @@ section {
   border-radius:  var(--radius-full);
 }
 .badge-accent {
-  background: rgba(251, 146, 60, 0.12);
+  background: var(--color-accent-bg);
   color:      var(--color-accent);
 }
 
@@ -367,6 +367,6 @@ section {
 .input:focus {
   outline:      none;
   border-color: var(--color-ring);
-  box-shadow:   0 0 0 3px rgba(14, 165, 233, 0.15);
+  box-shadow:   0 0 0 3px rgba(184, 120, 10, 0.15);
 }
-.input::placeholder { color: #94A3B8; }
+.input::placeholder { color: #B8A090; }

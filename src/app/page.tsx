@@ -271,7 +271,7 @@ export default function LandingPage() {
             <Clock size={11} />
             Consulta gratuita · Máx. 8 grupos por mês
           </span>
-          <h2 style={{ fontSize: "var(--text-display)", color: "var(--color-foreground)", lineHeight: 1.1, marginBottom: "var(--space-6)" }}>
+          <h2 style={{ marginBottom: "var(--space-6)" }}>
             O &ldquo;ano que vem&rdquo;<br />começa agora.
           </h2>
           <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-lg)", color: "var(--color-muted-foreground)", maxWidth: "480px", margin: "0 auto", marginBottom: "var(--space-6)", lineHeight: 1.65 }}>

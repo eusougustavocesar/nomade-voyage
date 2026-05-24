@@ -70,7 +70,7 @@ export default function PacotesPage() {
       {/* ── Bottom CTA ── */}
       <div style={{ background: "var(--color-surface)", borderTop: "1px solid var(--color-border)", padding: "var(--gap-xl) 0" }}>
         <div className="container text-center">
-          <h2 style={{ fontSize: "var(--text-h2)", color: "var(--color-foreground)", marginBottom: "var(--space-4)" }}>
+          <h2 style={{ marginBottom: "var(--space-4)" }}>
             Não encontrou o que queria?
           </h2>
           <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-md)", color: "var(--color-muted-foreground)", marginBottom: "var(--space-8)", maxWidth: 480, margin: "0 auto var(--space-8)" }}>

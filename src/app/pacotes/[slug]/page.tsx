@@ -113,7 +113,7 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
 
             {/* ── Itinerário ── */}
             <div style={{ gridColumn: "span 2" }}>
-              <h2 style={{ fontSize: "var(--text-h2)", marginBottom: "var(--gap-lg)" }}>Roteiro dia a dia</h2>
+              <h2 style={{ marginBottom: "var(--gap-lg)" }}>Roteiro dia a dia</h2>
               <div style={{ display: "flex", flexDirection: "column", gap: "var(--gap-md)" }}>
                 {pkg.itinerary.map(({ day, title, description, accommodation, meals }) => (
                   <div key={day} style={{ display: "flex", gap: "var(--gap-md)" }}>
@@ -252,7 +252,7 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
       {related.length > 0 && (
         <section style={{ background: "var(--color-surface)", borderTop: "1px solid var(--color-border)" }}>
           <div className="container">
-            <h2 style={{ fontSize: "var(--text-h2)", marginBottom: "var(--gap-lg)" }}>Também pode te interessar</h2>
+            <h2 style={{ marginBottom: "var(--gap-lg)" }}>Também pode te interessar</h2>
             <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: "var(--gap-md)" }}>
               {related.map((p) => (
                 <PackageCard key={p.slug} pkg={p} />

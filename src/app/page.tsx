@@ -10,21 +10,14 @@ import PackageCard from "@/components/PackageCard";
 import HeroSearch from "@/components/HeroSearch";
 import { getPopularPackages } from "@/data/packages";
 import {
-  MapPin, MessageCircle, ArrowRight, Star,
-  Shield, FileText, HeartHandshake, User, Clock, Users, Globe,
+  MessageCircle, ArrowRight, Star,
+  FileText, HeartHandshake, User, Clock, Users, Globe,
 } from "lucide-react";
 
 const WA_LINK  = "https://wa.me/351962221594?text=Olá!%20Vim%20pelo%20site%20da%20Nômade%20Voyage%20e%20quero%20saber%20mais.";
 const WA_GUIDE = "https://wa.me/351962221594?text=Olá!%20Quero%20dicas%20sobre%20como%20planejar%20minha%20viagem%20para%20a%20Europa.";
 
 // ── Dados ──────────────────────────────────────────────────────────────────────
-
-const stats = [
-  { number: "+200", label: "brasileiros levados à Europa" },
-  { number: "4",    label: "destinos âncora na Europa" },
-  { number: "1 a 1", label: "atendimento humano direto" },
-  { number: "R$ 0", label: "na primeira consulta" },
-];
 
 const steps = [
   {
@@ -141,27 +134,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── 2. STATS ─────────────────────────────────────────────────────────── */}
-      <section style={{ background: "var(--color-surface)", paddingTop: "var(--gap-xl)", paddingBottom: "var(--gap-xl)" }}>
-        <div className="container">
-          <div className="grid grid-cols-2 md:grid-cols-4" style={{ gap: "var(--gap-md)" }}>
-            {stats.map(({ number, label }, i) => (
-              <Reveal key={label} delay={((i % 3 + 1) as 1 | 2 | 3)}>
-                <div className="text-center" style={{ padding: "var(--space-6) var(--space-4)" }}>
-                  <p style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: "clamp(28px, 4vw, 40px)", color: "var(--color-primary)", lineHeight: 1, marginBottom: "var(--space-2)" }}>
-                    {number}
-                  </p>
-                  <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-sm)", color: "var(--color-muted-foreground)", lineHeight: 1.4 }}>
-                    {label}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 3. PACOTES ───────────────────────────────────────────────────────── */}
+      {/* ── 2. PACOTES ───────────────────────────────────────────────────────── */}
       <section id="pacotes" style={{ background: "var(--color-background)" }}>
         <div className="container">
           <Reveal>
@@ -187,36 +160,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── 4. CURADOR ───────────────────────────────────────────────────────── */}
-      <section style={{ background: "var(--color-surface)" }}>
-        <div className="container">
-          <Reveal>
-            <div className="flex flex-col md:flex-row items-center" style={{ gap: "var(--gap-xl)", maxWidth: 860, margin: "0 auto" }}>
-              <div className="flex-shrink-0 flex flex-col items-center" style={{ gap: "var(--space-4)" }}>
-                <div className="flex items-center justify-center" style={{ width: 120, height: 120, borderRadius: "var(--radius-full)", background: "var(--color-muted)", border: "2px solid var(--color-border)" }}>
-                  <span style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 38, color: "var(--color-primary)", letterSpacing: "-0.02em" }}>NV</span>
-                </div>
-                <div className="flex" style={{ gap: 3 }}>
-                  {[...Array(5)].map((_, i) => <Star key={i} size={13} fill="var(--color-accent)" color="var(--color-accent)" />)}
-                </div>
-                <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", color: "var(--color-muted-foreground)" }}>+200 viajantes</span>
-              </div>
-              <div>
-                <span className="badge mb-4 inline-flex">Quem cuida da sua viagem</span>
-                <h2 style={{ textAlign: "left", fontSize: "var(--text-h2)", marginBottom: "var(--space-6)" }}>Planejado por quem morou e viveu lá.</h2>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-md)", color: "var(--color-muted-foreground)", lineHeight: 1.75, marginBottom: "var(--space-4)" }}>
-                  Fui a Lisboa pela primeira vez sem saber nada, com o hotel no lugar errado e um mapa de papel. Adorei, mas aprendi da forma difícil. Desde então, já planejei mais de 200 viagens para brasileiros que queriam ir à Europa sem cometer os mesmos erros que eu.
-                </p>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-md)", color: "var(--color-muted-foreground)", lineHeight: 1.75 }}>
-                  Cada viagem é atendida pessoalmente. Sem terceirização, sem chatbot, sem formulário. Você fala comigo do primeiro &ldquo;como funciona?&rdquo; até o &ldquo;cheguei bem, obrigado.&rdquo;
-                </p>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ── 5. DIFERENCIAIS ──────────────────────────────────────────────────── */}
+      {/* ── 3. DIFERENCIAIS ──────────────────────────────────────────────────── */}
       <section style={{ background: "var(--color-background)" }}>
         <div className="container">
           <Reveal>

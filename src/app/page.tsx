@@ -88,7 +88,7 @@ export default function LandingPage() {
       <Navbar />
 
       {/* ── 1. HERO ──────────────────────────────────────────────────────────── */}
-      <section style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
+      <section style={{ position: "relative", minHeight: "100svh", display: "flex", alignItems: "center", overflow: "hidden", padding: 0 }}>
         <Image
           src="/hero-window.jpg"
           alt="Vista europeia ao entardecer"
@@ -153,7 +153,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── 3. DIFERENCIAIS ──────────────────────────────────────────────────── */}
-      <section style={{ background: "var(--color-background)" }}>
+      <section style={{ background: "var(--color-muted)" }}>
         <div className="container">
           <Reveal>
             <div className="section-header">

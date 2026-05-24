@@ -8,8 +8,7 @@ import { LogIn, UserPlus, AlertCircle, CheckCircle, Eye, EyeOff } from "lucide-r
 type Tab = "login" | "register";
 
 export default function AuthForm() {
-  const router   = useRouter();
-  const supabase = createClient();
+  const router = useRouter();
 
   const [tab,      setTab]      = useState<Tab>("login");
   const [name,     setName]     = useState("");
@@ -35,6 +34,7 @@ export default function AuthForm() {
     e.preventDefault();
     reset();
     setLoading(true);
+    const supabase = createClient();
 
     const { data, error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) {
@@ -57,6 +57,7 @@ export default function AuthForm() {
   async function handleRegister(e: React.FormEvent) {
     e.preventDefault();
     reset();
+    const supabase = createClient();
 
     if (password !== confirm) {
       setError("As senhas não coincidem.");

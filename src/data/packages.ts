@@ -36,7 +36,7 @@ export const packages: TravelPackage[] = [
   {
     slug: "lisboa-essencial",
     name: "Lisboa Essencial",
-    tagline: "A melhor primeira vez na Europa",
+    tagline: "Pastéis de Belém, fado em Alfama, fim de tarde no Tejo",
     destination: "Lisboa",
     countries: ["Portugal"],
     cities: ["Lisboa", "Sintra"],
@@ -70,7 +70,7 @@ export const packages: TravelPackage[] = [
   {
     slug: "lisboa-completa",
     name: "Lisboa Completa",
-    tagline: "Lisboa sem pressa, com tudo que importa",
+    tagline: "Lisboa, Sintra, Cascais e Óbidos — cada dia um Portugal diferente",
     destination: "Lisboa",
     countries: ["Portugal"],
     cities: ["Lisboa", "Sintra", "Óbidos", "Cascais"],
@@ -107,7 +107,7 @@ export const packages: TravelPackage[] = [
   {
     slug: "portugal-espanha",
     name: "Portugal e Espanha",
-    tagline: "Dois países no mesmo fôlego",
+    tagline: "Café em Lisboa, tapas em Sevilha, noite na Gran Vía",
     destination: "Multi-destino",
     countries: ["Portugal", "Espanha"],
     cities: ["Lisboa", "Sintra", "Sevilha", "Madrid"],
@@ -147,7 +147,7 @@ export const packages: TravelPackage[] = [
   {
     slug: "lisboa-madrid-14",
     name: "Lisboa e Madrid",
-    tagline: "Duas capitais, ritmos diferentes",
+    tagline: "De miradouro em miradouro, de tapas em tapas — 14 dias bem usados",
     destination: "Multi-destino",
     countries: ["Portugal", "Espanha"],
     cities: ["Lisboa", "Sintra", "Cascais", "Madrid", "Toledo"],
@@ -188,7 +188,7 @@ export const packages: TravelPackage[] = [
   {
     slug: "dublin-lisboa",
     name: "Dublin e Lisboa",
-    tagline: "Do verde da Irlanda ao sol de Portugal",
+    tagline: "Cliffs of Moher de manhã, fado em Alfama de noite",
     destination: "Multi-destino",
     countries: ["Irlanda", "Portugal"],
     cities: ["Dublin", "Galway", "Lisboa", "Sintra"],
@@ -230,7 +230,7 @@ export const packages: TravelPackage[] = [
   {
     slug: "europa-3-paises",
     name: "Europa em 3 Países",
-    tagline: "Portugal, Espanha e Irlanda numa única viagem",
+    tagline: "Lisboa ao sol, Madrid ao museu, Dublin ao pint — três países, uma viagem",
     destination: "Multi-destino",
     countries: ["Portugal", "Espanha", "Irlanda"],
     cities: ["Lisboa", "Madrid", "Dublin"],
@@ -275,7 +275,7 @@ export const packages: TravelPackage[] = [
   {
     slug: "portugal-completo",
     name: "Portugal Completo",
-    tagline: "Lisboa, Porto e o melhor de Portugal",
+    tagline: "De Lisboa ao Porto passando por Fátima, Coimbra e vinho do Porto",
     destination: "Multi-destino",
     countries: ["Portugal"],
     cities: ["Lisboa", "Fátima", "Coimbra", "Porto", "Guimarães"],
@@ -314,7 +314,7 @@ export const packages: TravelPackage[] = [
   {
     slug: "peninsula-iberica",
     name: "Península Ibérica",
-    tagline: "Lisboa, Madrid e Barcelona numa só viagem",
+    tagline: "De Lisboa a Barcelona pela Espanha — pastel, tapas e Gaudí",
     destination: "Multi-destino",
     countries: ["Portugal", "Espanha"],
     cities: ["Lisboa", "Sevilha", "Madrid", "Barcelona"],
@@ -356,7 +356,7 @@ export const packages: TravelPackage[] = [
   {
     slug: "italia-essencial",
     name: "Itália Essencial",
-    tagline: "Roma, Florença e Veneza — a tríade perfeita",
+    tagline: "Coliseu ao entardecer, Ponte Vecchio ao amanhecer, gôndola em Veneza",
     destination: "Multi-destino",
     countries: ["Itália"],
     cities: ["Roma", "Florença", "Veneza"],
@@ -397,7 +397,7 @@ export const packages: TravelPackage[] = [
   {
     slug: "trio-classico",
     name: "Trio Clássico",
-    tagline: "Paris, Roma e Londres — o sonho europeu",
+    tagline: "Torre Eiffel, Fontana di Trevi, Big Ben — o roteiro que todo mundo sonha",
     destination: "Multi-destino",
     countries: ["França", "Itália", "Reino Unido"],
     cities: ["Paris", "Roma", "Londres"],
@@ -437,7 +437,7 @@ export const packages: TravelPackage[] = [
   {
     slug: "grecia-classica",
     name: "Grécia Clássica",
-    tagline: "Atenas, Santorini e Mykonos",
+    tagline: "Acrópole ao amanhecer, pôr do sol em Oia, moinhos de Mykonos",
     destination: "Multi-destino",
     countries: ["Grécia"],
     cities: ["Atenas", "Santorini", "Mykonos"],
@@ -475,7 +475,7 @@ export const packages: TravelPackage[] = [
   {
     slug: "leste-europeu",
     name: "Leste Europeu",
-    tagline: "Praga, Viena e Budapeste — o melhor custo-benefício",
+    tagline: "Cerveja tcheca em Praga, café vienense, banhos termais em Budapeste",
     destination: "Multi-destino",
     countries: ["República Tcheca", "Áustria", "Hungria"],
     cities: ["Praga", "Viena", "Budapeste"],

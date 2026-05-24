@@ -1,9 +1,23 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { Search, X, SlidersHorizontal } from "lucide-react";
+import { Search, X, SlidersHorizontal, ArrowUpDown } from "lucide-react";
 import { filterPackages, searchPackages, EUROPEAN_DESTINATIONS } from "@/data/packages";
-import type { Destination, DurationRange } from "@/data/packages";
+import type { Destination, DurationRange, TravelPackage } from "@/data/packages";
+
+type SortOption = "popular" | "duracao-asc" | "duracao-desc";
+
+const SORT_OPTIONS: { label: string; value: SortOption }[] = [
+  { label: "Mais populares",   value: "popular" },
+  { label: "Menor duração",    value: "duracao-asc" },
+  { label: "Maior duração",    value: "duracao-desc" },
+];
+
+function sortPackages(list: TravelPackage[], sort: SortOption): TravelPackage[] {
+  if (sort === "duracao-asc")  return [...list].sort((a, b) => a.duration - b.duration);
+  if (sort === "duracao-desc") return [...list].sort((a, b) => b.duration - a.duration);
+  return [...list].sort((a, b) => (b.popular ? 1 : 0) - (a.popular ? 1 : 0));
+}
 import PackageCard from "./PackageCard";
 import PackageConfigurator from "./PackageConfigurator";
 
@@ -28,6 +42,7 @@ const normalize = (s: string) =>
 export default function PackageCatalog() {
   const [destination, setDestination] = useState<Destination | "Todos">("Todos");
   const [duration, setDuration]       = useState<DurationRange | "todos">("todos");
+  const [sort, setSort]               = useState<SortOption>("popular");
   const [query, setQuery]             = useState("");
   const [submitted, setSubmitted]     = useState("");
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -39,9 +54,10 @@ export default function PackageCatalog() {
       : [];
 
   const usingSearch = submitted.length > 0;
-  const results = usingSearch
+  const raw = usingSearch
     ? searchPackages(submitted)
     : filterPackages({ destination, duration });
+  const results = sortPackages(raw, sort);
 
   function selectSuggestion(dest: string) {
     setQuery(dest);
@@ -71,6 +87,7 @@ export default function PackageCatalog() {
     setSubmitted("");
     setDestination("Todos");
     setDuration("todos");
+    setSort("popular");
     setShowSuggestions(false);
   }
 
@@ -188,21 +205,35 @@ export default function PackageCatalog() {
         </div>
       )}
 
-      {/* ── Results summary ── */}
-      <div className="flex items-center justify-between" style={{ marginBottom: "var(--gap-md)" }}>
+      {/* ── Results summary + sort ── */}
+      <div className="flex flex-wrap items-center justify-between" style={{ marginBottom: "var(--gap-md)", gap: 8 }}>
         <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-muted-foreground)" }}>
           {usingSearch
             ? `${results.length} resultado${results.length !== 1 ? "s" : ""} para "${submitted}"`
             : `${results.length} pacote${results.length !== 1 ? "s" : ""} · todos personalizáveis`}
         </p>
-        {(usingSearch || destination !== "Todos" || duration !== "todos") && (
-          <button
-            onClick={clearAll}
-            style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-primary-light)", background: "none", border: "none", cursor: "pointer", textDecoration: "underline" }}
-          >
-            Limpar filtros
-          </button>
-        )}
+        <div className="flex items-center" style={{ gap: 8 }}>
+          {(usingSearch || destination !== "Todos" || duration !== "todos") && (
+            <button
+              onClick={clearAll}
+              style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-primary-light)", background: "none", border: "none", cursor: "pointer", textDecoration: "underline" }}
+            >
+              Limpar filtros
+            </button>
+          )}
+          <div className="flex items-center" style={{ gap: 6, padding: "5px 10px", borderRadius: "var(--radius-md)", border: "1.5px solid var(--color-border)", background: "transparent" }}>
+            <ArrowUpDown size={12} color="var(--color-muted-foreground)" />
+            <select
+              value={sort}
+              onChange={(e) => setSort(e.target.value as SortOption)}
+              style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", color: "var(--color-muted-foreground)", background: "transparent", border: "none", outline: "none", cursor: "pointer" }}
+            >
+              {SORT_OPTIONS.map(({ label, value }) => (
+                <option key={value} value={value}>{label}</option>
+              ))}
+            </select>
+          </div>
+        </div>
       </div>
 
       {/* ── Grid or configurator ── */}

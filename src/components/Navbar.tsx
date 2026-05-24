@@ -3,24 +3,17 @@
 import { useState } from "react";
 import { MessageCircle, Menu, X } from "lucide-react";
 import Logo from "@/components/Logo";
-import ThemeToggle from "@/components/ThemeToggle";
-import { useTheme } from "@/components/ThemeProvider";
 
 const links = [
+  { label: "Destinos",      href: "/pacotes" },
   { label: "Pacotes",       href: "/pacotes" },
   { label: "Como funciona", href: "/#como-funciona" },
-  { label: "Depoimentos",   href: "/#depoimentos" },
 ];
 
-const WA_LINK = "https://wa.me/351962221594?text=Olá!%20Vim%20pelo%20site%20da%20Nômade%20Voyage%20e%20quero%20saber%20mais.";
+const WA_LINK = "https://wa.me/351962221594?text=Olá!%20Vim%20pelo%20site%20da%20Nômade%20Voyage%20e%20quero%20falar%20com%20um%20especialista.";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
-
-  const pillBg    = isDark ? "rgba(12, 30, 48, 0.85)"  : "rgba(255,255,255,0.72)";
-  const mobileBg  = isDark ? "rgba(12, 30, 48, 0.97)"  : "rgba(255,255,255,0.95)";
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 py-4" style={{ pointerEvents: "none" }}>
@@ -37,7 +30,7 @@ export default function Navbar() {
           style={{
             borderRadius: "var(--radius-full)",
             border: "1px solid var(--color-border)",
-            background: pillBg,
+            background: "rgba(255,255,255,0.72)",
             backdropFilter: "blur(14px)",
             WebkitBackdropFilter: "blur(14px)",
             boxShadow: "var(--shadow-sm)",
@@ -71,9 +64,8 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Desktop right: toggle + WhatsApp */}
+        {/* Desktop right: CTA */}
         <div className="hidden md:flex items-center" style={{ gap: "var(--space-3)" }}>
-          <ThemeToggle />
           <a
             href={WA_LINK}
             target="_blank"
@@ -82,13 +74,12 @@ export default function Navbar() {
             style={{ padding: "8px 18px", fontSize: "var(--text-micro)", gap: "7px" }}
           >
             <MessageCircle size={15} />
-            WhatsApp
+            Falar com especialista
           </a>
         </div>
 
-        {/* Mobile: toggle + hamburger */}
+        {/* Mobile: hamburger */}
         <div className="md:hidden flex items-center" style={{ gap: "var(--space-2)", pointerEvents: "all" }}>
-          <ThemeToggle />
           <button
             className="p-2"
             onClick={() => setOpen(!open)}
@@ -110,7 +101,7 @@ export default function Navbar() {
             gap: "var(--space-1)",
             borderRadius: "var(--radius-lg)",
             border: "1px solid var(--color-border)",
-            background: mobileBg,
+            background: "rgba(255,255,255,0.95)",
             backdropFilter: "blur(14px)",
             WebkitBackdropFilter: "blur(14px)",
             boxShadow: "var(--shadow-md)",
@@ -143,7 +134,7 @@ export default function Navbar() {
             style={{ marginTop: "var(--space-1)" }}
           >
             <MessageCircle size={16} />
-            Falar no WhatsApp
+            Falar com especialista
           </a>
         </div>
       )}

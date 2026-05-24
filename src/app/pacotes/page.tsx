@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
+import AnnouncementBanner from "@/components/AnnouncementBanner";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
-import Logo from "@/components/Logo";
+import Footer from "@/components/Footer";
 import PackageCatalog from "@/components/PackageCatalog";
 import { packages } from "@/data/packages";
 import { MessageCircle } from "lucide-react";
@@ -15,13 +16,19 @@ export const metadata = {
 export default function PacotesPage() {
   return (
     <>
+      <AnnouncementBanner />
       <Navbar />
       <FloatingWhatsApp />
 
       {/* ── Page header ── */}
-      <div style={{ background: "var(--color-surface)", paddingTop: "calc(var(--nav-height) + var(--gap-xl))", paddingBottom: "var(--gap-xl)", borderBottom: "1px solid var(--color-border)" }}>
+      <div style={{
+        background: "var(--color-surface)",
+        paddingTop: "calc(var(--nav-height) + var(--gap-xl))",
+        paddingBottom: "var(--gap-xl)",
+        borderBottom: "1px solid var(--color-border)",
+      }}>
         <div className="container">
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-muted-foreground)", marginBottom: "var(--space-2)" }}>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-muted-foreground)", marginBottom: "var(--space-3)" }}>
             <a href="/" style={{ color: "var(--color-muted-foreground)", textDecoration: "none" }}>Início</a>
             {" / "}
             <span>Pacotes</span>
@@ -29,9 +36,31 @@ export default function PacotesPage() {
           <h1 style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: "var(--text-display)", color: "var(--color-foreground)", lineHeight: 1.1, marginBottom: "var(--space-4)" }}>
             Roteiros para a Europa
           </h1>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-md)", color: "var(--color-muted-foreground)", maxWidth: 540, lineHeight: 1.65 }}>
-            {packages.length} roteiros base, todos personalizáveis. Escolha um destino, ajuste as datas e o que incluir — a gente cuida do resto.
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-md)", color: "var(--color-muted-foreground)", maxWidth: 560, lineHeight: 1.65, marginBottom: "var(--space-6)" }}>
+            {packages.length} roteiros base — de Lisboa à Grécia, do Leste Europeu à França. Todos personalizáveis: você escolhe as datas, o hotel e o que incluir.
           </p>
+          <div className="flex flex-wrap" style={{ gap: 10 }}>
+            {["Lisboa", "Madrid", "Dublin", "Itália", "França", "Grécia", "Leste Europeu"].map((dest) => (
+              <a
+                key={dest}
+                href={`/pacotes?q=${encodeURIComponent(dest)}`}
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: "var(--text-caption)",
+                  fontWeight: 500,
+                  color: "var(--color-primary)",
+                  background: "var(--color-muted)",
+                  textDecoration: "none",
+                  padding: "5px 14px",
+                  borderRadius: "var(--radius-full)",
+                  border: "1.5px solid var(--color-border)",
+                  transition: "all 120ms",
+                }}
+              >
+                {dest}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -58,15 +87,7 @@ export default function PacotesPage() {
         </div>
       </div>
 
-      {/* ── Footer ── */}
-      <footer style={{ background: "var(--color-footer)", padding: "var(--gap-lg) 0" }}>
-        <div className="container text-center">
-          <Logo size={24} theme="dark" />
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "rgba(255,255,255,0.35)", marginTop: "var(--space-3)" }}>
-            © 2026 Nômade Voyage
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }

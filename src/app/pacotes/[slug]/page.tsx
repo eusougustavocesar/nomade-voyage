@@ -3,9 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { getPackage, packages } from "@/data/packages";
 import Navbar from "@/components/Navbar";
+import AnnouncementBanner from "@/components/AnnouncementBanner";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import Footer from "@/components/Footer";
+import PackageCard from "@/components/PackageCard";
 import Logo from "@/components/Logo";
-import { Check, X, MapPin, Clock, Users, MessageCircle, ArrowLeft } from "lucide-react";
+import { Check, X, MapPin, Clock, Users, MessageCircle, ArrowLeft, Star, Shield, HeartHandshake, Globe } from "lucide-react";
 
 export function generateStaticParams() {
   return packages.map((p) => ({ slug: p.slug }));
@@ -23,17 +26,36 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 const WA_BASE = "https://wa.me/351962221594?text=";
 
+const DISPONIBILIDADES = [
+  { mes: "Julho 2026",    vagas: "2 vagas" },
+  { mes: "Agosto 2026",   vagas: "3 vagas" },
+  { mes: "Setembro 2026", vagas: "disponível" },
+  { mes: "Outubro 2026",  vagas: "disponível" },
+];
+
+const POR_QUE_NV = [
+  { icon: Users,         text: "Grupos de até 8 pessoas — sem ônibus lotado" },
+  { icon: Globe,         text: "Atendimento de quem já foi e conhece o destino" },
+  { icon: Shield,        text: "Passagem, hotel, seguro e roteiro em um só lugar" },
+  { icon: HeartHandshake, text: "Suporte via WhatsApp durante toda a viagem" },
+];
+
 export default async function PackagePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const pkg = getPackage(slug);
   if (!pkg) notFound();
 
   const waText = encodeURIComponent(
-    `Olá! Tenho interesse no pacote ${pkg.name} (${pkg.duration} dias). Pode me passar mais informações?`
+    `Olá! Tenho interesse no pacote "${pkg.name}" (${pkg.duration} dias). Pode me passar mais informações?`
   );
+
+  const related = packages
+    .filter((p) => p.slug !== pkg.slug && (p.destination === pkg.destination || p.countries.some((c) => pkg.countries.includes(c))))
+    .slice(0, 3);
 
   return (
     <>
+      <AnnouncementBanner />
       <Navbar />
       <FloatingWhatsApp />
 
@@ -49,7 +71,7 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
         />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.30) 50%, rgba(0,0,0,0.70) 100%)" }} />
         <div className="container" style={{ position: "relative", zIndex: 1, height: "100%", display: "flex", flexDirection: "column", justifyContent: "flex-end", paddingBottom: "var(--gap-xl)", paddingTop: "calc(var(--nav-height) + var(--gap-md))" }}>
-          <Link href="/#pacotes" style={{ display: "inline-flex", alignItems: "center", gap: 6, color: "rgba(255,255,255,0.70)", fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", textDecoration: "none", marginBottom: "var(--space-6)" }}>
+          <Link href="/pacotes" style={{ display: "inline-flex", alignItems: "center", gap: 6, color: "rgba(255,255,255,0.70)", fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", textDecoration: "none", marginBottom: "var(--space-6)" }}>
             <ArrowLeft size={14} />
             Voltar aos pacotes
           </Link>
@@ -74,12 +96,13 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
         <div className="container">
           <div className="flex flex-wrap justify-center" style={{ gap: "var(--gap-lg)" }}>
             {[
-              { icon: Clock, label: `${pkg.duration} dias` },
+              { icon: Clock,  label: `${pkg.duration} dias` },
               { icon: MapPin, label: pkg.cities.join(" · ") },
-              { icon: Users, label: pkg.profile },
+              { icon: Users,  label: pkg.maxGroup ? `Até ${pkg.maxGroup} pessoas` : pkg.profile },
+              { icon: Star,   label: "4.9 ★ · 200+ viajantes" },
             ].map(({ icon: Icon, label }) => (
               <div key={label} className="flex items-center" style={{ gap: 8 }}>
-                <Icon size={16} color="rgba(255,255,255,0.70)" />
+                <Icon size={15} color="rgba(255,255,255,0.70)" />
                 <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-sm)", color: "white" }}>{label}</span>
               </div>
             ))}
@@ -131,8 +154,16 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
 
             {/* ── Sidebar ── */}
             <div style={{ display: "flex", flexDirection: "column", gap: "var(--gap-md)" }}>
-              {/* CTA */}
-              <div className="card" style={{ position: "sticky", top: "calc(var(--nav-height) + 16px)" }}>
+
+              {/* CTA principal */}
+              <div className="card" style={{ position: "sticky", top: "calc(var(--nav-height) + 48px)" }}>
+                {pkg.priceFrom && (
+                  <div style={{ marginBottom: "var(--space-4)", paddingBottom: "var(--space-4)", borderBottom: "1px solid var(--color-border)" }}>
+                    <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", color: "var(--color-muted-foreground)" }}>A partir de</p>
+                    <p style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: "var(--text-h3)", color: "var(--color-primary)", lineHeight: 1 }}>{pkg.priceFrom}</p>
+                    <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", color: "var(--color-muted-foreground)" }}>por pessoa · personalizável</p>
+                  </div>
+                )}
                 <h3 style={{ fontSize: "var(--text-h4)", marginBottom: "var(--space-2)" }}>Gostou do roteiro?</h3>
                 <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-sm)", color: "var(--color-muted-foreground)", lineHeight: 1.65, marginBottom: "var(--space-6)" }}>
                   Tudo é personalizável — datas, hotel, número de pessoas e extras. A primeira conversa é gratuita.
@@ -152,7 +183,43 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
                 </p>
               </div>
 
-              {/* Inclui */}
+              {/* Próximas disponibilidades */}
+              <div className="card">
+                <h3 style={{ fontSize: "var(--text-h4)", marginBottom: "var(--space-6)" }}>Próximas disponibilidades</h3>
+                <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-3)" }}>
+                  {DISPONIBILIDADES.map(({ mes, vagas }) => (
+                    <div key={mes} className="flex items-center justify-between">
+                      <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-sm)", color: "var(--color-foreground)" }}>{mes}</span>
+                      <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", fontWeight: 600, color: vagas.includes("vaga") ? "var(--color-accent)" : "var(--color-primary-light)", background: "var(--color-muted)", padding: "3px 10px", borderRadius: "var(--radius-full)" }}>
+                        {vagas}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                <a
+                  href={`${WA_BASE}${encodeURIComponent(`Olá! Quero verificar disponibilidade para o pacote "${pkg.name}".`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ display: "block", textAlign: "center", fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-primary-light)", marginTop: "var(--space-6)", textDecoration: "underline", textUnderlineOffset: 3 }}
+                >
+                  Verificar data específica →
+                </a>
+              </div>
+
+              {/* Por que a Nômade Voyage */}
+              <div className="card">
+                <h3 style={{ fontSize: "var(--text-h4)", marginBottom: "var(--space-6)" }}>Por que a Nômade Voyage</h3>
+                <ul style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
+                  {POR_QUE_NV.map(({ icon: Icon, text }) => (
+                    <li key={text} className="flex items-start" style={{ gap: 10 }}>
+                      <Icon size={15} color="var(--color-primary-light)" style={{ marginTop: 2, flexShrink: 0 }} />
+                      <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-sm)", color: "var(--color-muted-foreground)", lineHeight: 1.5 }}>{text}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Inclui / Não inclui */}
               <div className="card">
                 <h3 style={{ fontSize: "var(--text-h4)", marginBottom: "var(--space-6)" }}>O que está incluído</h3>
                 <ul style={{ display: "flex", flexDirection: "column", gap: "var(--space-3)" }}>
@@ -185,15 +252,21 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
 
-      {/* ── Footer mínimo ── */}
-      <footer style={{ background: "var(--color-footer)", padding: "var(--gap-lg) 0" }}>
-        <div className="container text-center">
-          <Logo size={24} theme="dark" />
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "rgba(255,255,255,0.35)", marginTop: "var(--space-3)" }}>
-            © 2026 Nômade Voyage
-          </p>
-        </div>
-      </footer>
+      {/* ── Relacionados ── */}
+      {related.length > 0 && (
+        <section style={{ background: "var(--color-surface)", borderTop: "1px solid var(--color-border)" }}>
+          <div className="container">
+            <h2 style={{ fontSize: "var(--text-h2)", marginBottom: "var(--gap-lg)" }}>Também pode te interessar</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: "var(--gap-md)" }}>
+              {related.map((p) => (
+                <PackageCard key={p.slug} pkg={p} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <Footer />
     </>
   );
 }

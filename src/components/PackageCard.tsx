@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin, Clock, Check, Users } from "lucide-react";
+import { MapPin, Clock, Check, Users, Star } from "lucide-react";
 import type { TravelPackage } from "@/data/packages";
 
 const BADGE_STYLES: Record<string, React.CSSProperties> = {
@@ -41,6 +41,12 @@ export default function PackageCard({ pkg }: { pkg: TravelPackage }) {
             {pkg.badge}
           </span>
         )}
+
+        {/* Rating */}
+        <div style={{ position: "absolute", top: 12, right: 12, display: "flex", alignItems: "center", gap: 4, background: "rgba(0,0,0,0.50)", backdropFilter: "blur(8px)", padding: "4px 8px", borderRadius: "var(--radius-full)" }}>
+          <Star size={10} fill="white" color="white" />
+          <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", fontWeight: 700, color: "white" }}>4.9</span>
+        </div>
 
         {/* Countries bottom */}
         <div style={{ position: "absolute", bottom: 12, left: 12, display: "flex", gap: 6, flexWrap: "wrap" }}>

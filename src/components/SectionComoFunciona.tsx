@@ -27,14 +27,8 @@ const steps = [
 
 export default function SectionComoFunciona() {
   return (
-    <section id="como-funciona" style={{ padding: "var(--gap-xl) 0" }}>
+    <section id="como-funciona">
       <div className="container">
-        <div style={{
-          background: "var(--color-surface)",
-          borderRadius: "var(--radius-xl)",
-          padding: "var(--section-y) var(--gap-lg)",
-          border: "1px solid var(--color-border)",
-        }}>
         <Reveal>
           <div className="section-header">
             <span className="badge mb-4 inline-flex">Simples assim</span>
@@ -72,7 +66,6 @@ export default function SectionComoFunciona() {
               </div>
             </Reveal>
           ))}
-        </div>
         </div>
       </div>
     </section>

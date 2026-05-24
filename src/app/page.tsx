@@ -8,8 +8,8 @@ import PackageCard from "@/components/PackageCard";
 import HeroSearch from "@/components/HeroSearch";
 import { getPopularPackages } from "@/data/packages";
 import {
-  MessageCircle, ArrowRight, Star,
-  FileText, HeartHandshake, User, Clock, Users, Globe,
+  ArrowRight, Star,
+  FileText, HeartHandshake, User, Clock, Users, Globe, MessageCircle,
 } from "lucide-react";
 
 const WA_LINK  = "https://wa.me/351962221594?text=Olá!%20Vim%20pelo%20site%20da%20Nômade%20Voyage%20e%20quero%20saber%20mais.";
@@ -116,12 +116,6 @@ export default function LandingPage() {
               <HeroSearch />
             </div>
 
-            <div className="flex justify-center hero-enter hero-enter-delay-4">
-              <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-whatsapp">
-                <MessageCircle size={18} />
-                Falar com especialista
-              </a>
-            </div>
           </div>
         </div>
       </section>

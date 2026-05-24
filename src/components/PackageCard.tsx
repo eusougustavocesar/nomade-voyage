@@ -9,9 +9,12 @@ interface PackageCardProps {
 
 export default function PackageCard({ pkg }: PackageCardProps) {
   const badgeColors: Record<string, string> = {
-    "Mais pedido":  "background:#FFF7ED; color:var(--color-accent)",
-    "Últimas vagas": "background:#FEF2F2; color:#DC2626",
-    "Novo":         "background:#F0FDF4; color:#16A34A",
+    "Mais pedido":              "background:#FFF7ED; color:var(--color-accent)",
+    "Mais procurado":           "background:#FFF7ED; color:var(--color-accent)",
+    "Últimas vagas":            "background:#FEF2F2; color:#DC2626",
+    "Novo":                     "background:#F0FDF4; color:#16A34A",
+    "Favorito de casais":       "background:#FDF4FF; color:#7C3AED",
+    "Melhor custo-benefício":   "background:#F0FDF4; color:#16A34A",
   };
 
   return (

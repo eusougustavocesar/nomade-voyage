@@ -4,7 +4,9 @@ import FAQ from "@/components/FAQ";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import Reveal from "@/components/Reveal";
 import Logo from "@/components/Logo";
-import PackageSection from "@/components/PackageSection";
+import PackageCard from "@/components/PackageCard";
+import PackageSearch from "@/components/PackageSearch";
+import { getPopularPackages } from "@/data/packages";
 import {
   MapPin, MessageCircle,
   ArrowRight, Star, Shield, FileText, HeartHandshake, User, Clock,
@@ -167,23 +169,43 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── 3. PACOTES ───────────────────────────────────────────────────────── */}
+      {/* ── 3. PACOTES MAIS FAMOSOS ─────────────────────────────────────────── */}
       <section id="pacotes" style={{ background: "var(--color-background)" }}>
         <div className="container">
           <Reveal>
             <div className="section-header">
-              <span className="badge mb-4 inline-flex">Roteiros mais pedidos</span>
-              <h2>Inspire-se. A gente personaliza.</h2>
+              <span className="badge mb-4 inline-flex">Pacotes mais famosos</span>
+              <h2>Os roteiros mais procurados pelos brasileiros</h2>
               <p className="section-subtitle">
-                Estes são os roteiros base mais escolhidos pelos nossos clientes. Cada um é adaptado para o seu perfil, datas e orçamento.
+                Pesquisamos os destinos mais vendidos para a Europa e montamos roteiros completos para cada um. Todos personalizáveis pelo WhatsApp.
               </p>
             </div>
           </Reveal>
-          <PackageSection />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style={{ gap: "var(--gap-md)" }}>
+            {getPopularPackages().map((pkg) => (
+              <PackageCard key={pkg.slug} pkg={pkg} />
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ── 4. CURADOR ──────────────────────────────────────────────────────── */}
+      {/* ── 4. BUSCA + CONFIGURADOR ─────────────────────────────────────────── */}
+      <section style={{ background: "var(--color-surface)" }}>
+        <div className="container">
+          <Reveal>
+            <div className="section-header">
+              <span className="badge mb-4 inline-flex">Monte o seu roteiro</span>
+              <h2>Não encontrou o seu destino?</h2>
+              <p className="section-subtitle">
+                Busque qualquer cidade ou país da Europa. Se não tivermos um pacote pronto, montamos um personalizado com tudo que você precisa.
+              </p>
+            </div>
+          </Reveal>
+          <PackageSearch />
+        </div>
+      </section>
+
+      {/* ── 5. CURADOR ──────────────────────────────────────────────────────── */}
       <section style={{ background: "var(--color-surface)" }}>
         <div className="container">
           <Reveal>
@@ -212,7 +234,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── 5. COMO FUNCIONA ────────────────────────────────────────────────── */}
+      {/* ── 6. COMO FUNCIONA ────────────────────────────────────────────────── */}
       <section style={{ background: "var(--color-background)" }}>
         <div className="container">
           <Reveal>
@@ -253,7 +275,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── 6. POR QUE A NÔMADE VOYAGE ──────────────────────────────────────── */}
+      {/* ── 7. POR QUE A NÔMADE VOYAGE ──────────────────────────────────────── */}
       <section style={{ background: "var(--color-surface)" }}>
         <div className="container">
           <Reveal>
@@ -283,7 +305,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── 7. DEPOIMENTOS ──────────────────────────────────────────────────── */}
+      {/* ── 8. DEPOIMENTOS ──────────────────────────────────────────────────── */}
       <section style={{ background: "var(--color-muted)" }}>
         <div className="container">
           <Reveal>
@@ -324,7 +346,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── 8. FAQ ──────────────────────────────────────────────────────────── */}
+      {/* ── 9. FAQ ──────────────────────────────────────────────────────────── */}
       <section style={{ background: "var(--color-background)" }}>
         <div className="container">
           <div className="section-header">
@@ -340,7 +362,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── 9. CTA FINAL ────────────────────────────────────────────────────── */}
+      {/* ── 10. CTA FINAL ───────────────────────────────────────────────────── */}
       <section style={{ background: "#111111" }}>
         <div className="container text-center">
           <span className="badge badge-accent mb-5 inline-flex" style={{ gap: 6 }}>
@@ -368,7 +390,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── 10. FOOTER ──────────────────────────────────────────────────────── */}
+      {/* ── 11. FOOTER ──────────────────────────────────────────────────────── */}
       <footer style={{ background: "var(--color-footer)", paddingTop: "var(--gap-xl)", paddingBottom: "var(--gap-lg)" }}>
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-3 border-b border-white/10" style={{ gap: "var(--gap-lg)", paddingBottom: "var(--gap-lg)" }}>

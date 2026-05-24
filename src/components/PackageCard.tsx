@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin, Star, Plane, BedDouble, Car, Shield, Map, MessageCircle, type LucideIcon } from "lucide-react";
+import { MapPin, Star, Plane, BedDouble, Car, Shield, Map, MessageCircle, Train, Ship, type LucideIcon } from "lucide-react";
 import type { TravelPackage } from "@/data/packages";
 
 const BADGE_STYLES: Record<string, React.CSSProperties> = {
@@ -14,19 +14,35 @@ const BADGE_STYLES: Record<string, React.CSSProperties> = {
 
 type Pill = { label: string; Icon: LucideIcon };
 
+const norm = (s: string) =>
+  s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+
 function toPill(text: string): Pill {
-  if (/passagem|voo/i.test(text))       return { label: "Voo",      Icon: Plane };
-  if (/hotel|pousada/i.test(text))      return { label: "Hotel",    Icon: BedDouble };
-  if (/transfer/i.test(text))           return { label: "Transfer", Icon: Car };
-  if (/seguro/i.test(text))             return { label: "Seguro",   Icon: Shield };
-  if (/roteiro/i.test(text))            return { label: "Roteiro",  Icon: Map };
-  if (/suporte|whatsapp/i.test(text))   return { label: "Suporte",  Icon: MessageCircle };
-  return { label: text.split(",")[0].slice(0, 16), Icon: Map };
+  const t = norm(text);
+  if (/passagem|voo/.test(t))         return { label: "Voo",      Icon: Plane };
+  if (/hotel|pousada/.test(t))        return { label: "Hotel",    Icon: BedDouble };
+  if (/transfer/.test(t))             return { label: "Transfer", Icon: Car };
+  if (/trem|train/.test(t))           return { label: "Trem",     Icon: Train };
+  if (/ferry|ferries|barco/.test(t))  return { label: "Ferry",    Icon: Ship };
+  if (/seguro/.test(t))               return { label: "Seguro",   Icon: Shield };
+  if (/roteiro/.test(t))              return { label: "Roteiro",  Icon: Map };
+  if (/suporte|whatsapp/.test(t))     return { label: "Suporte",  Icon: MessageCircle };
+  return { label: text.split(",")[0].slice(0, 14), Icon: Map };
+}
+
+function buildPills(includes: string[]): Pill[] {
+  const pills: Pill[] = [];
+  for (const inc of includes) {
+    if (pills.length >= 3) break;
+    const pill = toPill(inc);
+    if (!pills.some((p) => p.label === pill.label)) pills.push(pill);
+  }
+  return pills;
 }
 
 export default function PackageCard({ pkg }: { pkg: TravelPackage }) {
   const badgeStyle = pkg.badge ? BADGE_STYLES[pkg.badge] ?? {} : {};
-  const pills = pkg.includes.slice(0, 3).map(toPill);
+  const pills = buildPills(pkg.includes);
 
   return (
     <Link

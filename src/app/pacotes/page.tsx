@@ -29,7 +29,7 @@ export default function PacotesPage() {
             {" / "}
             <span>Pacotes</span>
           </p>
-          <h1 style={{ fontSize: "var(--text-display)", color: "var(--color-foreground)", lineHeight: 1.1, marginBottom: "var(--space-4)" }}>
+          <h1 style={{ color: "var(--color-foreground)", lineHeight: 1.15, marginBottom: "var(--space-4)" }}>
             Roteiros para a Europa
           </h1>
           <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-md)", color: "var(--color-muted-foreground)", maxWidth: 560, lineHeight: 1.65, marginBottom: "var(--space-6)" }}>

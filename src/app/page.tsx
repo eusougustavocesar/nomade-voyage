@@ -94,7 +94,7 @@ export default function LandingPage() {
               <Clock size={11} />
               Consulta gratuita · Atendimento humano
             </span>
-            <h1 className="hero-enter hero-enter-delay-1" style={{ marginBottom: "var(--space-6)" }}>
+            <h1 className="hero-enter hero-enter-delay-1" style={{ color: "var(--color-primary)", marginBottom: "var(--space-6)" }}>
               Para quem sempre disse:<br />&ldquo;ano que vem, vou à Europa.&rdquo;
             </h1>
             <p className="hero-enter hero-enter-delay-2" style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-lg)", color: "var(--color-muted-foreground)", lineHeight: 1.65, marginBottom: "var(--space-8)", maxWidth: "520px" }}>

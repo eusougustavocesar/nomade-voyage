@@ -94,6 +94,12 @@
   --shadow-md:        0 4px 16px rgba(0, 0, 0, 0.09), 0 1px 3px rgba(0, 0, 0, 0.06);
   --shadow-lg:        0 12px 40px rgba(0, 0, 0, 0.14), 0 4px 12px rgba(0, 0, 0, 0.08);
   --shadow-whatsapp:  0 4px 20px rgba(37, 211, 102, 0.30);
+
+  /* ── Navbar glass ── */
+  --nav-bg:         rgba(255, 255, 255, 0.82);
+  --nav-bg-solid:   rgba(255, 255, 255, 0.97);
+  --nav-border:     rgba(0, 0, 0, 0.08);
+  --nav-shadow:     0 2px 16px rgba(0, 0, 0, 0.10);
 }
 
 
@@ -129,6 +135,11 @@
     --color-border:           #2A2A2A;
     --color-ring:             #38BDF8;
     --color-destructive:      #FCA5A5;
+
+    --nav-bg:         rgba(15, 15, 15, 0.80);
+    --nav-bg-solid:   rgba(15, 15, 15, 0.97);
+    --nav-border:     rgba(255, 255, 255, 0.08);
+    --nav-shadow:     0 2px 16px rgba(0, 0, 0, 0.40);
   }
 }
 

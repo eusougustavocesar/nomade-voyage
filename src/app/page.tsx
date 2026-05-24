@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import FAQ from "@/components/FAQ";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import Reveal from "@/components/Reveal";
 import Footer from "@/components/Footer";
 import PackageCard from "@/components/PackageCard";
@@ -87,7 +86,6 @@ export default function LandingPage() {
   return (
     <>
       <Navbar />
-      <FloatingWhatsApp />
 
       {/* ── 1. HERO ──────────────────────────────────────────────────────────── */}
       <section style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", overflow: "hidden" }}>

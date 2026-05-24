@@ -1,5 +1,4 @@
 import Navbar from "@/components/Navbar";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import Footer from "@/components/Footer";
 import PackageCatalog from "@/components/PackageCatalog";
 import { packages } from "@/data/packages";
@@ -16,7 +15,6 @@ export default function PacotesPage() {
   return (
     <>
       <Navbar />
-      <FloatingWhatsApp />
 
       {/* ── Page header ── */}
       <div style={{

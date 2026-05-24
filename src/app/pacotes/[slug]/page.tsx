@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { getPackage, packages } from "@/data/packages";
 import Navbar from "@/components/Navbar";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import Footer from "@/components/Footer";
 import PackageCard from "@/components/PackageCard";
 import Logo from "@/components/Logo";
@@ -55,7 +54,6 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
   return (
     <>
       <Navbar />
-      <FloatingWhatsApp />
 
       {/* ── Hero ── */}
       <section style={{ position: "relative", height: "60vh", minHeight: 400, overflow: "hidden" }}>

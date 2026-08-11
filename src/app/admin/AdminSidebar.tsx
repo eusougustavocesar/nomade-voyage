@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import Logo from "@/components/Logo";
 import {
   LayoutDashboard, Users, Kanban, CalendarCheck,
   Package, FileText, Settings, LogOut,
@@ -50,26 +51,17 @@ export default function AdminSidebar() {
         padding: "0 var(--space-4)",
         borderBottom: "1px solid var(--color-border)",
       }}>
-        <div style={{
-          width: "var(--admin-icon-box)",
-          height: "var(--admin-icon-box)",
-          borderRadius: "var(--radius-md)",
-          background: "var(--color-primary)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexShrink: 0,
-        }}>
-          <span style={{ fontSize: "var(--text-caption)", color: "var(--color-on-primary)", fontWeight: 800, fontFamily: "var(--font-heading)", lineHeight: 1 }}>N</span>
-        </div>
-        <div>
-          <p style={{ fontSize: "var(--text-caption)", fontWeight: 700, color: "var(--color-foreground)", lineHeight: 1.2 }}>
-            Nômade Voyage
-          </p>
-          <p style={{ fontSize: "var(--admin-label-fs)", color: "var(--color-muted-foreground)" }}>
-            Admin
-          </p>
-        </div>
+        <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "var(--space-3)" }}>
+          <Logo size={28} showWordmark={false} />
+          <div>
+            <p style={{ fontSize: "var(--text-caption)", fontWeight: 700, color: "var(--color-foreground)", lineHeight: 1.2 }}>
+              Nômade Voyage
+            </p>
+            <p style={{ fontSize: "var(--admin-label-fs)", color: "var(--color-muted-foreground)" }}>
+              Admin
+            </p>
+          </div>
+        </Link>
       </div>
 
       {/* Nav */}

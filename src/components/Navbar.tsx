@@ -6,6 +6,7 @@ import Logo from "@/components/Logo";
 
 const links = [
   { label: "Pacotes",       href: "/pacotes" },
+  // { label: "Curador",       href: "/#curador" }, // TODO: redesign SectionCurador
   { label: "Como funciona", href: "/#como-funciona" },
 ];
 
@@ -20,7 +21,7 @@ export default function Navbar({ authSlot }: { authSlot?: React.ReactNode }) {
 
         {/* Logo */}
         <a href="/" style={{ textDecoration: "none" }}>
-          <Logo size={32} />
+          <Logo size={40} />
         </a>
 
         {/* Desktop pill nav */}

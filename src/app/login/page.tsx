@@ -47,16 +47,16 @@ export default function LoginPage() {
             padding: "var(--space-10)",
             position: "relative",
             overflow: "hidden",
-            background: "linear-gradient(160deg, #1E0E04 0%, #3D1A08 55%, #5C2E08 100%)",
+            background: "linear-gradient(160deg, #0A0A0A 0%, #171717 55%, #262626 100%)",
           }}
         >
           {/* Decorative circles */}
-          <div style={{ position: "absolute", top: -80, right: -80, width: 280, height: 280, borderRadius: "50%", background: "rgba(184,120,10,0.08)", pointerEvents: "none" }} />
-          <div style={{ position: "absolute", bottom: -60, left: -60, width: 220, height: 220, borderRadius: "50%", background: "rgba(184,120,10,0.06)", pointerEvents: "none" }} />
+          <div style={{ position: "absolute", top: -80, right: -80, width: 280, height: 280, borderRadius: "50%", background: "rgba(255,255,255,0.04)", pointerEvents: "none" }} />
+          <div style={{ position: "absolute", bottom: -60, left: -60, width: 220, height: 220, borderRadius: "50%", background: "rgba(255,255,255,0.03)", pointerEvents: "none" }} />
 
           {/* Logo */}
           <a href="/" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "var(--space-3)", position: "relative" }}>
-            <Logo size={28} showWordmark={false} />
+            <Logo size={28} showWordmark={false} theme="dark" />
             <span style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: "var(--text-caption)", color: "var(--color-white-high)" }}>
               Nômade Voyage
             </span>

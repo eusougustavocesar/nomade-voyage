@@ -123,12 +123,12 @@ export default function DesignSystemPage() {
             <div className="card flex flex-col" style={{ gap: "var(--space-4)", padding: "var(--space-8)" }}>
               <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--color-muted-foreground)" }}>Navbar / Adaptativo</p>
               <Logo size={40} />
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-muted-foreground)" }}>Sem prop theme — wordmark usa var(--color-primary), adapta ao tema automático</p>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-muted-foreground)" }}>theme light (default) — logo preta em PNG transparente</p>
             </div>
             <div className="card flex flex-col" style={{ gap: "var(--space-4)", padding: "var(--space-8)", background: "var(--color-footer)" }}>
               <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--color-white-low)" }}>Footer / Sempre escuro</p>
               <Logo size={40} theme="dark" />
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-white-low)" }}>theme="dark" — wordmark branco; usar quando fundo é sempre escuro</p>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-white-low)" }}>theme=&quot;dark&quot; — logo branca; usar em fundo escuro</p>
             </div>
             <div className="card flex flex-col" style={{ gap: "var(--space-4)", padding: "var(--space-8)" }}>
               <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--color-muted-foreground)" }}>Ícone isolado</p>
@@ -191,8 +191,8 @@ export default function DesignSystemPage() {
           <div style={{ marginBottom: "var(--space-10)" }}>
             <div className="grid grid-cols-1 sm:grid-cols-2" style={{ gap: "var(--gap-sm)" }}>
               {[
-                { theme: "Light", swatches: [{ name: "Primary", hex: "#5C2E08", token: "--color-primary" }, { name: "Primary Light", hex: "#B8780A", token: "--color-primary-light" }, { name: "Accent", hex: "#8F5C08", token: "--color-accent" }, { name: "WhatsApp", hex: "#25D366", token: "—" }] },
-                { theme: "Dark",  swatches: [{ name: "Primary", hex: "#FBE4CE", token: "--color-primary" }, { name: "Primary Light", hex: "#F5C49A", token: "--color-primary-light" }, { name: "Accent", hex: "#E8A06A", token: "--color-accent" }, { name: "WhatsApp", hex: "#25D366", token: "—" }] },
+                { theme: "Light", swatches: [{ name: "Primary", hex: "#0A0A0A", token: "--color-primary" }, { name: "Primary Light", hex: "#525252", token: "--color-primary-light" }, { name: "Accent", hex: "#0A0A0A", token: "--color-accent" }, { name: "WhatsApp", hex: "#25D366", token: "—" }] },
+                { theme: "Dark",  swatches: [{ name: "Primary", hex: "#FAFAFA", token: "--color-primary" }, { name: "Primary Light", hex: "#A3A3A3", token: "--color-primary-light" }, { name: "Accent", hex: "#FAFAFA", token: "--color-accent" }, { name: "WhatsApp", hex: "#25D366", token: "—" }] },
               ].map(({ theme, swatches }) => (
                 <div key={theme}>
                   <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", fontWeight: 500, color: "var(--color-muted-foreground)", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "var(--space-3)" }}>{theme}</p>
@@ -209,8 +209,8 @@ export default function DesignSystemPage() {
           <div style={{ marginBottom: "var(--space-10)" }}>
             <div className="grid grid-cols-1 sm:grid-cols-2" style={{ gap: "var(--gap-sm)" }}>
               {[
-                { theme: "Light", swatches: [{ name: "Background", hex: "#FFF8F2", token: "--color-background" }, { name: "Surface", hex: "#FFFFFF", token: "--color-surface" }, { name: "Muted", hex: "#FBE4CE", token: "--color-muted" }, { name: "Footer", hex: "#1E0E04", token: "--color-footer" }] },
-                { theme: "Dark",  swatches: [{ name: "Background", hex: "#0F0A04", token: "--color-background" }, { name: "Surface", hex: "#1A1008", token: "--color-surface" }, { name: "Muted", hex: "#261A0D", token: "--color-muted" }, { name: "Footer", hex: "#080502", token: "--color-footer" }] },
+                { theme: "Light", swatches: [{ name: "Background", hex: "#FAFAFA", token: "--color-background" }, { name: "Surface", hex: "#FFFFFF", token: "--color-surface" }, { name: "Muted", hex: "#F5F5F5", token: "--color-muted" }, { name: "Footer", hex: "#0A0A0A", token: "--color-footer" }] },
+                { theme: "Dark",  swatches: [{ name: "Background", hex: "#0A0A0A", token: "--color-background" }, { name: "Surface", hex: "#141414", token: "--color-surface" }, { name: "Muted", hex: "#1F1F1F", token: "--color-muted" }, { name: "Footer", hex: "#000000", token: "--color-footer" }] },
               ].map(({ theme, swatches }) => (
                 <div key={theme}>
                   <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", fontWeight: 500, color: "var(--color-muted-foreground)", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "var(--space-3)" }}>{theme}</p>
@@ -227,8 +227,8 @@ export default function DesignSystemPage() {
           <div style={{ marginBottom: "var(--space-10)" }}>
             <div className="grid grid-cols-1 sm:grid-cols-2" style={{ gap: "var(--gap-sm)" }}>
               {[
-                { theme: "Light", swatches: [{ name: "Foreground", hex: "#1E0E04", token: "--color-foreground" }, { name: "Muted Text", hex: "#7A5C3B", token: "--color-muted-foreground" }, { name: "On Primary", hex: "#FFFFFF", token: "--color-on-primary" }, { name: "Ring / Focus", hex: "#B8780A", token: "--color-ring" }, { name: "Border", hex: "#F0C9A0", token: "--color-border" }, { name: "Destructive", hex: "#DC2626", token: "--color-destructive" }] },
-                { theme: "Dark",  swatches: [{ name: "Foreground", hex: "#F5EBE0", token: "--color-foreground" }, { name: "Muted Text", hex: "#C4A882", token: "--color-muted-foreground" }, { name: "On Primary", hex: "#0F0A04", token: "--color-on-primary" }, { name: "Ring / Focus", hex: "#F5C49A", token: "--color-ring" }, { name: "Border", hex: "#3D2A18", token: "--color-border" }, { name: "Destructive", hex: "#FCA5A5", token: "--color-destructive" }] },
+                { theme: "Light", swatches: [{ name: "Foreground", hex: "#0A0A0A", token: "--color-foreground" }, { name: "Muted Text", hex: "#737373", token: "--color-muted-foreground" }, { name: "On Primary", hex: "#FFFFFF", token: "--color-on-primary" }, { name: "Ring / Focus", hex: "#0A0A0A", token: "--color-ring" }, { name: "Border", hex: "#E5E5E5", token: "--color-border" }, { name: "Destructive", hex: "#DC2626", token: "--color-destructive" }] },
+                { theme: "Dark",  swatches: [{ name: "Foreground", hex: "#F5F5F5", token: "--color-foreground" }, { name: "Muted Text", hex: "#A3A3A3", token: "--color-muted-foreground" }, { name: "On Primary", hex: "#0A0A0A", token: "--color-on-primary" }, { name: "Ring / Focus", hex: "#FAFAFA", token: "--color-ring" }, { name: "Border", hex: "#2A2A2A", token: "--color-border" }, { name: "Destructive", hex: "#FCA5A5", token: "--color-destructive" }] },
               ].map(({ theme, swatches }) => (
                 <div key={theme}>
                   <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-micro)", fontWeight: 500, color: "var(--color-muted-foreground)", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "var(--space-3)" }}>{theme}</p>
@@ -252,7 +252,7 @@ export default function DesignSystemPage() {
                 <div className="flex flex-col" style={{ gap: "var(--gap-xs)" }}>
                   <Swatch name="Success"     hex="#16A34A" token="--color-success" />
                   <Swatch name="Success BG"  hex="rgba(22,163,74,0.12)" token="--color-success-bg" />
-                  <Swatch name="Accent BG"   hex="rgba(234,88,12,0.12)" token="--color-accent-bg" />
+                  <Swatch name="Accent BG"   hex="rgba(10,10,10,0.06)" token="--color-accent-bg" />
                   <Swatch name="Destruct BG" hex="rgba(220,38,38,0.12)" token="--color-destructive-bg" />
                   <Swatch name="Purple"      hex="#7C3AED" token="--color-purple" />
                   <Swatch name="Purple BG"   hex="rgba(124,58,237,0.12)" token="--color-purple-bg" />
@@ -263,7 +263,7 @@ export default function DesignSystemPage() {
                 <div className="flex flex-col" style={{ gap: "var(--gap-xs)" }}>
                   <Swatch name="Success"     hex="#4ADE80" token="--color-success" />
                   <Swatch name="Success BG"  hex="rgba(74,222,128,0.12)" token="--color-success-bg" />
-                  <Swatch name="Accent BG"   hex="rgba(251,146,60,0.12)" token="--color-accent-bg" />
+                  <Swatch name="Accent BG"   hex="rgba(255,255,255,0.08)" token="--color-accent-bg" />
                   <Swatch name="Destruct BG" hex="rgba(252,165,165,0.12)" token="--color-destructive-bg" />
                   <Swatch name="Purple"      hex="#A78BFA" token="--color-purple" />
                   <Swatch name="Purple BG"   hex="rgba(167,139,250,0.12)" token="--color-purple-bg" />
@@ -340,7 +340,7 @@ export default function DesignSystemPage() {
             <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", fontWeight: 500, color: "var(--color-muted-foreground)", marginBottom: "var(--space-2)" }}>Estados</p>
             <div className="flex flex-wrap items-center" style={{ gap: "var(--gap-sm)" }}>
               <button className="btn-primary" style={{ opacity: 0.5, cursor: "not-allowed" }} disabled>Desabilitado</button>
-              <button className="btn-primary" style={{ background: "#C2410C" }}>Hover (btn-primary)</button>
+              <button className="btn-primary" style={{ background: "#262626" }}>Hover (btn-primary)</button>
             </div>
           </div>
         </Section>

@@ -33,7 +33,7 @@ export default function Footer() {
           {/* Col 1: Brand */}
           <div>
             <div style={{ marginBottom: "var(--space-4)" }}>
-              <Logo size={28} theme="dark" />
+              <Logo size={44} theme="dark" />
             </div>
             <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-sm)", color: "rgba(255,255,255,0.50)", lineHeight: 1.65, marginBottom: "var(--space-6)" }}>
               Viagens para a Europa planejadas por quem conhece cada destino. Atendimento humano, grupos de até 8 pessoas.

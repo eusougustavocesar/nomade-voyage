@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import PackageCard from "@/components/PackageCard";
 import HeroSearch from "@/components/HeroSearch";
 import SectionDiferenciais from "@/components/SectionDiferenciais";
+// import SectionCurador from "@/components/SectionCurador"; // TODO: redesign — reativar depois
 import SectionComoFunciona from "@/components/SectionComoFunciona";
 import SectionDepoimentos from "@/components/SectionDepoimentos";
 import SectionCTA from "@/components/SectionCTA";
@@ -64,6 +65,9 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
+
+      {/* ── 3. CURADOR (pausado — redesign pendente) ─────────────────────────── */}
+      {/* <SectionCurador /> */}
 
       {/* ── 3. DIFERENCIAIS ─────────────────────────────────────────────────── */}
       <SectionDiferenciais />

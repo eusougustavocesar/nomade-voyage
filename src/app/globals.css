@@ -3,31 +3,31 @@
 /* ─── Nômade Voyage Design System ─── */
 
 :root {
-  /* ── Brand Colors ── */
-  --color-primary:          #5C2E08;  /* mahogany escuro — headings */
-  --color-primary-light:    #B8780A;  /* âmbar dourado — ícones/interativo */
-  --color-accent:           #8F5C08;  /* âmbar médio — CTAs */
+  /* ── Brand Colors — Neutral mono (preto / branco / cinza) ── */
+  --color-primary:          #0A0A0A;  /* near-black — headings, autoridade */
+  --color-primary-light:    #525252;  /* cinza médio — ícones / interativo */
+  --color-accent:           #0A0A0A;  /* preto — CTAs primários */
 
   /* ── Surfaces ── */
-  --color-background:       #FFF8F2;
+  --color-background:       #FAFAFA;
   --color-surface:          #FFFFFF;
-  --color-muted:            #FBE4CE;  /* cor-âncora dourada */
-  --color-footer:           #1E0E04;
+  --color-muted:            #F5F5F5;
+  --color-footer:           #0A0A0A;
 
   /* ── Text ── */
-  --color-foreground:       #1E0E04;
-  --color-muted-foreground: #7A5C3B;
+  --color-foreground:       #0A0A0A;
+  --color-muted-foreground: #737373;
   --color-on-primary:       #FFFFFF;
 
   /* ── Utility ── */
-  --color-border:           #F0C9A0;
-  --color-ring:             #B8780A;
+  --color-border:           #E5E5E5;
+  --color-ring:             #0A0A0A;
   --color-destructive:      #DC2626;
 
   /* ── Semantic state colors ── */
   --color-success:          #16A34A;
   --color-success-bg:       rgba(22, 163, 74, 0.12);
-  --color-accent-bg:        rgba(143, 92, 8, 0.12);
+  --color-accent-bg:        rgba(10, 10, 10, 0.06);
   --color-destructive-bg:   rgba(220, 38, 38, 0.12);
   --color-purple:           #7C3AED;
   --color-purple-bg:        rgba(124, 58, 237, 0.12);
@@ -105,10 +105,10 @@
   --shadow-whatsapp:  0 4px 20px rgba(37, 211, 102, 0.30);
 
   /* ── Navbar glass ── */
-  --nav-bg:         rgba(255, 248, 242, 0.85);
-  --nav-bg-solid:   rgba(255, 248, 242, 0.97);
-  --nav-border:     rgba(92, 46, 8, 0.08);
-  --nav-shadow:     0 2px 16px rgba(92, 46, 8, 0.10);
+  --nav-bg:         rgba(255, 255, 255, 0.85);
+  --nav-bg-solid:   rgba(255, 255, 255, 0.97);
+  --nav-border:     rgba(0, 0, 0, 0.08);
+  --nav-shadow:     0 2px 16px rgba(0, 0, 0, 0.08);
 }
 
 
@@ -124,40 +124,38 @@
   }
 }
 
-/* ─── Dark theme (system preference) ─── */
+/* ─── Dark theme (via data-theme — set by layout script + ThemeProvider) ─── */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-primary:          #FBE4CE;  /* cor-âncora — clara sobre fundo escuro */
-    --color-primary-light:    #F5C49A;
-    --color-accent:           #E8A06A;
+html[data-theme="dark"] {
+  --color-primary:          #FAFAFA;
+  --color-primary-light:    #A3A3A3;
+  --color-accent:           #FAFAFA;
 
-    --color-background:       #0F0A04;
-    --color-surface:          #1A1008;
-    --color-muted:            #261A0D;
-    --color-footer:           #080502;
+  --color-background:       #0A0A0A;
+  --color-surface:          #141414;
+  --color-muted:            #1F1F1F;
+  --color-footer:           #000000;
 
-    --color-foreground:       #F5EBE0;
-    --color-muted-foreground: #C4A882;
-    --color-on-primary:       #0F0A04;
+  --color-foreground:       #F5F5F5;
+  --color-muted-foreground: #A3A3A3;
+  --color-on-primary:       #0A0A0A;
 
-    --color-border:           #3D2A18;
-    --color-ring:             #F5C49A;
-    --color-destructive:      #FCA5A5;
+  --color-border:           #2A2A2A;
+  --color-ring:             #FAFAFA;
+  --color-destructive:      #FCA5A5;
 
-    --color-success:          #4ADE80;
-    --color-success-bg:       rgba(74, 222, 128, 0.12);
-    --color-accent-bg:        rgba(232, 160, 106, 0.12);
-    --color-destructive-bg:   rgba(252, 165, 165, 0.12);
-    --color-purple:           #A78BFA;
-    --color-purple-bg:        rgba(167, 139, 250, 0.12);
-    --color-on-primary-dim:   rgba(15, 10, 4, 0.55);
+  --color-success:          #4ADE80;
+  --color-success-bg:       rgba(74, 222, 128, 0.12);
+  --color-accent-bg:        rgba(255, 255, 255, 0.08);
+  --color-destructive-bg:   rgba(252, 165, 165, 0.12);
+  --color-purple:           #A78BFA;
+  --color-purple-bg:        rgba(167, 139, 250, 0.12);
+  --color-on-primary-dim:   rgba(10, 10, 10, 0.55);
 
-    --nav-bg:         rgba(15, 10, 4, 0.82);
-    --nav-bg-solid:   rgba(15, 10, 4, 0.97);
-    --nav-border:     rgba(251, 228, 206, 0.08);
-    --nav-shadow:     0 2px 16px rgba(0, 0, 0, 0.40);
-  }
+  --nav-bg:         rgba(10, 10, 10, 0.82);
+  --nav-bg-solid:   rgba(10, 10, 10, 0.97);
+  --nav-border:     rgba(255, 255, 255, 0.08);
+  --nav-shadow:     0 2px 16px rgba(0, 0, 0, 0.40);
 }
 
 @theme inline {
@@ -252,14 +250,14 @@ section {
 /* ─── Hero Gradient ─── */
 
 .hero-gradient {
-  background: linear-gradient(135deg, #5C2E08 0%, #B8780A 55%, #FFF8F2 100%);
+  background: linear-gradient(135deg, #0A0A0A 0%, #404040 55%, #FAFAFA 100%);
 }
 
 /* ─── Buttons ─── */
 
 .btn-primary {
   background:      var(--color-accent);
-  color:           #FFFFFF;
+  color:           var(--color-on-primary);
   font-family:     var(--font-body);
   font-weight:     500;
   font-size:       16px;
@@ -273,8 +271,9 @@ section {
   transition:      background 150ms ease-out, transform 100ms ease-out;
   text-decoration: none;
 }
-.btn-primary:hover  { background: #6B4506; }
+.btn-primary:hover  { background: #262626; }
 .btn-primary:active { transform: scale(0.98); }
+html[data-theme="dark"] .btn-primary:hover { background: #E5E5E5; }
 
 .btn-secondary {
   background:      transparent;
@@ -367,9 +366,9 @@ section {
 .input:focus {
   outline:      none;
   border-color: var(--color-ring);
-  box-shadow:   0 0 0 3px rgba(184, 120, 10, 0.15);
+  box-shadow:   0 0 0 3px rgba(10, 10, 10, 0.12);
 }
-.input::placeholder { color: #B8A090; }
+.input::placeholder { color: #A3A3A3; }
 
 /* ─── Admin Shell ─── */
 

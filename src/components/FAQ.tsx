@@ -6,27 +6,27 @@ import { ChevronDown } from "lucide-react";
 const faqs = [
   {
     q: "A primeira conversa é paga?",
-    a: "Não. A primeira consulta é 100% gratuita e sem compromisso. Você conta o seu caso, a gente entende o que faz sentido para o seu perfil — e só depois decide se quer seguir em frente.",
+    a: "Não. Você manda o que quer, a gente entende se dá pra ajudar e só depois fala de proposta. Sem cobrança pra conversar.",
   },
   {
-    q: "Quanto tempo demora o processo do visto D7?",
-    a: "Em média 2 a 3 meses após a entrega da documentação completa. O processo começa com a consulta, passa pela organização de documentos e culmina na entrevista no consulado. A gente te acompanha em cada etapa.",
+    q: "Vocês só fazem pacote fechado?",
+    a: "Não. Tem roteiro base (Lisboa, multi-destino, etc.), mas a gente muda data, hotel e o que entra ou sai. Quase todo mundo mexe em alguma coisa.",
   },
   {
-    q: "Vocês garantem a aprovação do visto?",
-    a: "Nenhuma agência pode garantir aprovação — isso é decisão do consulado. O que garantimos é que você chega na entrevista com toda a documentação certa, nas especificações corretas, sem os erros que custam meses de espera.",
+    q: "Como funciona o pagamento?",
+    a: "Depende do que for reservado (passagem, hotel, seguro). Combinamos no WhatsApp, com os valores e prazos claros antes de você pagar qualquer coisa.",
   },
   {
-    q: "Qual a diferença entre o visto D7 e o D8?",
-    a: "O D7 é para quem tem renda passiva — aposentadoria, dividendos ou aluguéis. O D8 é para nômades digitais que trabalham remotamente com renda ativa de empresa no exterior. Na primeira conversa, a gente te ajuda a identificar qual se encaixa no seu perfil.",
+    q: "E se eu ainda não tiver data certa?",
+    a: "Pode mandar mesmo assim. Muita gente começa com “quero ir no segundo semestre” e a gente ajuda a achar janela e preço.",
   },
   {
-    q: "E se eu ainda não souber se quero ir de verdade?",
-    a: "Esse é exatamente o momento certo para conversar — antes de decidir, não depois. A gente não vende nada para quem não está pronto. A primeira conversa existe para entender se faz sentido para você, agora.",
+    q: "Vocês só fazem Europa?",
+    a: "O foco é Europa — Portugal, Espanha, Irlanda e multi-destino. Outros lugares a gente avalia caso a caso.",
   },
   {
-    q: "Vocês atendem só Portugal ou outros destinos também?",
-    a: "Portugal é nosso destino mais forte, mas atendemos Espanha, Irlanda e EUA. Para cada destino temos parceiros especializados no processo de visto e relocation local.",
+    q: "E se eu quiser morar fora, não só viajar?",
+    a: "A gente também conversa sobre visto e relocation (D7, D8 e afins). Não é o mesmo produto da viagem, mas dá pra tirar a dúvida na primeira mensagem.",
   },
 ];
 

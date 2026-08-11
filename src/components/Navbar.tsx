@@ -10,7 +10,7 @@ const links = [
   { label: "Como funciona", href: "/#como-funciona" },
 ];
 
-const WA_LINK = "https://wa.me/351962221594?text=Olá!%20Vim%20pelo%20site%20da%20Nômade%20Voyage%20e%20quero%20falar%20com%20um%20especialista.";
+const WA_LINK = "https://wa.me/351962221594?text=Olá!%20Vim%20pelo%20site%20da%20Nômade%20Voyage%20e%20quero%20montar%20uma%20viagem.";
 
 export default function Navbar({ authSlot }: { authSlot?: React.ReactNode }) {
   const [open, setOpen] = useState(false);
@@ -75,7 +75,7 @@ export default function Navbar({ authSlot }: { authSlot?: React.ReactNode }) {
             style={{ padding: "8px 18px", fontSize: "var(--text-micro)", gap: "7px" }}
           >
             <MessageCircle size={15} />
-            Falar com especialista
+            WhatsApp
           </a>
         </div>
 
@@ -135,7 +135,7 @@ export default function Navbar({ authSlot }: { authSlot?: React.ReactNode }) {
             style={{ marginTop: "var(--space-1)" }}
           >
             <MessageCircle size={16} />
-            Falar com especialista
+            WhatsApp
           </a>
         </div>
       )}

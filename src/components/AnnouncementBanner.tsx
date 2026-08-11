@@ -16,9 +16,9 @@ export default function AnnouncementBanner() {
         color: "rgba(255,255,255,0.90)",
         letterSpacing: "0.01em",
       }}>
-        Vagas abertas para julho e agosto{" "}
+        Ainda tem vaga em julho e agosto{" "}
         <span style={{ color: "rgba(255,255,255,0.55)", margin: "0 6px" }}>·</span>
-        Apenas 8 grupos por mês
+        Máx. 8 grupos/mês
         <a
           href={WA_LINK}
           target="_blank"
@@ -32,7 +32,7 @@ export default function AnnouncementBanner() {
             paddingBottom: 1,
           }}
         >
-          Verificar disponibilidade →
+          Ver se encaixa →
         </a>
       </p>
     </div>

@@ -17,19 +17,19 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Nômade Voyage — Sua agência para morar, explorar e viajar fora",
+  title: "Nômade Voyage — Viagens pra Europa no WhatsApp",
   description:
-    "A agência para quem quer pertencer ao mundo. Passagens, seguro viagem, vistos e suporte completo para brasileiros que querem morar ou viajar para o exterior.",
+    "Passagem, hotel, seguro e roteiro para a Europa. Grupo pequeno, conversa no WhatsApp, sem formulário longo.",
   openGraph: {
-    title: "Nômade Voyage — Sua agência para morar, explorar e viajar fora",
-    description: "Passagens, seguro, visto D7 e suporte completo para brasileiros que querem dar o próximo passo.",
+    title: "Nômade Voyage — Viagens pra Europa no WhatsApp",
+    description: "Roteiros pra Lisboa, multi-destino e mais. Montados com você no WhatsApp.",
     locale: "pt_BR",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Nômade Voyage",
-    description: "A agência para quem quer pertencer ao mundo.",
+    description: "Viagem pra Europa montada no WhatsApp. Grupo pequeno, atendimento humano.",
   },
 };
 

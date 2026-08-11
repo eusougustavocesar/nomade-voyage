@@ -135,8 +135,8 @@ export default function SectionCurador() {
                     marginBottom: "var(--space-4)",
                   }}
                 >
-                  Não sou um call center. Sou o cara que já perdeu o trem em Florença, já encontrou o
-                  hotel certo em Lisboa e vive a Europa no chão — não no TripAdvisor.
+                  Já perdi trem em Florença e já achei hotel decente em Lisboa no pico da temporada.
+                  Hoje monto viagem de brasileiros no WhatsApp com o que aprendi na estrada.
                 </p>
                 <p
                   style={{
@@ -145,9 +145,8 @@ export default function SectionCurador() {
                     lineHeight: 1.75,
                   }}
                 >
-                  Hoje planejo a sua viagem no WhatsApp: passagens, hotéis, seguro e roteiro do jeito
-                  que eu gostaria que alguém tivesse feito por mim. Sem robô. Sem 12 campos. Uma
-                  conversa real sobre a sua Europa.
+                  Passagem, hotel, seguro e o dia a dia. Você manda o que quer e o teto de gasto —
+                  a gente devolve o que dá pra fazer de verdade.
                 </p>
               </div>
 
@@ -206,7 +205,7 @@ export default function SectionCurador() {
                     marginTop: "var(--space-3)",
                   }}
                 >
-                  Primeira conversa gratuita · sem compromisso
+                  Primeira conversa grátis
                 </p>
               </div>
             </div>

@@ -58,7 +58,7 @@ export default function OGImage() {
                 textTransform: "uppercase",
               }}
             >
-              Para quem quer pertencer ao mundo
+              Viagem pra Europa no WhatsApp
             </div>
             <div
               style={{
@@ -70,7 +70,7 @@ export default function OGImage() {
                 maxWidth: 800,
               }}
             >
-              A agência para quem quer morar, explorar e viajar fora.
+              Passagem, hotel e roteiro sem formulário eterno.
             </div>
             <div
               style={{
@@ -80,13 +80,13 @@ export default function OGImage() {
                 maxWidth: 680,
               }}
             >
-              Visto D7, passagens, seguro e suporte completo — do primeiro contato ao novo endereço.
+              Grupo pequeno. Proposta no WhatsApp. Você mexe no que quiser antes de fechar.
             </div>
           </div>
 
           {/* Bottom: trust strip */}
           <div style={{ display: "flex", alignItems: "center", gap: 32 }}>
-            {["+200 brasileiros atendidos", "4 destinos âncora", "Primeira consulta gratuita"].map((item) => (
+            {["200+ viajantes", "Até 8 por grupo", "Primeira conversa grátis"].map((item) => (
               <div key={item} style={{ display: "flex", alignItems: "center", gap: 10 }}>
                 <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#FAFAFA", display: "flex" }} />
                 <span style={{ fontSize: 18, color: "rgba(255,255,255,0.70)", fontWeight: 500 }}>{item}</span>

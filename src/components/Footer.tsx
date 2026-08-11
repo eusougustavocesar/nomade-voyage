@@ -36,7 +36,7 @@ export default function Footer() {
               <Logo size={44} theme="dark" />
             </div>
             <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-body-sm)", color: "rgba(255,255,255,0.50)", lineHeight: 1.65, marginBottom: "var(--space-6)" }}>
-              Viagens para a Europa planejadas por quem conhece cada destino. Atendimento humano, grupos de até 8 pessoas.
+              Viagem pra Europa montada no WhatsApp, em grupo pequeno. Passagem, hotel, seguro e roteiro.
             </p>
             <a
               href={`https://www.instagram.com/_nomadevoyage`}

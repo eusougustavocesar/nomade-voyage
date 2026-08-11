@@ -5,23 +5,23 @@ const steps = [
   {
     number: "01",
     icon: MessageCircle,
-    title: "Conta o que você quer",
+    title: "Manda no WhatsApp",
     description:
-      "Manda uma mensagem no WhatsApp. Sem formulário, sem robô — você fala com alguém que já viajou para o seu destino e sabe o que vale a pena.",
+      "Conta destino, datas e quanto quer gastar. Resposta de pessoa de verdade, não de chatbot.",
   },
   {
     number: "02",
     icon: FileText,
-    title: "A gente monta o roteiro",
+    title: "Recebe a proposta",
     description:
-      "Entendemos seu perfil, destino e orçamento. Você recebe um plano completo: passagens, hotéis, experiências e seguro — sem surpresa.",
+      "Passagem, hotel, seguro e dia a dia. Você mexe no que quiser antes de fechar.",
   },
   {
     number: "03",
     icon: HeartHandshake,
-    title: "Você embarca com tudo pronto",
+    title: "Embarca com tudo resolvido",
     description:
-      "Passagem confirmada, hotel reservado, roteiro na mão. Você curte cada momento — e a gente está disponível se precisar de algo.",
+      "Voucher na mão e suporte no WhatsApp se algo der errado no caminho.",
   },
 ];
 
@@ -31,10 +31,10 @@ export default function SectionComoFunciona() {
       <div className="container">
         <Reveal>
           <div className="section-header">
-            <span className="badge mb-4 inline-flex">Simples assim</span>
+            <span className="badge mb-4 inline-flex">Passo a passo</span>
             <h2>Como funciona</h2>
             <p className="section-subtitle">
-              Nada de formulário longo. Uma conversa, um roteiro — você parte.
+              Três etapas. Do WhatsApp ao aeroporto.
             </p>
           </div>
         </Reveal>

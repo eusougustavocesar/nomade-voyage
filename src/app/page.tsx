@@ -25,13 +25,13 @@ export default function LandingPage() {
           <div className="flex flex-col items-center text-center" style={{ maxWidth: 700, margin: "0 auto" }}>
             <span className="badge badge-accent mb-6 inline-flex hero-enter" style={{ gap: 6 }}>
               <Clock size={11} />
-              Consulta gratuita · Atendimento humano
+              Consulta grátis no WhatsApp
             </span>
             <h1 className="hero-enter hero-enter-delay-1" style={{ color: "var(--color-primary)", marginBottom: "var(--space-6)" }}>
               Para quem sempre disse:<br />&ldquo;ano que vem, vou à Europa.&rdquo;
             </h1>
             <p className="hero-enter hero-enter-delay-2" style={{ fontSize: "var(--text-body-lg)", color: "var(--color-muted-foreground)", lineHeight: 1.65, marginBottom: "var(--space-8)", maxWidth: 520 }}>
-              Passagens, hotéis, seguro e roteiro completo — tudo resolvido no WhatsApp, com quem já esteve no destino.
+              A gente monta passagem, hotel, seguro e roteiro com você no WhatsApp. Sem formulário de 12 campos.
             </p>
             <div className="hero-enter hero-enter-delay-3 w-full flex justify-center" style={{ marginBottom: "var(--space-6)" }}>
               <HeroSearch />
@@ -45,10 +45,10 @@ export default function LandingPage() {
         <div className="container">
           <Reveal>
             <div className="section-header">
-              <span className="badge mb-4 inline-flex">Pacotes mais famosos</span>
-              <h2>Os roteiros mais procurados pelos brasileiros</h2>
+              <span className="badge mb-4 inline-flex">Roteiros prontos</span>
+              <h2>Os destinos que mais pedem</h2>
               <p className="section-subtitle">
-                Pesquisamos os destinos mais vendidos para a Europa e montamos roteiros completos. Todos personalizáveis pelo WhatsApp.
+                Base pronta para Lisboa, Madrid, Dublin e multi-destino. Datas, hotel e o que incluir a gente ajusta no WhatsApp.
               </p>
             </div>
           </Reveal>
@@ -82,10 +82,10 @@ export default function LandingPage() {
       <section id="faq" style={{ background: "var(--color-background)" }}>
         <div className="container">
           <div className="section-header">
-            <span className="badge mb-4 inline-flex">Perguntas frequentes</span>
-            <h2>Tudo que você quer saber antes de mandar mensagem</h2>
+            <span className="badge mb-4 inline-flex">Dúvidas comuns</span>
+            <h2>Antes de mandar mensagem</h2>
             <p className="section-subtitle">
-              Se a sua dúvida não estiver aqui, é só perguntar — a primeira conversa é gratuita.
+              Não achou o que precisa? Manda no WhatsApp. A primeira conversa é grátis.
             </p>
           </div>
           <div style={{ maxWidth: 720, margin: "0 auto" }}>

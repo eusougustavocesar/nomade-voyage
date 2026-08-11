@@ -15,16 +15,16 @@ export default function SectionCTA() {
         }}>
         <span className="badge badge-accent mb-5 inline-flex" style={{ gap: 6 }}>
           <Clock size={11} />
-          Consulta gratuita · Máx. 8 grupos por mês
+          Até 8 grupos por mês
         </span>
         <h2 style={{ marginBottom: "var(--space-6)" }}>
-          O &ldquo;ano que vem&rdquo;<br />começa agora.
+          Cansou de adiar?
         </h2>
         <p style={{ fontSize: "var(--text-body-lg)", color: "var(--color-muted-foreground)", maxWidth: 480, margin: "0 auto var(--space-6)", lineHeight: 1.65 }}>
-          Manda uma mensagem no WhatsApp. É grátis, sem compromisso, sem robô. Uma conversa real sobre a sua viagem.
+          Manda no WhatsApp o destino e as datas. A gente responde com o que dá pra montar no seu orçamento.
         </p>
         <p style={{ fontSize: "var(--text-body-sm)", color: "var(--color-muted-foreground)", maxWidth: 360, margin: "0 auto var(--space-10)", lineHeight: 1.6 }}>
-          Atendemos no máximo 8 grupos por mês. Consulte a disponibilidade para a sua data.
+          Se a agenda do mês estiver cheia, a gente avisa e encaixa no próximo.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center" style={{ gap: "var(--gap-sm)" }}>
           <a
@@ -35,7 +35,7 @@ export default function SectionCTA() {
             style={{ fontSize: "var(--text-body-md)", padding: "var(--space-4) var(--space-8)" }}
           >
             <MessageCircle size={22} />
-            Planejar minha viagem agora
+            Falar no WhatsApp
           </a>
           <a
             href={WA_GUIDE}
@@ -43,7 +43,7 @@ export default function SectionCTA() {
             rel="noopener noreferrer"
             style={{ fontWeight: 500, fontSize: "var(--text-body-sm)", color: "var(--color-muted-foreground)", textDecoration: "underline", textUnderlineOffset: 3 }}
           >
-            ou peça dicas gratuitas sobre a Europa →
+            ou pedir uma dica rápida sobre a Europa →
           </a>
         </div>
         </div>

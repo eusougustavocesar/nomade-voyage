@@ -351,7 +351,7 @@ export default function DesignSystemPage() {
             {[
               { Icon: Plane,   badge: "Pilar I",   title: "Viajar",   desc: "Passagens, hotéis e pacotes curados para experiências internacionais." },
               { Icon: Compass, badge: "Pilar II",  title: "Explorar", desc: "Mochilões e roteiros alternativos para quem quer mais do que o padrão." },
-              { Icon: Home,    badge: "Pilar III", title: "Morar",    desc: "Vistos, documentação e suporte completo para quem quer mudar de vida." },
+              { Icon: Home,    badge: "Pilar III", title: "Morar",    desc: "Visto, documentos e o que precisa pra se instalar fora." },
             ].map(({ Icon, badge, title, desc }) => (
               <div key={title} className="card flex flex-col items-center text-center" style={{ padding: "var(--space-8)" }}>
                 <div className="flex items-center justify-center" style={{ width: 48, height: 48, borderRadius: "var(--radius-lg)", background: "var(--color-muted)", marginBottom: "var(--space-4)" }}>
@@ -467,7 +467,7 @@ export default function DesignSystemPage() {
               <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-caption)", color: "var(--color-destructive)", marginTop: "var(--space-1)" }}>Digite um e-mail válido.</p>
             </div>
             <button className="btn-primary" style={{ justifyContent: "center" }}>
-              Quero falar com um especialista<ArrowRight size={18} />
+              Falar no WhatsApp<ArrowRight size={18} />
             </button>
           </div>
         </Section>

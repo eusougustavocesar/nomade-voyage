@@ -4,21 +4,21 @@ import { Users, Globe, MessageCircle } from "lucide-react";
 const items = [
   {
     icon: Users,
-    title: "Grupos de até 8 pessoas",
+    title: "No máximo 8 por grupo",
     description:
-      "Você nunca vai ao Coliseu num ônibus com 40 estranhos. Grupos pequenos significam acesso a restaurantes, guias e experiências que o turismo de massa não alcança.",
+      "Não é ônibus de 40 pessoas. Grupo pequeno cabe em restaurante local, muda o plano se chover e não te deixa perdido no meio da multidão.",
   },
   {
     icon: Globe,
-    title: "Quem fala lá sabe o que vale a pena",
+    title: "Quem monta já esteve lá",
     description:
-      "A gente já comeu naquele restaurante sem fila, já perdeu o trem em Florença e já encontrou o hotel certo em Lisboa. Você não descobre isso no TripAdvisor.",
+      "Já perdemos trem em Florença e já achamos hotel decente em Lisboa no pico da temporada. O roteiro sai da experiência, não de um PDF genérico.",
   },
   {
     icon: MessageCircle,
-    title: "Primeira conversa gratuita, sem formulário",
+    title: "Começa no WhatsApp",
     description:
-      "Você descreve o que quer — a gente monta, sem 12 campos obrigatórios. Se não fizer sentido, falamos isso também. Sem pressão, sem compromisso.",
+      "Manda o que você quer e o orçamento. Se não der, a gente fala. Sem cadastro, sem call agendada, sem pressão pra fechar na hora.",
   },
 ];
 
@@ -28,10 +28,10 @@ export default function SectionDiferenciais() {
       <div className="container">
         <Reveal>
           <div className="section-header">
-            <span className="badge mb-4 inline-flex">Por que a Nômade Voyage</span>
-            <h2>O que muda quando você viaja com a gente</h2>
+            <span className="badge mb-4 inline-flex">Como a gente trabalha</span>
+            <h2>O que você pode esperar</h2>
             <p className="section-subtitle">
-              Não é diferencial de apresentação. É o que você vai sentir na prática, do primeiro contato até o retorno.
+              Pouca gente por grupo, roteiro feito por quem já foi, e conversa no WhatsApp do começo ao fim.
             </p>
           </div>
         </Reveal>

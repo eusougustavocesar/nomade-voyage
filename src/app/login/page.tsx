@@ -65,10 +65,10 @@ export default function LoginPage() {
           {/* Headline */}
           <div style={{ position: "relative" }}>
             <p style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 32, color: "#FFFFFF", lineHeight: 1.2, marginBottom: "var(--space-3)" }}>
-              Pertença<br />ao mundo.
+              Sua viagem,<br />sem enrolação.
             </p>
             <p style={{ fontSize: "var(--text-caption)", color: "var(--color-white-mid)", lineHeight: 1.6 }}>
-              Passagens, vistos, seguros e suporte para brasileiros que querem viver o mundo.
+              Passagem, hotel, seguro e roteiro — montados com você no WhatsApp.
             </p>
 
             {/* Service pills */}

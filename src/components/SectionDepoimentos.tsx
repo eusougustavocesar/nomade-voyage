@@ -3,21 +3,21 @@ import { Star, User } from "lucide-react";
 
 const testimonials = [
   {
-    text: "Era minha primeira viagem internacional, fui sozinha. Em menos de uma semana, tinha tudo: voo, hotel no centro de Lisboa e roteiro dia a dia. 10 dias, zero contratempo.",
+    text: "Primeira vez fora do Brasil, sozinha. Em uns 5 dias tinha voo, hotel no centro e o roteiro no celular. Lisboa em 10 dias, sem dor de cabeça.",
     name: "Marina S.",
     age: "34 anos",
     city: "São Paulo, SP",
     trip: "Lisboa · 10 dias · Março 2026",
   },
   {
-    text: "Tentei planejar duas vezes e desisti. Aqui foi diferente: 3 dias de conversa no WhatsApp e tinha Lisboa, Sevilha e Madrid resolvidos. Me avisaram de uma greve de trens antes de eu embarcar.",
+    text: "Tentei planejar sozinho duas vezes e larguei. No WhatsApp foi mais rápido: em 3 dias tava com Lisboa, Sevilha e Madrid fechados. Ainda me avisaram de greve de trem antes de embarcar.",
     name: "Rafael M.",
     age: "41 anos",
     city: "Belo Horizonte, MG",
     trip: "Portugal e Espanha · 14 dias · Janeiro 2026",
   },
   {
-    text: "O que me ganhou foi que não tentaram me empurrar o mais caro. Perguntaram quanto eu tinha e montaram o que fazia sentido. Dublin com 8 dias, dentro do orçamento. Voltei apaixonada.",
+    text: "Não tentaram me vender o pacote caro. Perguntaram o teto e montaram em cima. 8 dias em Dublin no orçamento que eu tinha.",
     name: "Camila T.",
     age: "28 anos",
     city: "Rio de Janeiro, RJ",
@@ -31,8 +31,8 @@ export default function SectionDepoimentos() {
       <div className="container">
         <Reveal>
           <div className="section-header">
-            <span className="badge mb-4 inline-flex">Quem já foi</span>
-            <h2>De quem planejou com a gente</h2>
+            <span className="badge mb-4 inline-flex">Quem já viajou</span>
+            <h2>O que o pessoal fala</h2>
             <div className="flex items-center justify-center" style={{ gap: 8, marginTop: "var(--space-4)" }}>
               <div className="flex" style={{ gap: 2 }}>
                 {[...Array(5)].map((_, i) => (

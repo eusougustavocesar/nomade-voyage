@@ -5,6 +5,7 @@ import ContactsFilters from "./ContactsFilters";
 import NovoContatoModal from "./NovoContatoModal";
 import PageHeader  from "../_components/PageHeader";
 import StatusBadge from "../_components/StatusBadge";
+import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 export const metadata = { title: "Contatos — Admin" };
 
@@ -121,10 +122,15 @@ export default async function ContatosPage({
                     <td style={{ padding: "var(--space-3) var(--space-4)" }}>
                       <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-1)" }}>
                         {c.phone && (
-                          <span style={{ display: "flex", alignItems: "center", gap: "var(--space-1)", fontSize: "var(--admin-label-fs)", color: "var(--color-muted-foreground)" }}>
+                          <a
+                            href={buildWhatsAppLink(c.phone) ?? undefined}
+                            target="_blank"
+                            rel="noreferrer"
+                            style={{ display: "flex", alignItems: "center", gap: "var(--space-1)", fontSize: "var(--admin-label-fs)", color: "var(--color-muted-foreground)", textDecoration: "none" }}
+                          >
                             <Phone size={10} />
                             {c.phone}
-                          </span>
+                          </a>
                         )}
                         {c.email && (
                           <span style={{ display: "flex", alignItems: "center", gap: "var(--space-1)", fontSize: "var(--admin-label-fs)", color: "var(--color-muted-foreground)" }}>

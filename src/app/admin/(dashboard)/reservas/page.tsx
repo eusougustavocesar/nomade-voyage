@@ -1,20 +1,12 @@
 import { createClient } from "@/lib/supabase/server";
+import Link from "next/link";
 import { MapPin, Calendar, Users } from "lucide-react";
 import PageHeader  from "../_components/PageHeader";
 import SectionCard from "../_components/SectionCard";
 import StatusBadge from "../_components/StatusBadge";
+import { STATUS_MAP } from "./status";
 
 export const metadata = { title: "Reservas — Admin" };
-
-const STATUS_MAP: Record<string, { label: string; color: string; bg: string }> = {
-  rascunho:   { label: "Rascunho",   color: "var(--color-muted-foreground)", bg: "var(--color-muted)" },
-  confirmado: { label: "Confirmado", color: "var(--color-primary-light)",    bg: "var(--color-muted)" },
-  pago:       { label: "Pago",       color: "var(--color-success)",          bg: "var(--color-success-bg)" },
-  em_viagem:  { label: "Em viagem",  color: "var(--color-primary)",          bg: "var(--color-muted)" },
-  concluido:  { label: "Concluído",  color: "var(--color-muted-foreground)", bg: "var(--color-muted)" },
-  cancelado:  { label: "Cancelado",  color: "var(--color-destructive)",      bg: "var(--color-destructive-bg)" },
-  reembolsado:{ label: "Reembolsado",color: "var(--color-purple)",           bg: "var(--color-purple-bg)" },
-};
 
 const FILTERS = ["todas", "confirmado", "pago", "em_viagem", "concluido", "cancelado"] as const;
 
@@ -106,9 +98,12 @@ export default async function ReservasPage({
                     onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
                   >
                     <td style={TD}>
-                      <span style={{ fontSize: "var(--text-caption)", fontWeight: 600, color: "var(--color-foreground)", fontFamily: "monospace" }}>
+                      <Link
+                        href={`/admin/reservas/${b.id}`}
+                        style={{ fontSize: "var(--text-caption)", fontWeight: 600, color: "var(--color-foreground)", fontFamily: "monospace", textDecoration: "none" }}
+                      >
                         {b.reference ?? "—"}
-                      </span>
+                      </Link>
                     </td>
                     <td style={TD}>
                       <span style={{ fontSize: "var(--text-caption)", color: "var(--color-foreground)", fontWeight: 500 }}>

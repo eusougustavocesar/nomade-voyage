@@ -307,13 +307,13 @@ export default function DesignSystemPage() {
         <Section id="tipografia" title="02 — Tipografia">
           <div className="flex flex-col" style={{ gap: "var(--gap-sm)" }}>
             {[
-              { label: "Heading (h1–h6) — Poppins 600 · clamp(28px, 3.5vw, 38px)", size: "var(--text-h2)", weight: 600, family: "var(--font-heading)", text: "Como funciona a Nômade Voyage", lh: 1.15 },
-              { label: "Título de card (override inline) — Poppins 600 · 18px", size: "var(--text-h4)", weight: 600, family: "var(--font-heading)", text: "Lisboa — 10 dias, grupo pequeno", lh: 1.3 },
+              { label: "Heading (h1–h6) — Inter 600 · clamp(28px, 3.5vw, 38px)", size: "var(--text-h2)", weight: 600, family: "var(--font-heading)", text: "Como funciona a Nômade Voyage", lh: 1.15 },
+              { label: "Título de card (override inline) — Inter 600 · 18px", size: "var(--text-h4)", weight: 600, family: "var(--font-heading)", text: "Lisboa — 10 dias, grupo pequeno", lh: 1.3 },
               { label: "Body Large — Inter 400 · 18px", size: "var(--text-body-lg)", weight: 400, family: "var(--font-body)", text: "Passagens, hotéis, seguro e roteiro completo — tudo resolvido no WhatsApp, com quem já esteve no destino.", lh: 1.65 },
               { label: "Body MD — Inter 400 · 17px", size: "var(--text-body-md)", weight: 400, family: "var(--font-body)", text: "Atendemos no máximo 8 grupos por mês. Consulte a disponibilidade para a sua data.", lh: 1.65 },
               { label: "Body — Inter 400 · 16px", size: "var(--text-body)", weight: 400, family: "var(--font-body)", text: "Não somos uma OTA. Somos a pessoa que já fez esse caminho e quer te ajudar.", lh: 1.6 },
               { label: "Body SM — Inter 400 · 15px", size: "var(--text-body-sm)", weight: 400, family: "var(--font-body)", text: "Inclui seguro viagem, consultoria 1x1 e suporte durante toda a estadia.", lh: 1.6 },
-              { label: "Quote — Poppins Italic · 17px", size: "var(--text-body-md)", weight: 400, family: "var(--font-heading)", italic: true, text: '"Finalmente alguém que explica tudo sem enrolação. Mudei para Lisboa em 3 meses."', lh: 1.5 },
+              { label: "Quote — Inter Italic · 17px", size: "var(--text-body-md)", weight: 400, family: "var(--font-heading)", italic: true, text: '"Finalmente alguém que explica tudo sem enrolação. Mudei para Lisboa em 3 meses."', lh: 1.5 },
               { label: "Caption — Inter 500 · 13px", size: "var(--text-caption)", weight: 500, family: "var(--font-body)", text: "Lisboa, Portugal · Março 2026", lh: 1.4 },
               { label: "Micro / Label — Inter 500 · 12px uppercase", size: "var(--text-micro)", weight: 500, family: "var(--font-body)", upper: true, ls: "0.06em", text: "Destinos disponíveis", lh: 1.4 },
             ].map(({ label, size, weight, family, text, lh, italic, upper, ls }) => (
@@ -511,10 +511,10 @@ export default function DesignSystemPage() {
           </div>
           <div className="flex flex-wrap items-center" style={{ gap: "var(--gap-md)" }}>
             {[
-              { label: "radius-sm · 4px",    r: "var(--radius-sm)" },
-              { label: "radius-md · 8px",    r: "var(--radius-md)" },
+              { label: "radius-sm · 8px",    r: "var(--radius-sm)" },
+              { label: "radius-md · 12px",   r: "var(--radius-md)" },
               { label: "radius-lg · 16px",   r: "var(--radius-lg)" },
-              { label: "radius-xl · 24px",   r: "var(--radius-xl)" },
+              { label: "radius-xl · 20px",   r: "var(--radius-xl)" },
               { label: "radius-full · pill", r: "var(--radius-full)" },
             ].map(({ label, r }) => (
               <div key={label} className="flex flex-col items-center" style={{ gap: "var(--space-2)" }}>

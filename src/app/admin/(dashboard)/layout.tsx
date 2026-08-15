@@ -24,7 +24,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
         display: "flex",
         flex: 1,
         minWidth: 0,
-        borderRadius: "var(--radius-xl)",
+        borderRadius: "12px",  /* rounded-xl do Tailwind (default), o que o helm de fato usa ali — não o --radius-xl:20px do próprio design system dele */
         border: "1px solid var(--color-border)",
         background: "var(--color-surface)",
         overflow: "hidden",

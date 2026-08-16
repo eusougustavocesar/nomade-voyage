@@ -454,3 +454,9 @@ html[data-theme="dark"] .btn-primary:hover { background: #818CF8; }
   border-radius: var(--radius-lg);
   padding:       var(--space-6);
 }
+
+/* Hover de linha de tabela via CSS — nunca onMouseEnter/onMouseLeave inline em
+   Server Component (função não serializa pro client, quebra com 500). */
+.admin-table-row:hover {
+  background: var(--color-muted);
+}

@@ -107,12 +107,11 @@ export default async function ContatosPage({
                 return (
                   <tr
                     key={c.id}
+                    className="admin-table-row"
                     style={{
                       borderTop: i > 0 ? "1px solid var(--color-border)" : "none",
                       transition: "background 80ms",
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.background = "var(--color-muted)")}
-                    onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
                   >
                     <td style={{ padding: "var(--space-3) var(--space-4)" }}>
                       <span style={{ fontSize: "var(--text-caption)", fontWeight: 600, color: "var(--color-foreground)" }}>

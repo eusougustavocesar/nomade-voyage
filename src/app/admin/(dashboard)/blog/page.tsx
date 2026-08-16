@@ -117,9 +117,8 @@ export default async function BlogPage({
                 return (
                   <tr
                     key={post.id}
+                    className="admin-table-row"
                     style={{ borderTop: i > 0 ? "1px solid var(--color-border)" : "none", transition: "background 80ms", cursor: "pointer" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.background = "var(--color-muted)")}
-                    onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
                   >
                     <td style={TD}>
                       <p style={{ fontSize: "var(--text-caption)", fontWeight: 600, color: "var(--color-foreground)", marginBottom: 2 }}>

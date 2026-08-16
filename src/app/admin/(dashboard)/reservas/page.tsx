@@ -93,9 +93,8 @@ export default async function ReservasPage({
                 return (
                   <tr
                     key={b.id}
+                    className="admin-table-row"
                     style={{ borderTop: i > 0 ? "1px solid var(--color-border)" : "none", transition: "background 80ms" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.background = "var(--color-muted)")}
-                    onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
                   >
                     <td style={TD}>
                       <Link

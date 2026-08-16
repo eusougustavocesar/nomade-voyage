@@ -77,9 +77,11 @@ export default function LeadDetailModal({
             <Field label="Data de volta" name="travel_date_to" type="date" defaultValue={lead.travel_date_to ?? ""} />
           </div>
 
+          <Field label="Duração (dias)" name="duration_days" type="number" defaultValue={lead.duration_days ?? ""} />
+
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-3)" }}>
-            <Field label="Duração (dias)" name="duration_days" type="number" defaultValue={lead.duration_days ?? ""} />
-            <Field label="Passageiros" name="group_size" type="number" defaultValue={lead.group_size ?? ""} />
+            <Field label="Adultos" name="adults" type="number" defaultValue={lead.adults ?? 1} />
+            <Field label="Crianças" name="children" type="number" defaultValue={lead.children ?? 0} />
           </div>
 
           <label style={{ display: "flex", alignItems: "center", gap: "var(--space-2)", fontSize: 12, color: "var(--color-muted-foreground)" }}>

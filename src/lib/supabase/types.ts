@@ -12,6 +12,31 @@ export type Database = {
   __InternalSupabase: {
     PostgrestVersion: "14.5"
   }
+  graphql_public: {
+    Tables: {
+      [_ in never]: never
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      graphql: {
+        Args: {
+          extensions?: Json
+          operationName?: string
+          query?: string
+          variables?: Json
+        }
+        Returns: Json
+      }
+    }
+    Enums: {
+      [_ in never]: never
+    }
+    CompositeTypes: {
+      [_ in never]: never
+    }
+  }
   public: {
     Tables: {
       blog_categories: {
@@ -695,16 +720,17 @@ export type Database = {
       }
       leads: {
         Row: {
+          adults: number
           assigned_to: string | null
           budget_max: number | null
           budget_min: number | null
+          children: number
           contact_id: string
           created_at: string
           destination: string | null
           duration_days: number | null
           estimated_value: number | null
           flexible_dates: boolean | null
-          group_size: number | null
           id: string
           lost_at: string | null
           lost_reason: string | null
@@ -716,16 +742,17 @@ export type Database = {
           won_at: string | null
         }
         Insert: {
+          adults?: number
           assigned_to?: string | null
           budget_max?: number | null
           budget_min?: number | null
+          children?: number
           contact_id: string
           created_at?: string
           destination?: string | null
           duration_days?: number | null
           estimated_value?: number | null
           flexible_dates?: boolean | null
-          group_size?: number | null
           id?: string
           lost_at?: string | null
           lost_reason?: string | null
@@ -737,16 +764,17 @@ export type Database = {
           won_at?: string | null
         }
         Update: {
+          adults?: number
           assigned_to?: string | null
           budget_max?: number | null
           budget_min?: number | null
+          children?: number
           contact_id?: string
           created_at?: string
           destination?: string | null
           duration_days?: number | null
           estimated_value?: number | null
           flexible_dates?: boolean | null
-          group_size?: number | null
           id?: string
           lost_at?: string | null
           lost_reason?: string | null
@@ -1110,6 +1138,7 @@ export type Database = {
           nationality: string | null
           notes: string | null
           phone: string | null
+          visa_expiry: string | null
         }
         Insert: {
           booking_id: string
@@ -1124,6 +1153,7 @@ export type Database = {
           nationality?: string | null
           notes?: string | null
           phone?: string | null
+          visa_expiry?: string | null
         }
         Update: {
           booking_id?: string
@@ -1138,6 +1168,7 @@ export type Database = {
           nationality?: string | null
           notes?: string | null
           phone?: string | null
+          visa_expiry?: string | null
         }
         Relationships: [
           {
@@ -1351,6 +1382,9 @@ export type CompositeTypes<
     : never
 
 export const Constants = {
+  graphql_public: {
+    Enums: {},
+  },
   public: {
     Enums: {
       activity_type: [

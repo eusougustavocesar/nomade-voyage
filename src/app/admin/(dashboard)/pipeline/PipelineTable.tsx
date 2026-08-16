@@ -84,7 +84,7 @@ export default function PipelineTable({
                 </td>
                 <td style={{ padding: "var(--space-3) var(--space-4)" }}>
                   <span style={{ fontSize: "var(--admin-label-fs)", color: "var(--color-muted-foreground)" }}>
-                    {lead.group_size ?? "—"}
+                    {lead.adults || lead.children ? (lead.adults ?? 0) + (lead.children ?? 0) : "—"}
                   </span>
                 </td>
                 <td style={{ padding: "var(--space-3) var(--space-4)" }}>

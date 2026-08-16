@@ -94,7 +94,7 @@ export default async function ReservaDetailPage({
   const [{ data: travelers }, { data: items }] = await Promise.all([
     supabase
       .from("travelers")
-      .select("id, full_name, email, phone, document_type, document_number, document_expiry, nationality, date_of_birth, is_lead_traveler, notes")
+      .select("id, full_name, email, phone, document_type, document_number, document_expiry, visa_expiry, nationality, date_of_birth, is_lead_traveler, notes")
       .eq("booking_id", id)
       .order("is_lead_traveler", { ascending: false }),
     supabase
@@ -186,6 +186,7 @@ export default async function ReservaDetailPage({
                       <span style={{ fontSize: "var(--admin-label-fs)", color: "var(--color-muted-foreground)" }}>
                         {t.document_number ? `${t.document_type} ${t.document_number}` : "—"}
                         {t.document_expiry && ` · val. ${fmtDate(t.document_expiry)}`}
+                        {t.visa_expiry && ` · visto val. ${fmtDate(t.visa_expiry)}`}
                       </span>
                     </td>
                     <td style={{ padding: "var(--space-3) var(--space-4)" }}>

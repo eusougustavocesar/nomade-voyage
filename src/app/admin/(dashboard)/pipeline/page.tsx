@@ -9,7 +9,7 @@ export default async function PipelinePage() {
 
   const { data: leads } = await supabase
     .from("leads")
-    .select("id, stage, destination, estimated_value, group_size, travel_date_from, travel_date_to, duration_days, budget_min, budget_max, flexible_dates, observations, created_at, contacts(full_name, phone)")
+    .select("id, stage, destination, estimated_value, adults, children, travel_date_from, travel_date_to, duration_days, budget_min, budget_max, flexible_dates, observations, created_at, contacts(full_name, phone)")
     .not("stage", "in", '("concluido","em_preparacao","em_viagem")')
     .order("created_at", { ascending: false });
 

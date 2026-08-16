@@ -11,7 +11,8 @@ export type Lead = {
   stage: string;
   destination: string | null;
   estimated_value: number | null;
-  group_size: number | null;
+  adults: number | null;
+  children: number | null;
   travel_date_from: string | null;
   travel_date_to: string | null;
   duration_days: number | null;
@@ -111,10 +112,11 @@ function LeadCard({
 
       <div className="flex items-center justify-between">
         <div className="flex items-center" style={{ gap: "var(--space-3)" }}>
-          {lead.group_size && (
+          {(lead.adults || lead.children) && (
             <span className="flex items-center" style={{ gap: 3, fontSize: 10, color: "var(--color-muted-foreground)" }}>
               <Users size={9} />
-              {lead.group_size}
+              {(lead.adults ?? 0) + (lead.children ?? 0)}
+              {!!lead.children && ` (${lead.children} criança${lead.children > 1 ? "s" : ""})`}
             </span>
           )}
         </div>

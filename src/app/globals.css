@@ -460,3 +460,9 @@ html[data-theme="dark"] .btn-primary:hover { background: #818CF8; }
 .admin-table-row:hover {
   background: var(--color-muted);
 }
+
+/* ─── Impressão do roteiro público (Fase 4) ─── */
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff !important; }
+}

@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import Logo from "@/components/Logo";
 import {
   LayoutDashboard, Users, Kanban, CalendarCheck,
-  Package, FileText, Settings, ChevronsLeft, DollarSign,
+  Package, FileText, Settings, ChevronsLeft, DollarSign, MapPinned,
 } from "lucide-react";
 
 const SECTIONS = [
@@ -23,6 +23,7 @@ const SECTIONS = [
       { label: "Contatos",  href: "/admin/contatos", icon: Users },
       { label: "Reservas",  href: "/admin/reservas", icon: CalendarCheck },
       { label: "Financeiro", href: "/admin/financeiro", icon: DollarSign },
+      { label: "Roteiros",   href: "/admin/roteiros",   icon: MapPinned },
     ],
   },
   {

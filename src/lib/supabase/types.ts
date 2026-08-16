@@ -1076,6 +1076,53 @@ export type Database = {
           },
         ]
       }
+      quote_itineraries: {
+        Row: {
+          created_at: string
+          days: Json
+          destination: string
+          duration_days: number
+          id: string
+          notes: string | null
+          quote_id: string
+          share_token: string
+          travel_style: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          days?: Json
+          destination: string
+          duration_days: number
+          id?: string
+          notes?: string | null
+          quote_id: string
+          share_token?: string
+          travel_style?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          days?: Json
+          destination?: string
+          duration_days?: number
+          id?: string
+          notes?: string | null
+          quote_id?: string
+          share_token?: string
+          travel_style?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "quote_itineraries_quote_id_fkey"
+            columns: ["quote_id"]
+            isOneToOne: true
+            referencedRelation: "quotes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       quotes: {
         Row: {
           accepted_at: string | null
@@ -1194,6 +1241,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      get_public_itinerary: { Args: { p_token: string }; Returns: Json }
       is_admin: { Args: never; Returns: boolean }
       is_staff: { Args: never; Returns: boolean }
     }

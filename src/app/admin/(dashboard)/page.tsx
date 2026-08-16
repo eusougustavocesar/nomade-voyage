@@ -110,7 +110,8 @@ export default async function AdminDashboard() {
       .limit(5),
     supabase.from("bookings")
       .select("total_price, leads(destination)")
-      .gte("created_at", startOfMonth.toISOString()),
+      .gte("created_at", startOfMonth.toISOString())
+      .not("status", "in", "(rascunho,cancelado,reembolsado)"),
     supabase.from("quotes")
       .select("id, status, total, valid_until, created_at, leads(destination, contacts(full_name))")
       .order("created_at", { ascending: false })

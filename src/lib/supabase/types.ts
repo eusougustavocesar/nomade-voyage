@@ -355,6 +355,9 @@ export type Database = {
       booking_items: {
         Row: {
           booking_id: string
+          commission_rate: number
+          commission_received_at: string | null
+          commission_status: Database["public"]["Enums"]["commission_status"]
           description: string
           id: string
           product_type: Database["public"]["Enums"]["product_type"]
@@ -366,6 +369,9 @@ export type Database = {
         }
         Insert: {
           booking_id: string
+          commission_rate?: number
+          commission_received_at?: string | null
+          commission_status?: Database["public"]["Enums"]["commission_status"]
           description: string
           id?: string
           product_type: Database["public"]["Enums"]["product_type"]
@@ -377,6 +383,9 @@ export type Database = {
         }
         Update: {
           booking_id?: string
+          commission_rate?: number
+          commission_received_at?: string | null
+          commission_status?: Database["public"]["Enums"]["commission_status"]
           description?: string
           id?: string
           product_type?: Database["public"]["Enums"]["product_type"]
@@ -1212,6 +1221,7 @@ export type Database = {
         | "concluido"
         | "cancelado"
         | "reembolsado"
+      commission_status: "pendente" | "recebido"
       contact_source:
         | "site"
         | "whatsapp"
@@ -1413,6 +1423,7 @@ export const Constants = {
         "cancelado",
         "reembolsado",
       ],
+      commission_status: ["pendente", "recebido"],
       contact_source: [
         "site",
         "whatsapp",

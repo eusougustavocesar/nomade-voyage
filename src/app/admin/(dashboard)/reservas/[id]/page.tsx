@@ -6,6 +6,8 @@ import PageHeader  from "../../_components/PageHeader";
 import SectionCard from "../../_components/SectionCard";
 import StatusBadge from "../../_components/StatusBadge";
 import { STATUS_MAP } from "../status";
+import { PAYMENT_STATUS_MAP } from "../../financeiro/status";
+import { markCommissionReceived } from "../actions";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 export const metadata = { title: "Reserva — Admin" };
@@ -91,7 +93,7 @@ export default async function ReservaDetailPage({
 
   if (!booking) notFound();
 
-  const [{ data: travelers }, { data: items }] = await Promise.all([
+  const [{ data: travelers }, { data: items }, { data: payments }] = await Promise.all([
     supabase
       .from("travelers")
       .select("id, full_name, email, phone, document_type, document_number, document_expiry, visa_expiry, nationality, date_of_birth, is_lead_traveler, notes")
@@ -99,9 +101,14 @@ export default async function ReservaDetailPage({
       .order("is_lead_traveler", { ascending: false }),
     supabase
       .from("booking_items")
-      .select("id, product_type, description, quantity, unit_price, total_price, status, booking_flights(*), booking_hotels(*), booking_transfers(*), booking_insurance(*), booking_tours(*)")
+      .select("id, product_type, description, quantity, unit_price, total_price, status, commission_rate, commission_status, commission_received_at, booking_flights(*), booking_hotels(*), booking_transfers(*), booking_insurance(*), booking_tours(*)")
       .eq("booking_id", id)
       .order("sort_order"),
+    supabase
+      .from("payments")
+      .select("id, amount, method, installments, status, due_date, paid_at, notes")
+      .eq("booking_id", id)
+      .order("due_date"),
   ]);
 
   const contact = booking.contacts as { full_name: string; phone: string | null; email: string | null } | null;
@@ -221,7 +228,7 @@ export default async function ReservaDetailPage({
           <table style={{ width: "100%", borderCollapse: "collapse" }}>
             <thead>
               <tr style={{ borderBottom: "1px solid var(--color-border)" }}>
-                {["Tipo", "Descrição", "Qtd", "Valor unit.", "Total", "Status"].map((h) => (
+                {["Tipo", "Descrição", "Qtd", "Valor unit.", "Total", "Status", "Comissão"].map((h) => (
                   <th key={h} className="admin-label" style={{ padding: "var(--space-3) var(--space-4)", textAlign: "left" }}>{h}</th>
                 ))}
               </tr>
@@ -251,6 +258,78 @@ export default async function ReservaDetailPage({
                     </td>
                     <td style={{ padding: "var(--space-3) var(--space-4)" }}>
                       <span style={{ fontSize: "var(--text-caption)", fontWeight: 600, color: "var(--color-foreground)" }}>{fmt(item.total_price)}</span>
+                    </td>
+                    <td style={{ padding: "var(--space-3) var(--space-4)" }}>
+                      <StatusBadge label={st.label} color={st.color} bg={st.bg} />
+                    </td>
+                    <td style={{ padding: "var(--space-3) var(--space-4)" }}>
+                      {item.commission_rate > 0 ? (
+                        <div className="flex items-center" style={{ gap: "var(--space-2)" }}>
+                          <span style={{ fontSize: "var(--admin-label-fs)", color: "var(--color-muted-foreground)" }}>
+                            {fmt(item.total_price * item.commission_rate)}
+                          </span>
+                          {item.commission_status === "recebido" ? (
+                            <StatusBadge label="Recebida" color="var(--color-success)" bg="var(--color-success-bg)" />
+                          ) : (
+                            <form action={markCommissionReceived.bind(null, item.id, booking.id)}>
+                              <button
+                                type="submit"
+                                style={{
+                                  padding: "2px 8px", fontSize: 10, fontWeight: 600, cursor: "pointer",
+                                  color: "var(--color-primary)", background: "var(--color-accent-bg)",
+                                  border: "none", borderRadius: "var(--radius-full)",
+                                }}
+                              >
+                                Marcar recebida
+                              </button>
+                            </form>
+                          )}
+                        </div>
+                      ) : (
+                        <span style={{ fontSize: "var(--admin-label-fs)", color: "var(--color-muted-foreground)" }}>—</span>
+                      )}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        )}
+      </SectionCard>
+
+      <SectionCard title="Pagamentos" style={{ marginTop: "var(--gap-sm)", padding: 0, overflow: "hidden" }}>
+        {!payments?.length ? (
+          <p style={{ padding: "var(--space-8)", textAlign: "center", color: "var(--color-muted-foreground)", fontSize: "var(--text-caption)" }}>
+            Nenhum pagamento registrado.
+          </p>
+        ) : (
+          <table style={{ width: "100%", borderCollapse: "collapse" }}>
+            <thead>
+              <tr style={{ borderBottom: "1px solid var(--color-border)" }}>
+                {["Valor", "Método", "Parcelas", "Vencimento", "Pago em", "Status"].map((h) => (
+                  <th key={h} className="admin-label" style={{ padding: "var(--space-3) var(--space-4)", textAlign: "left" }}>{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {payments.map((p, i) => {
+                const st = PAYMENT_STATUS_MAP[p.status] ?? PAYMENT_STATUS_MAP.pendente;
+                return (
+                  <tr key={p.id} style={{ borderTop: i > 0 ? "1px solid var(--color-border)" : "none" }}>
+                    <td style={{ padding: "var(--space-3) var(--space-4)" }}>
+                      <span style={{ fontSize: "var(--text-caption)", fontWeight: 600, color: "var(--color-foreground)" }}>{fmt(p.amount)}</span>
+                    </td>
+                    <td style={{ padding: "var(--space-3) var(--space-4)" }}>
+                      <span style={{ fontSize: "var(--admin-label-fs)", color: "var(--color-muted-foreground)" }}>{p.method ?? "—"}</span>
+                    </td>
+                    <td style={{ padding: "var(--space-3) var(--space-4)" }}>
+                      <span style={{ fontSize: "var(--admin-label-fs)", color: "var(--color-muted-foreground)" }}>{p.installments}x</span>
+                    </td>
+                    <td style={{ padding: "var(--space-3) var(--space-4)" }}>
+                      <span style={{ fontSize: "var(--admin-label-fs)", color: "var(--color-muted-foreground)" }}>{fmtDate(p.due_date)}</span>
+                    </td>
+                    <td style={{ padding: "var(--space-3) var(--space-4)" }}>
+                      <span style={{ fontSize: "var(--admin-label-fs)", color: "var(--color-muted-foreground)" }}>{p.paid_at ? fmtDateTime(p.paid_at) : "—"}</span>
                     </td>
                     <td style={{ padding: "var(--space-3) var(--space-4)" }}>
                       <StatusBadge label={st.label} color={st.color} bg={st.bg} />

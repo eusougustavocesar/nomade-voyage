@@ -2,10 +2,11 @@
 
 import { useState, useRef, useTransition } from "react";
 import { MapPin, Users, DollarSign, Pencil, MessageCircle } from "lucide-react";
-import { updateLeadStage, updateLeadToLost } from "./actions";
+import { updateLeadStage, updateLeadToLost, convertLeadToBooking } from "./actions";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { fmtCurrency } from "@/lib/format";
 import LostReasonModal from "./LostReasonModal";
+import ConvertBookingModal from "./ConvertBookingModal";
 
 export type Lead = {
   id: string;
@@ -138,6 +139,8 @@ export default function PipelineBoard({
   const draggingId = useRef<string | null>(null);
   const [lostPromptFor, setLostPromptFor] = useState<{ id: string; previousStage: string } | null>(null);
   const [lostError, setLostError] = useState<string | null>(null);
+  const [convertPromptFor, setConvertPromptFor] = useState<Lead | null>(null);
+  const [convertError, setConvertError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
 
   function handleDragStart(id: string) {
@@ -155,6 +158,11 @@ export default function PipelineBoard({
 
     if (targetStage === "perdido") {
       setLostPromptFor({ id, previousStage: lead.stage });
+      return;
+    }
+
+    if (targetStage === "reservado") {
+      setConvertPromptFor(lead);
       return;
     }
 
@@ -176,6 +184,20 @@ export default function PipelineBoard({
         setLostPromptFor(null);
       } catch (err: any) {
         setLostError(err.message);
+      }
+    });
+  }
+
+  function confirmConvert(fd: FormData) {
+    if (!convertPromptFor) return;
+    setConvertError(null);
+    startTransition(async () => {
+      try {
+        await convertLeadToBooking(convertPromptFor.id, fd);
+        setLeads((prev) => prev.map((l) => (l.id === convertPromptFor.id ? { ...l, stage: "reservado" } : l)));
+        setConvertPromptFor(null);
+      } catch (err: any) {
+        setConvertError(err.message);
       }
     });
   }
@@ -267,6 +289,16 @@ export default function PipelineBoard({
           onConfirm={confirmLost}
           isPending={isPending}
           error={lostError}
+        />
+      )}
+
+      {convertPromptFor && (
+        <ConvertBookingModal
+          lead={convertPromptFor}
+          onCancel={() => { setConvertPromptFor(null); setConvertError(null); }}
+          onConfirm={confirmConvert}
+          isPending={isPending}
+          error={convertError}
         />
       )}
     </>

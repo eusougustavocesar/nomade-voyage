@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { Suspense } from "react";
+import Link from "next/link";
 import { Phone, Mail } from "lucide-react";
 import ContactsFilters from "./ContactsFilters";
 import NovoContatoModal from "./NovoContatoModal";
@@ -9,7 +10,7 @@ import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 export const metadata = { title: "Contatos — Admin" };
 
-const SOURCE_LABEL: Record<string, string> = {
+export const SOURCE_LABEL: Record<string, string> = {
   site:      "Site",
   whatsapp:  "WhatsApp",
   instagram: "Instagram",
@@ -114,9 +115,12 @@ export default async function ContatosPage({
                     }}
                   >
                     <td style={{ padding: "var(--space-3) var(--space-4)" }}>
-                      <span style={{ fontSize: "var(--text-caption)", fontWeight: 600, color: "var(--color-foreground)" }}>
+                      <Link
+                        href={`/admin/contatos/${c.id}`}
+                        style={{ fontSize: "var(--text-caption)", fontWeight: 600, color: "var(--color-foreground)", textDecoration: "none" }}
+                      >
                         {c.full_name}
-                      </span>
+                      </Link>
                     </td>
                     <td style={{ padding: "var(--space-3) var(--space-4)" }}>
                       <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-1)" }}>

@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
-import { MapPin, Clock, CheckCircle2, XCircle } from "lucide-react";
+import Link from "next/link";
+import { MapPin, Clock, CheckCircle2, XCircle, Plus, Pencil } from "lucide-react";
 import PageHeader  from "../_components/PageHeader";
 import StatusBadge from "../_components/StatusBadge";
 import { fmtCurrency as fmt } from "@/lib/format";
@@ -23,6 +24,25 @@ export default async function PacotesPage() {
       <PageHeader
         title="Pacotes"
         sub={`${ativos} ativo${ativos !== 1 ? "s" : ""} · ${inativos} inativo${inativos !== 1 ? "s" : ""}`}
+        action={
+          <Link
+            href="/admin/pacotes/novo"
+            className="flex items-center"
+            style={{
+              gap: "var(--space-2)",
+              padding: "var(--space-2) var(--space-4)",
+              background: "var(--color-primary)",
+              color: "#fff",
+              borderRadius: "var(--radius-md)",
+              fontSize: 12,
+              fontWeight: 600,
+              textDecoration: "none",
+            }}
+          >
+            <Plus size={13} />
+            Novo pacote
+          </Link>
+        }
       />
 
       {!pacotes?.length ? (
@@ -54,8 +74,19 @@ export default async function PacotesPage() {
                     <StatusBadge label={p.badge} color="var(--color-primary)" bg="var(--color-muted)" />
                   )}
                 </div>
-                {/* Active indicator */}
-                <div style={{ position: "absolute", top: "var(--space-3)", right: "var(--space-3)" }}>
+                {/* Active indicator + edit */}
+                <div className="flex items-center" style={{ position: "absolute", top: "var(--space-3)", right: "var(--space-3)", gap: "var(--space-2)" }}>
+                  <Link
+                    href={`/admin/pacotes/${p.id}`}
+                    style={{
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      width: 24, height: 24, borderRadius: "var(--radius-full)",
+                      background: "rgba(0,0,0,0.5)",
+                    }}
+                    title="Editar pacote"
+                  >
+                    <Pencil size={12} color="#fff" />
+                  </Link>
                   {p.is_active
                     ? <CheckCircle2 size={16} color="var(--color-success)" />
                     : <XCircle      size={16} color="var(--color-destructive)" />

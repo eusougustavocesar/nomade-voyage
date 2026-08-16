@@ -114,12 +114,15 @@ export default async function BlogPage({
                   <tr
                     key={post.id}
                     className="admin-table-row"
-                    style={{ borderTop: i > 0 ? "1px solid var(--color-border)" : "none", transition: "background 80ms", cursor: "pointer" }}
+                    style={{ borderTop: i > 0 ? "1px solid var(--color-border)" : "none", transition: "background 80ms" }}
                   >
                     <td style={TD}>
-                      <p style={{ fontSize: "var(--text-caption)", fontWeight: 600, color: "var(--color-foreground)", marginBottom: 2 }}>
+                      <Link
+                        href={`/admin/blog/${post.id}`}
+                        style={{ fontSize: "var(--text-caption)", fontWeight: 600, color: "var(--color-foreground)", textDecoration: "none", display: "block", marginBottom: 2 }}
+                      >
                         {post.title}
-                      </p>
+                      </Link>
                       {post.excerpt && (
                         <p style={{ fontSize: "var(--admin-label-fs)", color: "var(--color-muted-foreground)", maxWidth: 400, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                           {post.excerpt}

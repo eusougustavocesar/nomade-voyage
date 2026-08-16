@@ -5,11 +5,13 @@ import { ArrowLeft, Calendar, Users, MessageCircle, Mail } from "lucide-react";
 import PageHeader  from "../../_components/PageHeader";
 import SectionCard from "../../_components/SectionCard";
 import StatusBadge from "../../_components/StatusBadge";
-import { STATUS_MAP } from "../status";
 import { PAYMENT_STATUS_MAP } from "../../financeiro/status";
 import { markCommissionReceived } from "../actions";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { fmtCurrency, fmtDate } from "@/lib/format";
+import StatusSelect from "./StatusSelect";
+import AddTravelerModal from "./AddTravelerModal";
+import AddPaymentModal from "./AddPaymentModal";
 
 export const metadata = { title: "Reserva — Admin" };
 
@@ -104,7 +106,6 @@ export default async function ReservaDetailPage({
 
   const contact = booking.contacts as { full_name: string; phone: string | null; email: string | null } | null;
   const lead     = booking.leads as { destination: string } | null;
-  const s = STATUS_MAP[booking.status] ?? STATUS_MAP.rascunho;
   const waLink = buildWhatsAppLink(contact?.phone);
 
   return (
@@ -122,7 +123,7 @@ export default async function ReservaDetailPage({
           title={booking.reference ?? "Reserva"}
           sub={contact?.full_name ?? "—"}
         />
-        <StatusBadge label={s.label} color={s.color} bg={s.bg} />
+        <StatusSelect bookingId={booking.id} status={booking.status} />
       </div>
 
       <SectionCard title="Detalhes da reserva" style={{ marginBottom: "var(--gap-sm)" }}>
@@ -155,7 +156,11 @@ export default async function ReservaDetailPage({
         )}
       </SectionCard>
 
-      <SectionCard title="Viajantes" style={{ marginBottom: "var(--gap-sm)", padding: 0, overflow: "hidden" }}>
+      <SectionCard
+        title="Viajantes"
+        action={<AddTravelerModal bookingId={booking.id} />}
+        style={{ marginBottom: "var(--gap-sm)", padding: 0, overflow: "hidden" }}
+      >
         {!travelers?.length ? (
           <p style={{ padding: "var(--space-8)", textAlign: "center", color: "var(--color-muted-foreground)", fontSize: "var(--text-caption)" }}>
             Nenhum viajante cadastrado.
@@ -288,7 +293,11 @@ export default async function ReservaDetailPage({
         )}
       </SectionCard>
 
-      <SectionCard title="Pagamentos" style={{ marginTop: "var(--gap-sm)", padding: 0, overflow: "hidden" }}>
+      <SectionCard
+        title="Pagamentos"
+        action={<AddPaymentModal bookingId={booking.id} />}
+        style={{ marginTop: "var(--gap-sm)", padding: 0, overflow: "hidden" }}
+      >
         {!payments?.length ? (
           <p style={{ padding: "var(--space-8)", textAlign: "center", color: "var(--color-muted-foreground)", fontSize: "var(--text-caption)" }}>
             Nenhum pagamento registrado.

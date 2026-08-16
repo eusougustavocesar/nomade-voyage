@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import Link from "next/link";
 import {
   Users, TrendingUp, CalendarCheck, AlertCircle,
   MapPin, Clock, MessageCircle, FileText, CheckCircle2, DollarSign, ShieldAlert,
@@ -344,15 +345,15 @@ export default async function AdminDashboard() {
               const contact = (b.contacts as { full_name: string } | null)?.full_name ?? "—";
               const date    = new Date(b.travel_date_from!).toLocaleDateString("pt-BR", { day: "numeric", month: "short" });
               return (
-                <div
+                <Link
                   key={b.id}
+                  href={`/admin/reservas/${b.id}`}
+                  className="flex items-center justify-between"
                   style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
                     padding: "var(--space-3) 0",
                     borderTop: i > 0 ? "1px solid var(--color-border)" : "none",
                     gap: "var(--space-4)",
+                    textDecoration: "none",
                   }}
                 >
                   <div style={{ display: "flex", alignItems: "center", gap: "var(--space-3)" }}>
@@ -366,7 +367,7 @@ export default async function AdminDashboard() {
                     <span style={{ fontSize: "var(--admin-label-fs)", color: "var(--color-muted-foreground)" }}>{b.reference}</span>
                     <span style={{ fontSize: "var(--text-caption)", fontWeight: 600, color: "var(--color-primary)" }}>{date}</span>
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>

@@ -1,14 +1,38 @@
 import { createClient } from "@/lib/supabase/server";
-import { User, Shield, Mail, Phone } from "lucide-react";
+import { User } from "lucide-react";
 import PageHeader  from "../_components/PageHeader";
 import SectionCard from "../_components/SectionCard";
 import StatusBadge from "../_components/StatusBadge";
+import { updateProfile } from "./actions";
 
 export const metadata = { title: "Config. — Admin" };
 
 const ROLE_MAP: Record<string, { label: string; color: string; bg: string }> = {
   admin: { label: "Admin",  color: "var(--color-primary)",       bg: "var(--color-muted)" },
   agent: { label: "Agente", color: "var(--color-primary-light)", bg: "var(--color-muted)" },
+};
+
+const INPUT_STYLE: React.CSSProperties = {
+  width: "100%",
+  padding: "var(--space-2) var(--space-3)",
+  background: "var(--color-background)",
+  border: "1px solid var(--color-border)",
+  borderRadius: "var(--radius-md)",
+  fontSize: 12,
+  color: "var(--color-foreground)",
+  outline: "none",
+  boxSizing: "border-box",
+};
+
+const SUBMIT_STYLE: React.CSSProperties = {
+  padding: "var(--space-2) var(--space-4)",
+  background: "var(--color-primary)",
+  color: "#fff",
+  border: "none",
+  borderRadius: "var(--radius-md)",
+  fontSize: 12,
+  fontWeight: 600,
+  cursor: "pointer",
 };
 
 export default async function ConfigPage() {
@@ -48,11 +72,37 @@ export default async function ConfigPage() {
           </div>
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
-          <Row icon={<Mail size={14} color="var(--color-primary-light)" />} label="Email" value={profile?.email ?? user?.email ?? "—"} />
-          <Row icon={<Phone size={14} color="var(--color-primary-light)" />} label="Telefone" value={profile?.phone ?? "Não informado"} />
-          <Row icon={<Shield size={14} color="var(--color-primary-light)" />} label="Função" value={role.label} />
-        </div>
+        <form action={updateProfile} style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
+          <div>
+            <label style={{ fontSize: 11, fontWeight: 600, color: "var(--color-muted-foreground)", display: "block", marginBottom: "var(--space-2)" }}>
+              Nome completo
+            </label>
+            <input
+              name="full_name"
+              required
+              defaultValue={profile?.full_name ?? ""}
+              style={INPUT_STYLE}
+            />
+          </div>
+
+          <div>
+            <label style={{ fontSize: 11, fontWeight: 600, color: "var(--color-muted-foreground)", display: "block", marginBottom: "var(--space-2)" }}>
+              Telefone
+            </label>
+            <input
+              name="phone"
+              defaultValue={profile?.phone ?? ""}
+              placeholder="+55 11 99999-9999"
+              style={INPUT_STYLE}
+            />
+          </div>
+
+          <Row label="Email" value={profile?.email ?? user?.email ?? "—"} />
+
+          <div className="flex items-center justify-end">
+            <button type="submit" style={SUBMIT_STYLE}>Salvar</button>
+          </div>
+        </form>
       </SectionCard>
 
       {/* Account info */}

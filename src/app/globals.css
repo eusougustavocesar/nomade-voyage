@@ -3,10 +3,10 @@
 /* ─── Nômade Voyage Design System ─── */
 
 :root {
-  /* ── Brand Colors — importado do design system do helm (indigo accent) ── */
-  --color-primary:          #4F46E5;  /* indigo — CTAs, links, interativo */
-  --color-primary-light:    #6366F1;  /* indigo claro — ícones / texto sobre fundo muted */
-  --color-accent:           #6366F1;  /* indigo — badges, destaques */
+  /* ── Brand Colors — mono preto/branco (bordas/radius/fonte seguem do helm) ── */
+  --color-primary:          #0A0A0A;  /* quase-preto — CTAs, links, interativo */
+  --color-primary-light:    #525252;  /* cinza médio — ícones / texto sobre fundo muted */
+  --color-accent:           #0A0A0A;  /* quase-preto — badges, destaques */
 
   /* ── Surfaces ── */
   --color-background:       #FFFFFF;
@@ -29,7 +29,7 @@
   --color-success-bg:       rgba(16, 185, 129, 0.15);
   --color-warning:          #F59E0B;
   --color-warning-bg:       rgba(245, 158, 11, 0.15);
-  --color-accent-bg:        rgba(99, 102, 241, 0.15);
+  --color-accent-bg:        rgba(10, 10, 10, 0.06);
   --color-destructive-bg:   rgba(239, 68, 68, 0.15);
   --color-purple:           #7C3AED;
   --color-purple-bg:        rgba(124, 58, 237, 0.12);
@@ -129,9 +129,9 @@
 /* ─── Dark theme (via data-theme — set by layout script + ThemeProvider) ─── */
 
 html[data-theme="dark"] {
-  --color-primary:          #6366F1;
-  --color-primary-light:    #A5B4FC;
-  --color-accent:           #6366F1;
+  --color-primary:          #FAFAFA;
+  --color-primary-light:    #A3A3A3;
+  --color-accent:           #FAFAFA;
 
   --color-background:       #000000;
   --color-surface:          #0C0C0C;
@@ -150,7 +150,7 @@ html[data-theme="dark"] {
   --color-success-bg:       rgba(16, 185, 129, 0.12);
   --color-warning:          #F59E0B;
   --color-warning-bg:       rgba(245, 158, 11, 0.12);
-  --color-accent-bg:        rgba(99, 102, 241, 0.12);
+  --color-accent-bg:        rgba(255, 255, 255, 0.08);
   --color-destructive-bg:   rgba(239, 68, 68, 0.12);
   --color-purple:           #A78BFA;
   --color-purple-bg:        rgba(167, 139, 250, 0.12);
@@ -275,9 +275,9 @@ section {
   transition:      background 150ms ease-out, transform 100ms ease-out;
   text-decoration: none;
 }
-.btn-primary:hover  { background: #4338CA; }
+.btn-primary:hover  { background: #262626; }
 .btn-primary:active { transform: scale(0.98); }
-html[data-theme="dark"] .btn-primary:hover { background: #818CF8; }
+html[data-theme="dark"] .btn-primary:hover { background: #E5E5E5; }
 
 .btn-secondary {
   background:      transparent;
@@ -384,52 +384,6 @@ html[data-theme="dark"] .btn-primary:hover { background: #818CF8; }
   --admin-nav-fs:       var(--text-caption);
   --admin-label-fs:     11px;
   --admin-content-max:  1200px;
-  --admin-page-px:      var(--space-8);
-  --admin-page-py:      var(--space-8);
-}
-
-/* Grid shell — sidebar spans ambas as rows */
-.admin-shell {
-  display:               grid;
-  grid-template-columns: var(--admin-sidebar-w) 1fr;
-  grid-template-rows:    var(--admin-topbar-h) 1fr;
-  height:                100svh;
-  overflow:              hidden;
-  background:            var(--color-background);
-}
-
-.admin-sidebar {
-  grid-column: 1;
-  grid-row:    1 / -1;
-  display:     flex;
-  flex-direction: column;
-  background:  var(--color-surface);
-  border-right: 1px solid var(--color-border);
-  overflow:    hidden;
-}
-
-.admin-topbar {
-  grid-column: 2;
-  grid-row:    1;
-  display:     flex;
-  align-items: center;
-  justify-content: space-between;
-  padding:     0 var(--admin-page-px);
-  background:  var(--color-surface);
-  border-bottom: 1px solid var(--color-border);
-}
-
-.admin-main {
-  grid-column:  2;
-  grid-row:     2;
-  overflow-y:   auto;
-}
-
-/* Page content wrapper — usado dentro de admin-main */
-.admin-page {
-  max-width: var(--admin-content-max);
-  margin:    0 auto;
-  padding:   var(--admin-page-py) var(--admin-page-px);
 }
 
 .admin-label {

@@ -4,6 +4,7 @@ import Link from "next/link";
 import PageHeader  from "../_components/PageHeader";
 import SectionCard from "../_components/SectionCard";
 import StatusBadge from "../_components/StatusBadge";
+import { fmtDate } from "@/lib/format";
 
 export const metadata = { title: "Blog — Admin" };
 
@@ -12,11 +13,6 @@ const STATUS_MAP: Record<string, { label: string; color: string; bg: string }> =
   publicado: { label: "Publicado", color: "var(--color-success)",          bg: "var(--color-success-bg)" },
   arquivado: { label: "Arquivado", color: "var(--color-muted-foreground)", bg: "var(--color-muted)" },
 };
-
-function fmtDate(d: string | null) {
-  if (!d) return "—";
-  return new Date(d).toLocaleDateString("pt-BR", { day: "numeric", month: "short", year: "numeric" });
-}
 
 const FILTERS = ["todos", "publicado", "rascunho", "arquivado"] as const;
 const TH: React.CSSProperties = { padding: "var(--space-3) var(--space-4)", textAlign: "left" };

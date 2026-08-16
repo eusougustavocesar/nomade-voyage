@@ -2,13 +2,9 @@ import { createClient } from "@/lib/supabase/server";
 import { MapPin, Clock, CheckCircle2, XCircle } from "lucide-react";
 import PageHeader  from "../_components/PageHeader";
 import StatusBadge from "../_components/StatusBadge";
+import { fmtCurrency as fmt } from "@/lib/format";
 
 export const metadata = { title: "Pacotes — Admin" };
-
-function fmt(v: number | null) {
-  if (!v) return "—";
-  return new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 }).format(v);
-}
 
 export default async function PacotesPage() {
   const supabase = await createClient();

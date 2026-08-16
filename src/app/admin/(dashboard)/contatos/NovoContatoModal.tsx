@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { X, UserPlus } from "lucide-react";
+import { UserPlus } from "lucide-react";
 import { createContact } from "./actions";
+import ModalShell from "@/components/ModalShell";
 
 const SOURCES = [
   { key: "whatsapp",  label: "WhatsApp" },
@@ -55,100 +56,77 @@ export default function NovoContatoModal() {
       </button>
 
       {open && (
-        <div
-          style={{
-            position: "fixed", inset: 0, zIndex: 50,
-            background: "rgba(0,0,0,0.5)",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            padding: "var(--space-6)",
-          }}
-          onClick={(e) => e.target === e.currentTarget && setOpen(false)}
-        >
-          <div style={{
-            width: "100%", maxWidth: 440,
-            background: "var(--color-surface)",
-            borderRadius: "var(--radius-xl)",
-            border: "1px solid var(--color-border)",
-            padding: "var(--space-6)",
-          }}>
-            <div className="flex items-center justify-between" style={{ marginBottom: "var(--space-6)" }}>
-              <h2 style={{ fontSize: "var(--text-body)", fontWeight: 700 }}>Novo contato</h2>
-              <button onClick={() => setOpen(false)} style={{ background: "none", border: "none", cursor: "pointer", color: "var(--color-muted-foreground)" }}>
-                <X size={16} />
-              </button>
+        <ModalShell title="Novo contato" onClose={() => setOpen(false)}>
+          <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
+            <Field label="Nome completo *" name="full_name" required placeholder="João Silva" />
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-3)" }}>
+              <Field label="Telefone" name="phone" placeholder="+55 11 99999-9999" />
+              <Field label="Email" name="email" type="email" placeholder="joao@email.com" />
             </div>
 
-            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
-              <Field label="Nome completo *" name="full_name" required placeholder="João Silva" />
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-3)" }}>
-                <Field label="Telefone" name="phone" placeholder="+55 11 99999-9999" />
-                <Field label="Email" name="email" type="email" placeholder="joao@email.com" />
-              </div>
+            <div>
+              <label style={{ fontSize: 11, fontWeight: 600, color: "var(--color-muted-foreground)", display: "block", marginBottom: "var(--space-2)" }}>
+                Origem
+              </label>
+              <select
+                name="source"
+                defaultValue="whatsapp"
+                style={{
+                  width: "100%",
+                  padding: "var(--space-2) var(--space-3)",
+                  background: "var(--color-background)",
+                  border: "1px solid var(--color-border)",
+                  borderRadius: "var(--radius-md)",
+                  fontSize: 12,
+                  color: "var(--color-foreground)",
+                }}
+              >
+                {SOURCES.map(({ key, label }) => (
+                  <option key={key} value={key}>{label}</option>
+                ))}
+              </select>
+            </div>
 
-              <div>
-                <label style={{ fontSize: 11, fontWeight: 600, color: "var(--color-muted-foreground)", display: "block", marginBottom: "var(--space-2)" }}>
-                  Origem
-                </label>
-                <select
-                  name="source"
-                  defaultValue="whatsapp"
-                  style={{
-                    width: "100%",
-                    padding: "var(--space-2) var(--space-3)",
-                    background: "var(--color-background)",
-                    border: "1px solid var(--color-border)",
-                    borderRadius: "var(--radius-md)",
-                    fontSize: 12,
-                    color: "var(--color-foreground)",
-                  }}
-                >
-                  {SOURCES.map(({ key, label }) => (
-                    <option key={key} value={key}>{label}</option>
-                  ))}
-                </select>
-              </div>
+            {error && (
+              <p style={{ fontSize: 12, color: "var(--color-destructive, #ef4444)" }}>{error}</p>
+            )}
 
-              {error && (
-                <p style={{ fontSize: 12, color: "var(--color-destructive, #ef4444)" }}>{error}</p>
-              )}
-
-              <div className="flex items-center justify-end" style={{ gap: "var(--space-3)", marginTop: "var(--space-2)" }}>
-                <button
-                  type="button"
-                  onClick={() => setOpen(false)}
-                  style={{
-                    padding: "var(--space-2) var(--space-4)",
-                    background: "transparent",
-                    border: "1px solid var(--color-border)",
-                    borderRadius: "var(--radius-md)",
-                    fontSize: 12,
-                    cursor: "pointer",
-                    color: "var(--color-muted-foreground)",
-                  }}
-                >
-                  Cancelar
-                </button>
-                <button
-                  type="submit"
-                  disabled={isPending}
-                  style={{
-                    padding: "var(--space-2) var(--space-4)",
-                    background: "var(--color-primary)",
-                    color: "#fff",
-                    border: "none",
-                    borderRadius: "var(--radius-md)",
-                    fontSize: 12,
-                    fontWeight: 600,
-                    cursor: "pointer",
-                    opacity: isPending ? 0.6 : 1,
-                  }}
-                >
-                  {isPending ? "Salvando..." : "Salvar"}
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
+            <div className="flex items-center justify-end" style={{ gap: "var(--space-3)", marginTop: "var(--space-2)" }}>
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                style={{
+                  padding: "var(--space-2) var(--space-4)",
+                  background: "transparent",
+                  border: "1px solid var(--color-border)",
+                  borderRadius: "var(--radius-md)",
+                  fontSize: 12,
+                  cursor: "pointer",
+                  color: "var(--color-muted-foreground)",
+                }}
+              >
+                Cancelar
+              </button>
+              <button
+                type="submit"
+                disabled={isPending}
+                style={{
+                  padding: "var(--space-2) var(--space-4)",
+                  background: "var(--color-primary)",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: "var(--radius-md)",
+                  fontSize: 12,
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  opacity: isPending ? 0.6 : 1,
+                }}
+              >
+                {isPending ? "Salvando..." : "Salvar"}
+              </button>
+            </div>
+          </form>
+        </ModalShell>
       )}
     </>
   );

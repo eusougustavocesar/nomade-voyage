@@ -3,19 +3,10 @@
 import { MapPin } from "lucide-react";
 import { STAGES, type Lead } from "./PipelineBoard";
 import StatusBadge from "../_components/StatusBadge";
+import { fmtCurrency, fmtDate } from "@/lib/format";
 
 const STAGE_LABEL = Object.fromEntries(STAGES.map((s) => [s.key, s.label]));
 const STAGE_COLOR = Object.fromEntries(STAGES.map((s) => [s.key, s.color]));
-
-function fmt(v: number | null) {
-  if (!v) return "—";
-  return new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 }).format(v);
-}
-
-function fmtDate(date: string | null) {
-  if (!date) return "—";
-  return new Date(date + "T12:00:00").toLocaleDateString("pt-BR", { day: "2-digit", month: "short" });
-}
 
 function daysAgo(date: string) {
   const d = Math.floor((Date.now() - new Date(date).getTime()) / 86400000);
@@ -89,12 +80,12 @@ export default function PipelineTable({
                 </td>
                 <td style={{ padding: "var(--space-3) var(--space-4)" }}>
                   <span style={{ fontSize: "var(--text-caption)", fontWeight: 600, color: "var(--color-primary)" }}>
-                    {fmt(lead.estimated_value)}
+                    {fmtCurrency(lead.estimated_value)}
                   </span>
                 </td>
                 <td style={{ padding: "var(--space-3) var(--space-4)" }}>
                   <span style={{ fontSize: "var(--admin-label-fs)", color: "var(--color-muted-foreground)" }}>
-                    {fmtDate(lead.travel_date_from)}
+                    {fmtDate(lead.travel_date_from, "compact")}
                   </span>
                 </td>
                 <td style={{ padding: "var(--space-3) var(--space-4)" }}>

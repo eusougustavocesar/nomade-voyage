@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { X, MapPinned } from "lucide-react";
+import { MapPinned } from "lucide-react";
 import { createItinerary } from "./actions";
+import ModalShell from "@/components/ModalShell";
 
 type Lead = { id: string; destination: string | null; contacts: { full_name: string } | null };
 
@@ -48,29 +49,7 @@ export default function NovoRoteiroModal({ leads }: { leads: Lead[] }) {
       </button>
 
       {open && (
-        <div
-          style={{
-            position: "fixed", inset: 0, zIndex: 50,
-            background: "rgba(0,0,0,0.5)",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            padding: "var(--space-6)",
-          }}
-          onClick={(e) => e.target === e.currentTarget && setOpen(false)}
-        >
-          <div style={{
-            width: "100%", maxWidth: 440,
-            background: "var(--color-surface)",
-            borderRadius: "var(--radius-xl)",
-            border: "1px solid var(--color-border)",
-            padding: "var(--space-6)",
-          }}>
-            <div className="flex items-center justify-between" style={{ marginBottom: "var(--space-6)" }}>
-              <h2 style={{ fontSize: "var(--text-body)", fontWeight: 700 }}>Novo roteiro</h2>
-              <button onClick={() => setOpen(false)} style={{ background: "none", border: "none", cursor: "pointer", color: "var(--color-muted-foreground)" }}>
-                <X size={16} />
-              </button>
-            </div>
-
+        <ModalShell title="Novo roteiro" onClose={() => setOpen(false)}>
             <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
               <div>
                 <label style={{ fontSize: 11, fontWeight: 600, color: "var(--color-muted-foreground)", display: "block", marginBottom: "var(--space-2)" }}>
@@ -144,8 +123,7 @@ export default function NovoRoteiroModal({ leads }: { leads: Lead[] }) {
                 </button>
               </div>
             </form>
-          </div>
-        </div>
+        </ModalShell>
       )}
     </>
   );

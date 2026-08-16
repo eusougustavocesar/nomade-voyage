@@ -4,12 +4,11 @@ import { MapPin } from "lucide-react";
 import PageHeader   from "../_components/PageHeader";
 import SectionCard  from "../_components/SectionCard";
 import NovoRoteiroModal from "./NovoRoteiroModal";
+import { fmtDate as fmtDateBase } from "@/lib/format";
 
 export const metadata = { title: "Roteiros — Admin" };
 
-function fmtDate(d: string) {
-  return new Date(d).toLocaleDateString("pt-BR", { day: "numeric", month: "short" });
-}
+const fmtDate = (d: string) => fmtDateBase(d, "compact");
 
 export default async function RoteirosPage() {
   const supabase = await createClient();

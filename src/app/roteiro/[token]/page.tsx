@@ -4,6 +4,7 @@ import { MapPin, Calendar, DollarSign } from "lucide-react";
 import Logo from "@/components/Logo";
 import ItineraryTimeline from "@/components/ItineraryTimeline";
 import PrintButton from "./PrintButton";
+import { fmtCurrency, fmtDate as fmtDateBase } from "@/lib/format";
 
 export async function generateMetadata({ params }: { params: Promise<{ token: string }> }) {
   const { token } = await params;
@@ -15,13 +16,12 @@ export async function generateMetadata({ params }: { params: Promise<{ token: st
 }
 
 function fmt(v: number | null) {
-  if (!v) return null;
-  return new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 }).format(v);
+  return fmtCurrency(v, null);
 }
 
 function fmtDate(d: string | null) {
   if (!d) return null;
-  return new Date(d).toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric" });
+  return fmtDateBase(d, "long");
 }
 
 export default async function RoteiroPublicoPage({

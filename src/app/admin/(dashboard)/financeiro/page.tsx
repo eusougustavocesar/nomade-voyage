@@ -7,18 +7,11 @@ import PageHeader  from "../_components/PageHeader";
 import StatusBadge from "../_components/StatusBadge";
 import { markCommissionReceived } from "../reservas/actions";
 import { PAYMENT_STATUS_MAP } from "./status";
+import { fmtCurrency, fmtDate as fmtDateBase } from "@/lib/format";
 
 export const metadata = { title: "Financeiro — Admin" };
 
-function fmt(v: number | null) {
-  if (!v) return "—";
-  return new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 }).format(v);
-}
-
-function fmtDate(d: string | null) {
-  if (!d) return "—";
-  return new Date(d).toLocaleDateString("pt-BR", { day: "numeric", month: "short" });
-}
+const fmtDate = (d: string | null) => fmtDateBase(d, "compact");
 
 export default async function FinanceiroPage() {
   const supabase = await createClient();
@@ -63,9 +56,9 @@ export default async function FinanceiroPage() {
       <PageHeader title="Financeiro" sub="Comissões, pagamentos e faturamento" />
 
       <div className="grid grid-cols-2 lg:grid-cols-4" style={{ gap: "var(--gap-sm)", marginBottom: "var(--gap-md)" }}>
-        <KpiCard label="Faturamento do mês"  value={fmt(monthRevenue)}     sub="reservas fechadas"     icon={DollarSign}    accent="var(--color-success)" />
-        <KpiCard label="Comissão do mês"     value={fmt(monthCommission)} sub="já recebida"           icon={TrendingUp}    accent="var(--color-primary-light)" />
-        <KpiCard label="Comissão pendente"   value={fmt(pendingCommTotal)} sub="a receber da operadora" icon={Clock}         accent="var(--color-accent)" />
+        <KpiCard label="Faturamento do mês"  value={fmtCurrency(monthRevenue)}     sub="reservas fechadas"     icon={DollarSign}    accent="var(--color-success)" />
+        <KpiCard label="Comissão do mês"     value={fmtCurrency(monthCommission)} sub="já recebida"           icon={TrendingUp}    accent="var(--color-primary-light)" />
+        <KpiCard label="Comissão pendente"   value={fmtCurrency(pendingCommTotal)} sub="a receber da operadora" icon={Clock}         accent="var(--color-accent)" />
         <KpiCard label="Pagamentos em atraso" value={String(overdueCount)} sub="de clientes"           icon={AlertTriangle} accent="var(--color-destructive)" />
       </div>
 
@@ -101,7 +94,7 @@ export default async function FinanceiroPage() {
                     </td>
                     <td style={{ padding: "var(--space-3) var(--space-4)" }}>
                       <span style={{ fontSize: "var(--text-caption)", fontWeight: 600, color: "var(--color-foreground)" }}>
-                        {fmt(item.total_price * item.commission_rate)}
+                        {fmtCurrency(item.total_price * item.commission_rate)}
                       </span>
                     </td>
                     <td style={{ padding: "var(--space-3) var(--space-4)" }}>
@@ -155,7 +148,7 @@ export default async function FinanceiroPage() {
                       <span style={{ fontSize: "var(--admin-label-fs)", color: "var(--color-muted-foreground)" }}>{b?.contacts?.full_name ?? "—"}</span>
                     </td>
                     <td style={{ padding: "var(--space-3) var(--space-4)" }}>
-                      <span style={{ fontSize: "var(--text-caption)", fontWeight: 600, color: "var(--color-foreground)" }}>{fmt(p.amount)}</span>
+                      <span style={{ fontSize: "var(--text-caption)", fontWeight: 600, color: "var(--color-foreground)" }}>{fmtCurrency(p.amount)}</span>
                     </td>
                     <td style={{ padding: "var(--space-3) var(--space-4)" }}>
                       <span style={{ fontSize: "var(--admin-label-fs)", color: "var(--color-muted-foreground)" }}>{fmtDate(p.due_date)}</span>

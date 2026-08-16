@@ -4,6 +4,7 @@ import { useState, useRef, useTransition } from "react";
 import { MapPin, Users, DollarSign, Pencil, MessageCircle } from "lucide-react";
 import { updateLeadStage, updateLeadToLost } from "./actions";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { fmtCurrency } from "@/lib/format";
 import LostReasonModal from "./LostReasonModal";
 
 export type Lead = {
@@ -32,13 +33,6 @@ export const STAGES = [
   { key: "reservado",        label: "Reservado",  color: "var(--color-success, #22c55e)" },
   { key: "perdido",          label: "Perdido",    color: "var(--color-destructive)" },
 ];
-
-function fmt(v: number | null) {
-  if (!v) return null;
-  return new Intl.NumberFormat("pt-BR", {
-    style: "currency", currency: "BRL", maximumFractionDigits: 0,
-  }).format(v);
-}
 
 function daysAgo(date: string) {
   const d = Math.floor((Date.now() - new Date(date).getTime()) / 86400000);
@@ -120,10 +114,10 @@ function LeadCard({
             </span>
           )}
         </div>
-        {fmt(lead.estimated_value) && (
+        {fmtCurrency(lead.estimated_value, null) && (
           <span className="flex items-center" style={{ gap: 3, fontSize: 11, fontWeight: 600, color: "var(--color-primary)" }}>
             <DollarSign size={9} />
-            {fmt(lead.estimated_value)}
+            {fmtCurrency(lead.estimated_value, null)}
           </span>
         )}
       </div>

@@ -7,6 +7,7 @@ import KpiCard     from "./_components/KpiCard";
 import SectionCard from "./_components/SectionCard";
 import PageHeader  from "./_components/PageHeader";
 import StatusBadge from "./_components/StatusBadge";
+import { fmtCurrency, fmtDate as fmtDateBase } from "@/lib/format";
 
 // ── Helpers ──────────────────────────────────────────────────
 
@@ -50,14 +51,8 @@ const DESTINATION_COLORS = ["var(--color-primary)", "var(--color-success)", "var
 const PIPELINE_STAGES = ["novo", "qualificado", "proposta_enviada", "negociacao", "reservado"] as const;
 const ALERT_WINDOW_DAYS = 90;
 
-function fmt(value: number | null) {
-  if (!value) return "—";
-  return new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 }).format(value);
-}
-
-function fmtDate(d: string) {
-  return new Date(d).toLocaleDateString("pt-BR", { day: "numeric", month: "short" });
-}
+const fmt = fmtCurrency;
+const fmtDate = (d: string) => fmtDateBase(d, "compact");
 
 function timeAgo(date: string) {
   const diff = Math.floor((Date.now() - new Date(date).getTime()) / 1000);

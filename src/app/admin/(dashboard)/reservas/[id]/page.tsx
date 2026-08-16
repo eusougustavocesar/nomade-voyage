@@ -9,6 +9,7 @@ import { STATUS_MAP } from "../status";
 import { PAYMENT_STATUS_MAP } from "../../financeiro/status";
 import { markCommissionReceived } from "../actions";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { fmtCurrency, fmtDate } from "@/lib/format";
 
 export const metadata = { title: "Reserva — Admin" };
 
@@ -29,16 +30,6 @@ const PRODUCT_TYPE_LABEL: Record<string, string> = {
   roteiro: "Roteiro",
   consultoria: "Consultoria",
 };
-
-function fmt(v: number | null) {
-  if (v == null) return "—";
-  return new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 }).format(v);
-}
-
-function fmtDate(d: string | null) {
-  if (!d) return "—";
-  return new Date(d).toLocaleDateString("pt-BR", { day: "numeric", month: "short", year: "numeric" });
-}
 
 function fmtDateTime(d: string | null) {
   if (!d) return "—";
@@ -139,7 +130,7 @@ export default async function ReservaDetailPage({
           <Detail label="Destino" value={lead?.destination ?? "—"} />
           <Detail label="Período" value={`${fmtDate(booking.travel_date_from)} — ${fmtDate(booking.travel_date_to)}`} icon={<Calendar size={11} />} />
           <Detail label="Grupo" value={`${booking.group_size} viajante${booking.group_size !== 1 ? "s" : ""}`} icon={<Users size={11} />} />
-          <Detail label="Total / Pago" value={`${fmt(booking.total_price)} / ${fmt(booking.amount_paid)}`} />
+          <Detail label="Total / Pago" value={`${fmtCurrency(booking.total_price)} / ${fmtCurrency(booking.amount_paid)}`} />
         </div>
         {contact && (contact.phone || contact.email) && (
           <div className="flex items-center" style={{ gap: "var(--space-4)", marginTop: "var(--space-4)", paddingTop: "var(--space-4)", borderTop: "1px solid var(--color-border)" }}>
@@ -254,10 +245,10 @@ export default async function ReservaDetailPage({
                       <span style={{ fontSize: "var(--admin-label-fs)", color: "var(--color-muted-foreground)" }}>{item.quantity}</span>
                     </td>
                     <td style={{ padding: "var(--space-3) var(--space-4)" }}>
-                      <span style={{ fontSize: "var(--admin-label-fs)", color: "var(--color-muted-foreground)" }}>{fmt(item.unit_price)}</span>
+                      <span style={{ fontSize: "var(--admin-label-fs)", color: "var(--color-muted-foreground)" }}>{fmtCurrency(item.unit_price)}</span>
                     </td>
                     <td style={{ padding: "var(--space-3) var(--space-4)" }}>
-                      <span style={{ fontSize: "var(--text-caption)", fontWeight: 600, color: "var(--color-foreground)" }}>{fmt(item.total_price)}</span>
+                      <span style={{ fontSize: "var(--text-caption)", fontWeight: 600, color: "var(--color-foreground)" }}>{fmtCurrency(item.total_price)}</span>
                     </td>
                     <td style={{ padding: "var(--space-3) var(--space-4)" }}>
                       <StatusBadge label={st.label} color={st.color} bg={st.bg} />
@@ -266,7 +257,7 @@ export default async function ReservaDetailPage({
                       {item.commission_rate > 0 ? (
                         <div className="flex items-center" style={{ gap: "var(--space-2)" }}>
                           <span style={{ fontSize: "var(--admin-label-fs)", color: "var(--color-muted-foreground)" }}>
-                            {fmt(item.total_price * item.commission_rate)}
+                            {fmtCurrency(item.total_price * item.commission_rate)}
                           </span>
                           {item.commission_status === "recebido" ? (
                             <StatusBadge label="Recebida" color="var(--color-success)" bg="var(--color-success-bg)" />
@@ -317,7 +308,7 @@ export default async function ReservaDetailPage({
                 return (
                   <tr key={p.id} style={{ borderTop: i > 0 ? "1px solid var(--color-border)" : "none" }}>
                     <td style={{ padding: "var(--space-3) var(--space-4)" }}>
-                      <span style={{ fontSize: "var(--text-caption)", fontWeight: 600, color: "var(--color-foreground)" }}>{fmt(p.amount)}</span>
+                      <span style={{ fontSize: "var(--text-caption)", fontWeight: 600, color: "var(--color-foreground)" }}>{fmtCurrency(p.amount)}</span>
                     </td>
                     <td style={{ padding: "var(--space-3) var(--space-4)" }}>
                       <span style={{ fontSize: "var(--admin-label-fs)", color: "var(--color-muted-foreground)" }}>{p.method ?? "—"}</span>

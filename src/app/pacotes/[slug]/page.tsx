@@ -6,7 +6,6 @@ import Navbar from "@/components/Navbar";
 import NavAuthButton from "@/components/NavAuthButton";
 import Footer from "@/components/Footer";
 import PackageCard from "@/components/PackageCard";
-import Logo from "@/components/Logo";
 import { Check, X, MapPin, Clock, Users, MessageCircle, ArrowLeft, Star, Shield, HeartHandshake, Globe } from "lucide-react";
 
 export function generateStaticParams() {

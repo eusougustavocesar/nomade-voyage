@@ -1,23 +1,15 @@
 import { createClient } from "@/lib/supabase/server";
 import Link from "next/link";
-import { MapPin, Calendar, Users } from "lucide-react";
+import { Calendar, Users } from "lucide-react";
 import PageHeader  from "../_components/PageHeader";
 import SectionCard from "../_components/SectionCard";
 import StatusBadge from "../_components/StatusBadge";
 import { STATUS_MAP } from "./status";
+import { fmtCurrency, fmtDate } from "@/lib/format";
 
 export const metadata = { title: "Reservas — Admin" };
 
 const FILTERS = ["todas", "confirmado", "pago", "em_viagem", "concluido", "cancelado"] as const;
-
-function fmt(v: number) {
-  return new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 }).format(v);
-}
-
-function fmtDate(d: string | null) {
-  if (!d) return "—";
-  return new Date(d).toLocaleDateString("pt-BR", { day: "numeric", month: "short", year: "numeric" });
-}
 
 const TH: React.CSSProperties = { padding: "var(--space-3) var(--space-4)", textAlign: "left" };
 const TD: React.CSSProperties = { padding: "var(--space-3) var(--space-4)", verticalAlign: "middle" };
@@ -127,12 +119,12 @@ export default async function ReservasPage({
                     </td>
                     <td style={TD}>
                       <span style={{ fontSize: "var(--text-caption)", fontWeight: 600, color: "var(--color-foreground)" }}>
-                        {fmt(b.total_price)}
+                        {fmtCurrency(b.total_price)}
                       </span>
                     </td>
                     <td style={TD}>
                       <span style={{ fontSize: "var(--admin-label-fs)", color: b.amount_paid >= b.total_price ? "var(--color-success)" : "var(--color-muted-foreground)" }}>
-                        {fmt(b.amount_paid)}
+                        {fmtCurrency(b.amount_paid)}
                       </span>
                     </td>
                     <td style={TD}>
